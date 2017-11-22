@@ -8,14 +8,22 @@
 }
 
 .modal-header{
-  background-color: #3498DB;
+  background-color: $sky-blue;
   text-align: center;
   color: white;
   text-transform: uppercase;
   height: 70px;
+  padding: 10;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .modal-header .close{
   color: #FFF;
   opacity: 1;
+}
+
+.modal-footer{
+  height: 50px;
+  box-sizing: border-box;
 }

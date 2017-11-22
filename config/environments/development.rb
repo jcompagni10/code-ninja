@@ -7,7 +7,6 @@ Rails.application.configure do
   config.cache_classes = false
 
   #LiveReload
-  config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)
   # Do not eager load code on boot.
   config.eager_load = false
 

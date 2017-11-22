@@ -1,0 +1,53 @@
+
+.form-control{
+  position: relative;
+  font-size: 16px;
+  font-weight: 400;
+  width: 100%;
+  border: 1px solid #E5E5E5;
+  background: #F5F5F5;
+  height: 32px;
+  padding: 0 8px;
+  outline: none;
+  border-radius: 2px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group{
+  position: relative;
+  width: 100%;
+}
+
+.session-form label{
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  color: $grey;
+}
+
+//fix chrome autofill
+.session-form input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #F5F5F5 inset;
+
+}
+
+.session-form .submit-button{
+  text-transform: uppercase;
+  color: #3498DB;
+  padding: 0 12px;
+  font-size: 16px;
+}
+
+.signup-link{
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  float: left;
+  color: $dark-grey;
+}
+.signup-link:hover{
+  text-decoration: none;
+  color: gray;
+}

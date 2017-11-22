@@ -3,7 +3,7 @@ import {login, signupUser} from '../../actions/session';
 import {connect} from 'react-redux';
 
 const mapDispatchToProps = (dispatch, ownProps) =>{
-  let submitAction = (ownProps.isLogin) ? login : signupUser;
+  let submitAction = (ownProps.isSignup) ?  signupUser: login;
   return {action: (user)=>dispatch(submitAction(user)) };
 };
 

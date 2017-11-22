@@ -12,8 +12,11 @@ span, article, footer, time, small {
   text-align: inherit;
   text-decoration: inherit;
   vertical-align: inherit;
-  box-sizing: inherit;
   background: transparent;
+}
+
+a:hover{
+  text-decoration: none;
 }
 
 ul {
@@ -34,7 +37,9 @@ textarea,
 button {
   -webkit-appearance: none;
   -moz-appearance: none;
+  background-color: #fff;
 }
+
 
 button,
 input[type="submit"] {
