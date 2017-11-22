@@ -3,8 +3,10 @@ import {login, signupUser} from '../../actions/session';
 import {connect} from 'react-redux';
 
 const mapDispatchToProps = (dispatch, ownProps) =>{
-  let submitAction = (ownProps.isSignup) ?  signupUser: login;
-  return {action: (user)=>dispatch(submitAction(user)) };
+  return {
+          login: (user)=>dispatch(login(user)),
+          signup: (user)=>dispatch(signupUser(user))
+        };
 };
 
 export default connect(null, mapDispatchToProps)(SessionForm);

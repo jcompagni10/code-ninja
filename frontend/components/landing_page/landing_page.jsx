@@ -18,7 +18,8 @@ class LandingPage extends React.Component{
   handleEmail(e){
     this.setState({email: e.target.value});
   }
-  openModal(){
+  openModal(path="/"){
+    this.props.history.push(path);
     this.setState({modalOpen: true});
   }
 
@@ -56,7 +57,7 @@ class LandingPage extends React.Component{
                 Join an active community of <span className="bold">500,000+</span> engineers!
               </p>
             </div>
-            <div class="top-spacer visible-xs"></div>
+            <div className="top-spacer visible-xs"></div>
             <div className="col-sm-5 signup-box">
               <button className="btn btn-primary fb-signup">
                 Sign in with demo account
@@ -74,7 +75,7 @@ class LandingPage extends React.Component{
                 />
                 <button
                   className="sign-up-btn"
-                  onClick={this.openModal}>
+                  onClick={()=>this.openModal("signup")}>
                   sign up free
                 </button>
               </div>

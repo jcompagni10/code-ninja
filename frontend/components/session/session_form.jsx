@@ -1,6 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Modal} from 'react-bootstrap';
+import {Route, Switch} from 'react-router-dom';
+import LoginForm from './login_form';
+import SignupForm from './signup_form';
 
 class SessionForm extends React.Component{
   constructor(props){
@@ -36,65 +39,22 @@ class SessionForm extends React.Component{
   }
 
 
-  email(){
-    if (this.props.isSignup){
-      return(
-        <div className="form-group">
-            <label htmlFor="email-input">Email </label>
-            <input
-              type="email"
-              className= "form-control"
-              id = "email-input"
-              onChange={this.handleInput("email")}
-            />
-        </div>
-      );
-    }
-  }
-
   render(){
     return(
-      //show=
       <Modal show={this.props.modalOpen} onHide={this.props.closeModal}>
-        <Modal.Header closeButton>
-          <h4>{this.typeText(true)}</h4>
-          {this.props.isSignup}
-        </Modal.Header>
-        <form
-          onSubmit= {this.handleSubmit.bind(this)}
-          className ="session-form" >
-          <Modal.Body>
-            <div className="form-group">
-              <label htmlFor="username-input">Username</label>
-              <input
-                type="text"
-                className= "form-control"
-                id = "username-input"
-                onChange={this.handleInput("username")}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="password-input">Password</label>
-                <input
-                  type="password"
-                  className= "form-control"
-                  id = "password-input"
-                  onChange={this.handleInput("password")}
-                />
-              {this.email()}
-            </div>
-          </Modal.Body>
-          <Modal.Footer>
-            <Link
-              to={`/${this.otherActionPath()}`}
-              className="signup-link">{this.typeText(false)}
-            </Link>
-            <input
-              type="submit"
-              className="submit-button"
-              value={this.typeText(true)} />
-          </Modal.Footer>
-        </form>
+        <Switch>
+          <Route
+            path="/signup"
+            render={()=><SignupForm
+              action = {this.props.signup}
+              email = {this.state.email}
+              /> }
+          />
+          <Route
+            path="/"
+            render={()=><LoginForm action ={this.props.login} />}
+          />
+        </Switch>
       </Modal>
     );
   }
