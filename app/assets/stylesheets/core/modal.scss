@@ -1,0 +1,21 @@
+.modal-dialog{
+  width: 350px;
+}
+
+.modal-content{
+  border-radius: 0;
+  border: none;
+}
+
+.modal-header{
+  background-color: #3498DB;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  height: 70px;
+}
+
+.modal-header .close{
+  color: #FFF;
+  opacity: 1;
+}
