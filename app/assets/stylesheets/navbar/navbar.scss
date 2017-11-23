@@ -1,0 +1,133 @@
+.navbar{
+  background-color: $grey-blue;
+  box-sizing: border-box;
+  height: 65px;
+  padding: 0 35px;
+}
+
+.logo-wrapper{
+  color: white;
+  fill: currentColor;
+  height: 65px;
+  width: 65px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.logo-wrapper:hover{
+  background-color: $bright-blue
+}
+
+.nav-logo{
+  color: $light-grey;
+  font-size: 33px;
+}
+
+.dropdown-menu{
+  border-radius: 0;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-logo{}
+.nav-dropdown{
+  text-transform: none;
+  left: -21px;
+  color: #fff;
+  top: 65px;
+  background-color: #33485F;
+  width: 300px;
+}
+
+.nav-dropdown li a{
+  padding: 25px 50px;
+  color: #fff;
+  font-size: 20px;
+}
+
+.nav-dropdown li a:hover{
+  background-color: $bright-blue;
+  color: #fff;
+}
+
+.nav-dropdown li .glyphicon{
+  padding-right: 10px
+}
+
+.navbar-items{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 65px;
+}
+.navbar-item{
+  text-transform: uppercase;
+  color: $light-grey;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.navbar-item:first-of-type{
+  margin-left: -20px;
+}
+.navbar-item{
+  margin-left: 30px;
+}
+
+.leaders-icon{
+  margin-right: 10px;
+}
+
+.user-score-container{
+  border-radius: 25px;
+  height: 35px;
+  background-color: $dark-blue;
+  min-width: 120px;
+  display: flex;
+  line-height: 35px;
+  text-align: right;
+  padding: 0 15px;
+  justify-content: space-between;
+}
+
+.user-dropdown-toggle{
+  display: flex;
+  background-color: $dark-blue;
+  height: 40px;
+  border-radius: 40px;
+  width: 70px;
+  align-items: center;
+  padding-left: 2px;
+}
+
+.user-dropdown-chevron{
+  transition: transform .5s;
+}
+
+.dropdown.open .user-dropdown-chevron{
+  transform: rotate(180deg);
+}
+.user-dropdown-toggle .profile-thumb-round{
+  margin-right: 5px;
+}
+.coin{
+  top: 10px;
+  left: 5px;
+  color: rgb(251,197, 88);
+}
+
+.profile-thumb-round img{
+  height: 37px;
+  width: 37px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.user-dropdown{
+  width: 283px;
+}
+
+.user-dropdown .user-info{
+    background-color: $lightest-grey;
+    padding: 15px;
+}
