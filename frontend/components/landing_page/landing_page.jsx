@@ -32,6 +32,7 @@ class LandingPage extends React.Component{
 
   closeModal(){
     this.setState({modalOpen: false});
+    this.props.history.push("/");
   }
 
   loginDemoUser(){
@@ -55,7 +56,7 @@ class LandingPage extends React.Component{
               <ul className="header-links pull-right hidden-xs">
                 <li>blog</li>
                 <li>companies</li>
-                <li className="sq-button" onClick = {this.openModal}>
+                <li className="sq-button pointer" onClick = {this.openModal}>
                   Log in
                 </li>
               </ul>

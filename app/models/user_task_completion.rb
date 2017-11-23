@@ -1,0 +1,2 @@
+class UserTaskCompletion < ApplicationRecord
+end

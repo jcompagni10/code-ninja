@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121180622) do
+ActiveRecord::Schema.define(version: 20171123180259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "level_sets", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "order", null: false
+    t.string "image_url", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "level_set_id"
+    t.integer "order"
+    t.string "fxn_name", null: false
+    t.string "description", null: false
+    t.string "example", null: false
+    t.integer "time_limit", null: false
+    t.string "output_type", null: false
+    t.string "output_description", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["level_set_id"], name: "index_tasks_on_level_set_id"
+  end
+
+  create_table "user_task_completions", force: :cascade do |t|
+    t.integer "task_id", null: false
+    t.integer "user_id", null: false
+    t.integer "chars", null: false
+    t.string "mode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_user_task_completions_on_task_id"
+    t.index ["user_id"], name: "index_user_task_completions_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false

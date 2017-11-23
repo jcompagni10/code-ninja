@@ -1,5 +1,6 @@
 import React from 'react';
 import {Dropdown, Glyphicon, MenuItem} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 
 export default class Navbar extends React.Component{
@@ -31,9 +32,11 @@ export default class Navbar extends React.Component{
             <li className= "navbar-item">
               <Dropdown id="nav-dropdown" open={this.state.navDropdownOpen} onToggle={this.toggleNavDropdown.bind(this)}>
                 <Glyphicon bsRole= "toggle" glyph =""/>
-                <div className="logo-wrapper" onMouseEnter={()=>(this.toggleNavDropdown())}>
-                  <Glyphicon bsRole="toggle" className= "nav-logo" glyph="equalizer" bsSize="lg" />
-                </div>
+                <Link to ="/">
+                  <div className="logo-wrapper" onMouseEnter={()=>(this.toggleNavDropdown())}>
+                    <Glyphicon bsRole="toggle" className= "nav-logo" glyph="equalizer" bsSize="lg" />
+                  </div>
+                </Link>
                 <Dropdown.Menu className="nav-dropdown" onMouseLeave={()=>(this.toggleNavDropdown(false))}>
                 <MenuItem>
                   <Glyphicon glyph="king" bsSize="lg" />
@@ -76,7 +79,7 @@ export default class Navbar extends React.Component{
           <li className= "navbar-item">
             <Dropdown id="navbar" open={this.state.userDropdownOpen} onToggle={this.toggleUserDropdown.bind(this)}>
               <Glyphicon bsRole= "toggle" glyph =""/>
-              <div className="user-dropdown-toggle" onClick={()=>(this.toggleUserDropdown())}>
+              <div className="user-dropdown-toggle pointer" onClick={()=>(this.toggleUserDropdown())}>
                 <div className="profile-thumb-round">
                   <img src={this.props.currentUser.img_url} />
                 </div>
