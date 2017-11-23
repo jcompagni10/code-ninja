@@ -29,7 +29,13 @@
   margin: 0;
   padding: 0;
 }
-.nav-logo{}
+.dropdown-menu .divider{
+  margin: 0;
+}
+
+.dropdown-menu li a:focus{
+  outline: none;
+}
 .nav-dropdown{
   text-transform: none;
   left: -21px;
@@ -89,6 +95,10 @@
   padding: 0 15px;
   justify-content: space-between;
 }
+.user-score-container .coin{
+  top: 10px;
+  left: 5px;
+}
 
 .user-dropdown-toggle{
   display: flex;
@@ -111,8 +121,8 @@
   margin-right: 5px;
 }
 .coin{
-  top: 10px;
-  left: 5px;
+  top: -1px;
+  margin-right: 4px;
   color: rgb(251,197, 88);
 }
 
@@ -130,4 +140,34 @@
 .user-dropdown .user-info{
     background-color: $lightest-grey;
     padding: 15px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    color: $dark-grey;
+    text-transform: none;
+    font-weight: 400;
+}
+
+.user-dropdown .user-info .profile-thumb-round{
+  margin-right: 20px;
+}
+
+.user-dropdown .menu-score-section{
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  font-size: 16px;
+  color: $dark-grey;
+  justify-content: center;
+}
+
+.user-dropdown .score-container{
+  background-color: $lightest-grey;
+  border-radius: 20px;
+  padding: 5px 30px;
+}
+
+
+.user-dropdown li a{
+  padding: 15px 25px;
 }

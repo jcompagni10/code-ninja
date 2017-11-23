@@ -24,6 +24,7 @@ export default class Navbar extends React.Component{
 
    render(){
     return(
+    
       <header className="navbar-fixed-top navbar row">
         <div className="col-sm-6">
           <ul className="navbar-items navbar-left">
@@ -91,10 +92,13 @@ export default class Navbar extends React.Component{
               <MenuItem divider />
               <div className="menu-score-section">
                 <div className="menu-nav-score-wrapper">
-                <Glyphicon glyph="bitcoin" className= "coin" bsSize="md" />
-                {this.props.currentUser.score}
+                  <div className="score-container">
+                  <Glyphicon glyph="bitcoin" className= "coin" bsSize="lg" />
+                  {this.props.currentUser.score}
+                </div>
+                </div>
               </div>
-              </div>
+              <MenuItem divider />
               <MenuItem>
                 my profile
               </MenuItem>
