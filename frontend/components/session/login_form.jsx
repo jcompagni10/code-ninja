@@ -1,20 +1,18 @@
 import React from 'react';
 import {Modal} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+import Errors from '../errors';
 
 export default class LoginForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      username: '',
-      password: '',
-    };
+    this.state = props.user;
   }
 
   handleInput(type){
-    return e => (
-      this.setState({[type]: e.target.value})
-    );
+    return e => {
+      this.setState({[type]: e.target.value});
+    };
   }
 
   handleSubmit(e){
@@ -29,10 +27,11 @@ export default class LoginForm extends React.Component {
         <Modal.Header closeButton>
           <h4>Log In</h4>
         </Modal.Header>
-        <form
+        <form id="session-form"
           onSubmit= {this.handleSubmit.bind(this)}
           className ="session-form" >
           <Modal.Body>
+            <Errors errors={this.props.errors}/>
             <div className="form-group">
               <label htmlFor="username-input">Username</label>
               <input

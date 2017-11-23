@@ -1,15 +1,11 @@
 import React from 'react';
 import {Modal} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-
+import Errors from '../errors';
 export default class SignupForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      username: '',
-      password: '',
-      email: props.email
-    };
+    this.state = props.user;
   }
 
   handleInput(type){
@@ -30,10 +26,11 @@ export default class SignupForm extends React.Component {
         <Modal.Header closeButton>
           <h4>Sign Up</h4>
         </Modal.Header>
-        <form
+        <form id="session-form"
           onSubmit= {this.handleSubmit.bind(this)}
           className ="session-form" >
           <Modal.Body>
+            <Errors errors={this.props.errors}/>
             <div className="form-group">
               <label htmlFor="username-input">Username</label>
               <input
@@ -73,7 +70,7 @@ export default class SignupForm extends React.Component {
             <input
               type="submit"
               className="submit-button"
-              value="Log In"/>
+              value="Sign Up"/>
           </Modal.Footer>
         </form>
       </div>

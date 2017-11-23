@@ -8,7 +8,7 @@ export default class Navbar extends React.Component{
     this.logout = this.props.logout;
     this.state= {
       navDropdownOpen: false,
-      userDropdownOpen: true
+      userDropdownOpen: false
     };
   }
 
@@ -24,7 +24,7 @@ export default class Navbar extends React.Component{
 
    render(){
     return(
-    
+
       <header className="navbar-fixed-top navbar row">
         <div className="col-sm-6">
           <ul className="navbar-items navbar-left">
@@ -65,7 +65,7 @@ export default class Navbar extends React.Component{
           <li className="navbar-item">
             <div className= "user-score-container">
               <Glyphicon glyph="bitcoin" className= "coin" bsSize="lg" />
-                <span class="user-score">
+                <span className="user-score">
                   {this.props.currentUser.score}
                 </span>
             </div>
@@ -74,7 +74,7 @@ export default class Navbar extends React.Component{
             <Glyphicon glyph="bell" bsSize="lg" />
           </li>
           <li className= "navbar-item">
-            <Dropdown open={this.state.userDropdownOpen} onToggle={this.toggleUserDropdown.bind(this)}>
+            <Dropdown id="navbar" open={this.state.userDropdownOpen} onToggle={this.toggleUserDropdown.bind(this)}>
               <Glyphicon bsRole= "toggle" glyph =""/>
               <div className="user-dropdown-toggle" onClick={()=>(this.toggleUserDropdown())}>
                 <div className="profile-thumb-round">

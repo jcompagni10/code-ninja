@@ -10,8 +10,8 @@ export default ()=>(
 
   <ProtectedRoute path = "/" component = {navbarContainer} />
   <Switch>
-    <AuthRoute exact path="/:signup?" component = {landingPage} />
     <ProtectedRoute path = "/dashboard" component = {navContainer} />
+    <AuthRoute exact path="/:signup?" component = {landingPage} />
   </Switch>
 </div>
 );

@@ -6,37 +6,17 @@ import LoginForm from './login_form';
 import SignupForm from './signup_form';
 
 class SessionForm extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      username: '',
-      password: '',
-      email: props.email
-    };
-  }
 
-  componentWillReceiveProps(newprops){
-    this.setState(newprops);
-  }
+  // TODO: remove below if nothing broken
+  // constructor(props){
+  //   super(props);
+  // }
 
-  handleInput(type){
-    return e => (
-      this.setState({[type]: e.target.value})
-    );
-  }
+  // componentWillReceiveProps(newprops){
+  //   this.setState(newprops);
+  // }
 
-  handleSubmit(e){
-    e.preventDefault();
-    this.props.action(this.state);
-  }
 
-  typeText(bool= true){
-    return (this.props.isSignup == bool)?  "Sign Up" : "Log In";
-  }
-
-  otherActionPath(){
-    return (this.props.isSignup)?  "":"signup";
-  }
 
 
   render(){
@@ -46,13 +26,18 @@ class SessionForm extends React.Component{
           <Route
             path="/signup"
             render={()=><SignupForm
+              errors = {this.props.errors}
               action = {this.props.signup}
-              email = {this.state.email}
-              /> }
+              user = {this.props.user}
+            /> }
           />
           <Route
             path="/"
-            render={()=><LoginForm action ={this.props.login} />}
+            render={()=><LoginForm
+              errors = {this.props.errors}
+              action ={this.props.login}
+              user = {this.props.user}
+            />}
           />
         </Switch>
       </Modal>

@@ -2,13 +2,18 @@ import React from 'react';
 import SessionFormContainer from '../session/session_form_container';
 import {Link} from 'react-router-dom';
 import {Modal} from 'react-bootstrap';
+import merge from 'lodash/merge';
 
 class LandingPage extends React.Component{
   constructor(props){
     super(props);
     this.state = {
       modalOpen: false,
-      email: '',
+      user : {
+        username: "",
+        password: "",
+        email: ""
+      }
     };
 
     this.openModal = this.openModal.bind(this);
@@ -16,7 +21,9 @@ class LandingPage extends React.Component{
 
 
   handleEmail(e){
-    this.setState({email: e.target.value});
+    let email = e.target.value;
+    let newState = merge(this.state.user, {email});
+    this.setState(newState);
   }
   openModal(path="/"){
     this.props.history.push(path);
@@ -25,6 +32,15 @@ class LandingPage extends React.Component{
 
   closeModal(){
     this.setState({modalOpen: false});
+  }
+
+  loginDemoUser(){
+    const user = {username: "demo_user", password: "pass123"};
+    this.setState({user: user});
+    this.setState({modalOpen: true});
+    setTimeout(function () {
+      $("input[type='submit']").click();
+    }, 500);
   }
 
   render(){
@@ -59,7 +75,8 @@ class LandingPage extends React.Component{
             </div>
             <div className="top-spacer visible-xs"></div>
             <div className="col-sm-5 signup-box">
-              <button className="btn btn-primary fb-signup">
+              <button className="btn btn-primary fb-signup"
+                onClick={this.loginDemoUser.bind(this)}>
                 Sign in with demo account
               </button>
               <div className ="or-line">
@@ -70,7 +87,7 @@ class LandingPage extends React.Component{
                   type="text"
                   className= "form-control"
                   onChange={this.handleEmail.bind(this)}
-                  value={this.state.email}
+                  value={this.state.user.email}
                   placeholder= "Email"
                 />
                 <button
@@ -87,7 +104,7 @@ class LandingPage extends React.Component{
         <SessionFormContainer
           isSignup = {this.state.isSignup}
           modalOpen = {this.state.modalOpen}
-          email = {this.state.email}
+          user = {this.state.user}
           closeModal = {this.closeModal.bind(this)}
         />
       </div>
