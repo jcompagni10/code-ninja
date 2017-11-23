@@ -15,7 +15,7 @@ span, article, footer, time, small {
   background: transparent;
 }
 
-a:hover{
+a:hover, a:active{
   text-decoration: none;
 }
 

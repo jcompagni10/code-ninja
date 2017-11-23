@@ -47,17 +47,17 @@
           completed_by_user: true
         //tasks are stored in array ordered by task.order
           tasks: [
-            1: {
+            {
               id: 1,
               name: "add",
               current_user_completed: true
             },
-            2: {
+            {
               id: 5,
               name: "subtract",
               current_user_completed: true
             },
-            3: {
+            {
               id: 6,
               name: "Year from Century",
               current_user_completed: true

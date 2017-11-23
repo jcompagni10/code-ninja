@@ -1,9 +1,12 @@
 import {connect} from 'react-redux';
 import ArcadeIndex from './arcade_index';
+import {fetchLevelSets} from '../../actions/arcade';
 
 const mapStateToProps = state => (
-  {currentUser: state.session.currentUser}
+  {levelSets: state.entities.levelSets}
 );
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  fetchLevelSets: ()=>dispatch(fetchLevelSets())
+});
 
 export default connect(mapStateToProps,mapDispatchToProps)(ArcadeIndex);

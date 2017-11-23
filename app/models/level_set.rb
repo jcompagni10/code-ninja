@@ -9,8 +9,12 @@ class LevelSet < ApplicationRecord
     self.image_url = "default_level_set.png"
   end
 
-  def ordered_task_ids
+  def ordered_tasks
     tasks.sort_by(&:order)
+  end
+
+  def self.ordered_ids
+    LevelSet.all.sort_by(&:order)
     .map(&:id)
   end
 end

@@ -6,4 +6,8 @@ class Task < ApplicationRecord
     optional: true
 
     has_many :userTaskCompletions
+
+    def completed(mode)
+      userTaskCompletions.where(user: current_user)
+    end
 end

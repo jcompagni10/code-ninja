@@ -11,6 +11,7 @@ class User < ApplicationRecord
   after_initialize :ensure_img_url, :ensure_session_token
   attr_reader :password
 
+  has_many :user_task_completions
 
   def ensure_img_url
     self.img_url = "https://media.istockphoto.com/vectors/hacker-silhouette-with-question-symbol-on-the-blue-background-with-vector-id853879324?k=6&m=853879324&s=612x612&w=0&h=ev12cJNEDCav4012scLImGuteci6a0FPFBSZdDvsgm4="
