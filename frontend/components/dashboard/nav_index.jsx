@@ -7,7 +7,7 @@ export default ({currentUser})=>(
       <NavIndexItem
         type="arcade"
         description="Prepare for technical interviews using real interview questions from top companies"
-        data={[5,10]}
+        data={currentUser.progress.arcade}
       />
       <NavIndexItem
         type="head_to_head"

@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123180259) do
+ActiveRecord::Schema.define(version: 20171124060432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bots", force: :cascade do |t|
+    t.integer "task_id", null: false
+    t.string "name", null: false
+    t.string "description", null: false
+    t.integer "order", null: false
+    t.integer "time", null: false
+    t.integer "wins", default: 0, null: false
+    t.integer "losses", default: 0, null: false
+    t.integer "ties", default: 0, null: false
+    t.string "image_url", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "level_sets", force: :cascade do |t|
     t.string "name", null: false

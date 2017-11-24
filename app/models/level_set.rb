@@ -18,6 +18,16 @@ class LevelSet < ApplicationRecord
     .map(&:id)
   end
 
+
+  def self.total_tasks
+    Task.where.not(level_set_id: nil).count
+  end
+
+  def self.user_completed_tasks(user)
+    # TODO: update to support multiple langauges
+    UserTaskCompletion.where(user: user).count
+  end
+
   def completed(user)
     tasks.all?{|task| task.completed(user, :arcade)}
   end

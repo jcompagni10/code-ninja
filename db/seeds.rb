@@ -84,3 +84,46 @@ tasks1.each do |task|
   UserTaskCompletion.complete_task(task, :arcade, 180, user1)
 end
 UserTaskCompletion.complete_task(tasks2[0], :arcade, 180, user1)
+
+bots = Bot.create([
+  {
+    task_id: 1,
+    name: "Ada Lovelace",
+    description: "Programmed computers before computers",
+    order: 1,
+    time: 300000,
+    image_url: 'bots.svg'
+  },
+  {
+    task_id: 2,
+    name: "Alan Turing",
+    description: "An Enigma of man.",
+    order: 2,
+    time: 500000,
+    image_url: 'bots.svg'
+  },
+  {
+    task_id: 3,
+    name: "Yukihiro Matsumoto",
+    description: "A Gem of a man.",
+    order: 3,
+    time: 300000,
+    image_url: 'bots.svg'
+  },
+  {
+    task_id: 4,
+    name: "Bill Gates",
+    description: "Wrote his first code at age 13",
+    order: 4,
+    time: 550000,
+    image_url: 'bots.svg'
+  },
+  {
+    task_id: 5,
+    name: "Linus Torvalds",
+    description: "This boss bot will rm -rf your condfidence",
+    order: 5,
+    time: 60000000,
+    image_url: 'bots.svg'
+  },
+  ])
