@@ -17,4 +17,8 @@ class LevelSet < ApplicationRecord
     LevelSet.all.sort_by(&:order)
     .map(&:id)
   end
+
+  def completed(user)
+    tasks.all?{|task| task.completed(user, :arcade)}
+  end
 end

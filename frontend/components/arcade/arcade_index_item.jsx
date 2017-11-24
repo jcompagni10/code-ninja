@@ -8,7 +8,7 @@ export default ({indexItem})=>(
         <img className ="top-nav-item-image" src={`/assets/${indexItem.image_url}`} />
         <div className="sub-nav-item-title-container">
           <span className="sub-nav-item-title">{indexItem.name}</span>
-          <div className="completed-circle">
+          <div className={`completed-circle ${indexItem.completed? 'completed':""}`} >
             <Glyphicon glyph="ok" className= "check-mark" bsSize="lg" />
           </div>
         </div>
@@ -16,7 +16,7 @@ export default ({indexItem})=>(
       <div className="sub-nav-item-bottom">
         {indexItem.tasks.map((task,idx)=>(
           <Link key ={task.id} to ={`/arcade/repl/${task.id}`}>
-            <div className="task-circle">
+            <div className={`task-circle ${task.completed? 'completed':""}`}>
               <span>{idx}</span>
             </div>
           </Link>

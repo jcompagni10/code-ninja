@@ -7,7 +7,7 @@ class Task < ApplicationRecord
 
     has_many :userTaskCompletions
 
-    def completed(mode)
-      userTaskCompletions.where(user: current_user)
+    def completed(user, mode)
+      !userTaskCompletions.where(user: user, mode: mode).empty?
     end
 end

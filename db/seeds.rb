@@ -80,7 +80,7 @@ tasks2 = Task.create([
 ])
 LevelSet.create(name: "Welcome To Codelandia", order: 1)
 LevelSet.create(name: "You think you're smart?", order: 2)
-tasks2.each do |task|
+tasks1.each do |task|
   UserTaskCompletion.complete_task(task, :arcade, 180, user1)
 end
 UserTaskCompletion.complete_task(tasks2[0], :arcade, 180, user1)

@@ -74,7 +74,7 @@ export default class Navbar extends React.Component{
             </div>
           </li>
           <li className="navbar-item">
-            <Glyphicon glyph="bell" bsSize="lg" />
+            <Glyphicon glyph="bell" className="notifications" bsSize="lg" />
           </li>
           <li className= "navbar-item">
             <Dropdown id="navbar" open={this.state.userDropdownOpen} onToggle={this.toggleUserDropdown.bind(this)}>
