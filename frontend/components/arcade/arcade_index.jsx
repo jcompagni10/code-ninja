@@ -16,7 +16,6 @@ export default class ArcadeIndex extends React.Component{
   }
 
   render(){
-    console.log(this.levelSetIds());
     if (this.levelSetIds() === undefined ){
       return "LOADING";
     }

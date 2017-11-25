@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :users, only: [:show, :create]
     resources :level_sets, only: [:index]
+    resources :bots, only: [:index]
   end
 end

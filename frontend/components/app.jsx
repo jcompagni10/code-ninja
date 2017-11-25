@@ -5,6 +5,7 @@ import navContainer from './dashboard/nav_container';
 import landingPage from './landing_page/landing_page';
 import navbarContainer from './navbar/navbar_container';
 import arcadeContainer from './arcade/arcade_container';
+import botContainer from './bots/bot_container';
 
 export default ()=>(
   <div>
@@ -12,6 +13,7 @@ export default ()=>(
   <ProtectedRoute path = "/" component = {navbarContainer} />
   <Switch>
     <ProtectedRoute path = "/arcade" component = {arcadeContainer} />
+    <ProtectedRoute path = "/bots" component = {botContainer} />
     <ProtectedRoute path = "/dashboard" component = {navContainer} />
     <AuthRoute exact path="/:signup?" component = {landingPage} />
   </Switch>

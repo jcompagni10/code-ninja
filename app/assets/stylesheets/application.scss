@@ -13,9 +13,13 @@
 
  *= require_self
  */
+
+ // TODO: import better
  @import "./core/colors.scss";
  @import "./reset.css";
  @import "./core/*";
  @import "./landing_page/*";
  @import "./nav/*";
  @import "./arcade/*";
+ @import "./bots/*";
+ @import "./misc/*";

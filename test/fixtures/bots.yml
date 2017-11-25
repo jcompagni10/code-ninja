@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task_id: 
+  name: MyString
+  descriptscription: MyString
+  order: 1
+  time: 1
+  wins: 1
+  losses: 1
+  ties: 1
+  image_url: MyString
+
+two:
+  task_id: 
+  name: MyString
+  descriptscription: MyString
+  order: 1
+  time: 1
+  wins: 1
+  losses: 1
+  ties: 1
+  image_url: MyString

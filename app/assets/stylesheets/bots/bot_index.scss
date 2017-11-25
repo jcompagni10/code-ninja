@@ -1,0 +1,20 @@
+.bot-content{
+  background-color: $dark-blue;
+  padding-top: 65px;
+  min-height: 100vh;
+}
+
+.bot-container{
+  max-width: 1200px;
+  width: 90%;
+  // TODO: vertical center
+  margin: 10vh auto;
+}
+
+.bot-container h1{
+  text-align: center;
+  color: #fff;
+  font-weight: 300;
+  font-size: 36px;
+  margin-bottom: 50px;
+}

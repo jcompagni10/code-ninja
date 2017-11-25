@@ -8,7 +8,7 @@ export default class Navbar extends React.Component{
     super(props);
     this.logout = this.props.logout;
     this.state= {
-      navDropdownOpen: false,
+      navDropdownOpen: true,
       userDropdownOpen: false
     };
   }
@@ -38,11 +38,11 @@ export default class Navbar extends React.Component{
                   </div>
                 </Link>
                 <Dropdown.Menu className="nav-dropdown" onMouseLeave={()=>(this.toggleNavDropdown(false))}>
-                <MenuItem>
+                <MenuItem href="/#/arcade">
                   <Glyphicon glyph="king" bsSize="lg" />
                   Arcade
                 </MenuItem>
-                <MenuItem>
+                <MenuItem href="/#/bots">
                   <Glyphicon glyph="hourglass" bsSize="lg" />
                   Bots
                 </MenuItem>

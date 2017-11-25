@@ -1,0 +1,69 @@
+
+
+.bot-container .sub-nav-item-top{
+  height: 200px;
+  position: relative;
+  background: #1ECDCE linear-gradient(to top left, #48A7D1 0%, #1ECDCE 100%);
+}
+
+.bot-top-content{
+  padding: 80px 50px 0;
+  display: FLEX;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.bot-description{
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  padding: 0 35px;
+}
+
+.bot-image{
+  height: 150px;
+  width: 150px;
+  top:5px;
+}
+
+.bot-container .sub-nav-item-bottom{
+  height: 100px;
+}
+
+.challenge-button{
+  width: 186px;
+  text-transform: uppercase;
+  color: $sky-blue;
+  background-color: #fff;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  border-radius: 3px;
+}
+
+.challenge-button:hover{
+  background-color: $lightest-grey;
+}
+.challenge-button svg{
+  height: 100%;
+  width: auto;
+  fill: $sky-blue;
+  float:left;
+  margin-right: 10px;
+}
+
+.bot-container {
+  .nav-item-data{
+    margin-left: 0;
+  }
+  .record{
+    font-size: 20px;
+  }
+  .record-title{
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+}

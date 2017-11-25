@@ -123,7 +123,14 @@ bots = Bot.create([
     name: "Linus Torvalds",
     description: "This boss bot will rm -rf your condfidence",
     order: 5,
-    time: 60000000,
+    time: 6000000,
     image_url: 'bots.svg'
   },
   ])
+bots[0..4].each do |bot|
+  bot.match_result(user1, 1000)
+end
+
+bots[0..4].each_with_index do |bot, idx|
+  bot.match_result(user2, idx * 60000 + 300000)
+end
