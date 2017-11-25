@@ -8,6 +8,10 @@
 user1= User.create({username: "user123", password: "pass123", email: "user@gmail.com" })
 user2= User.create({username: "demo_user", password: "pass123", email: "user@gmail.com" })
 
+10000.times do |i|
+  puts i
+  User.create({username: Faker::Internet.user_name + i.to_s, password: Faker::Internet.password, email: i.to_s+Faker::Internet.email })
+end
 tasks1 = Task.create([
   {
     title: "Add",

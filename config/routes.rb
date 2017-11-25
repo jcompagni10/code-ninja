@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :create]
     resources :level_sets, only: [:index]
     resources :bots, only: [:index]
+    resources :tasks, only: [:show]
   end
 end
