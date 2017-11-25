@@ -35,7 +35,7 @@ export default ({currentUser})=>(
         description="Solve exciting Daily and Weekly coding challenges"
         data = {currentUser.progress.arcade}
         dataDisplay={<ProgressBar
-          data={[50, 50]}
+          data={[45, 50]}
           type="challenges"/>}
       />
     </div>

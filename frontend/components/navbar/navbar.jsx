@@ -8,7 +8,7 @@ export default class Navbar extends React.Component{
     super(props);
     this.logout = this.props.logout;
     this.state= {
-      navDropdownOpen: true,
+      navDropdownOpen: false,
       userDropdownOpen: false
     };
   }
