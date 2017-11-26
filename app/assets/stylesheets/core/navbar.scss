@@ -92,6 +92,7 @@
   border-radius: 25px;
   height: 35px;
   background-color: $dark-blue;
+  color: $blue-grey;
   min-width: 120px;
   display: flex;
   line-height: 35px;
@@ -116,13 +117,14 @@
 
 .user-dropdown-chevron{
   transition: transform .5s;
+  color: $blue-grey
 }
 
 .dropdown.open .user-dropdown-chevron{
   transform: rotate(180deg);
 }
 .user-dropdown-toggle .profile-thumb-round{
-  margin-right: 5px;
+  margin-right: 6px;
 }
 .coin{
   top: -1px;

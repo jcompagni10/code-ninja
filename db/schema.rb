@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124184132) do
+ActiveRecord::Schema.define(version: 20171126000633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 20171124184132) do
     t.string "image_url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "inputs", force: :cascade do |t|
+    t.integer "task_id", null: false
+    t.integer "order", null: false
+    t.string "input_name", null: false
+    t.string "input_type", null: false
+    t.string "constraints", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_inputs_on_task_id"
   end
 
   create_table "level_sets", force: :cascade do |t|

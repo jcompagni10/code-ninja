@@ -1,3 +1,81 @@
 .repl_container{
-  margin-top:65px;
+  padding-top: 65px;
+  display: flex;
+  box-sizing: border-box;
+  height: 100vh;
+  color: $almost-black;
+}
+
+.repl_container h4{
+  font-size: 16px;
+  font-weight: 700;
+  margin: 20px 0;
+}
+
+.left-pane{
+  position: relative;
+  display: inline-block;
+  width: 40%;
+}
+
+.task-header{
+  height: 33px;
+  padding: 5px 25px;
+  border-bottom: 1px solid $light-grey;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.task-footer{
+  height: 50px;
+  background-color: #E8EBEE;
+}
+
+.input-constraints-label{
+  font-style: italic;
+}
+
+.header-left{
+  text-transform: uppercase;
+  color: $bright-blue;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.1px;
+  padding: 5px 30px;
+  font-weight: 700;
+}
+
+.header-right{
+  border-color: $cobalt;
+}
+
+.task-description{
+  height: calc(100% - 83px);
+  font-size: 16px;
+  padding: 20px 20px;
+  font-weight: 400;
+  overflow-y: scroll;
+}
+.io-list{
+  list-style: disc;
+  margin-left: 25px;
+}
+
+
+.right-pane{
+  position: relative;
+  display: inline-block;
+  background-color: $blue-steel;
+  border-left: 4px solid #000;
+  width: 60%;
+}
+
+.header-left .file-name{
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.header-left .reset{
+  color: $dark-grey;
+  cursor: pointer;
 }

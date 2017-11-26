@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task_id: 1
+  order: 1
+  input_name: MyString
+  type: 
+  constraints: MyString
+
+two:
+  task_id: 1
+  order: 1
+  input_name: MyString
+  type: 
+  constraints: MyString

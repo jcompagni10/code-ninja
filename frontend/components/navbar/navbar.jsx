@@ -34,7 +34,7 @@ export default class Navbar extends React.Component{
                 <Glyphicon bsRole= "toggle" glyph =""/>
                 <Link to ="/">
                   <div className="logo-wrapper" onMouseEnter={()=>(this.toggleNavDropdown())}>
-                    <Glyphicon bsRole="toggle" className= "nav-logo" glyph="equalizer" bsSize="lg" />
+                    <Glyphicon className= "nav-logo" glyph="equalizer" bsSize="lg" />
                   </div>
                 </Link>
                 <Dropdown.Menu className="nav-dropdown" onMouseLeave={()=>(this.toggleNavDropdown(false))}>
@@ -83,7 +83,7 @@ export default class Navbar extends React.Component{
                 <div className="profile-thumb-round">
                   <img src={this.props.currentUser.img_url} />
                 </div>
-                <Glyphicon glyph="chevron-up" className="user-dropdown-chevron" bsSize="lg" />
+                <Glyphicon glyph="chevron-down" className="user-dropdown-chevron" bsSize="lg" />
               </div>
               <Dropdown.Menu className="user-dropdown" onMouseLeave={()=>(this.toggleNavDropdown(false))}>
                 <div className ="user-info">

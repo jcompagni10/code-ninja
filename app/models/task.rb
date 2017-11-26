@@ -6,6 +6,7 @@ class Task < ApplicationRecord
     optional: true
 
     has_many :userTaskCompletions
+    has_many :inputs
 
     def completed(user, mode)
       !userTaskCompletions.where(user: user, mode: mode).empty?
