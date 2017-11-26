@@ -8,5 +8,7 @@ Rails.application.routes.draw do
     resources :level_sets, only: [:index]
     resources :bots, only: [:index]
     resources :tasks, only: [:show]
+    resources :user_solutions, only: [:show]
+    POST "/submit", to: 'user_solutions#submit'
   end
 end

@@ -5,6 +5,7 @@ class User < ApplicationRecord
             :score,
             :password_digest,
             :session_token, presence: true
+            
   validates :username, :session_token, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
@@ -14,6 +15,8 @@ class User < ApplicationRecord
   has_many :user_task_completions
 
   has_many :user_bot_completions
+
+  has_many :user_solutions
 
   def ensure_img_url
     self.img_url = "https://media.istockphoto.com/vectors/hacker-silhouette-with-question-symbol-on-the-blue-background-with-vector-id853879324?k=6&m=853879324&s=612x612&w=0&h=ev12cJNEDCav4012scLImGuteci6a0FPFBSZdDvsgm4="
