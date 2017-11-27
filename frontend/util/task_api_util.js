@@ -4,3 +4,11 @@ export const getTask = (id)=>(
     url: 'api/tasks/'+id
   })
 );
+
+export const postSolution = (user_solution) =>(
+  $.ajax({
+    method: "POST",
+    url: 'api/submit',
+    data: {user_solution}
+  })
+);

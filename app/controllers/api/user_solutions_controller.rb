@@ -20,20 +20,20 @@ class Api::UserSolutionsController < ApplicationController
       user_id: current_user.id,
       task_id: user_solution_params[:task_id],
       mode: user_solution_params[:mode],
-    ) do |user_solution|
-      user_solution.solution = user_solution_params[:solution]
-    end
-    @solution.user = current_user
+    )
+    @solution.solution =  user_solution_params[:solution]
     if @solution.save
-      render :show
+      @test_results = @solution.run_tests
+      render :test_results
     else
       render json @solution.errors.full_messages, status: 422
     end
   end
 
   private
+
   def user_solution_params
     params.require(:user_solution).permit(:task_id, :mode, :solution)
-
   end
+
 end

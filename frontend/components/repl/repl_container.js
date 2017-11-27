@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {fetchTask} from '../../actions/task';
+import {fetchTask, submitSolution} from '../../actions/task';
 import REPL from './repl';
 
 const mapStateToProps = (state, ownProps) => (
@@ -11,7 +11,8 @@ const mapStateToProps = (state, ownProps) => (
 
 );
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  fetchTask: ()=>dispatch(fetchTask(ownProps.match.params.taskId))
+  fetchTask: ()=>dispatch(fetchTask(ownProps.match.params.taskId)),
+  submitSolution: (solution)=>dispatch(submitSolution(solution))
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(REPL);

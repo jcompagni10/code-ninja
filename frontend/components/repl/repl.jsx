@@ -6,7 +6,10 @@ require('codemirror/mode/ruby/ruby');
 export default class REPL extends React.Component{
   constructor(props){
     super(props);
-    this.state = {userCode: "def fxn"};
+    this.state = {
+      userCode: "def fxn",
+      currentTestWindow: "tests"
+    };
     this.codeMirrorOptions = {
 			lineNumbers: true,
       mode: 'ruby',
@@ -24,6 +27,19 @@ export default class REPL extends React.Component{
     this.props.fetchTask();
   }
 
+  testPaneSelected(pane){
+    if (this.state.currentTestWindow === pane){
+      return "selected";
+    }
+  }
+  handleSubmit(){
+    const solution = {
+      task_id: this.props.task.id,
+      mode: this.props.mode,
+      solution: this.state.userCode
+    };
+    this.props.submitSolution(solution);
+  }
 
   render(){
     let task = this.props.task;
@@ -72,10 +88,10 @@ export default class REPL extends React.Component{
               </li>
             </ul>
           </section>
-          <footer class="task-footer"/ >
+          <footer className="task-footer"/ >
         </section>
         <section className="right-pane">
-          <header className="task-header header-right">
+          <header className="task-header header-right bottom-bar">
             <div className="file-name pull-left">
               code.rb
             </div>
@@ -89,6 +105,25 @@ export default class REPL extends React.Component{
             onChange={this.updateCode.bind(this)}
             options={this.codeMirrorOptions} />
           </section>
+          <section className ="tests">
+            <ul className="tests-nav-bar bottom-bar">
+                <li
+                  className= {`${this.testPaneSelected("tests")}`}>
+                  tests
+                </li>
+                <li>
+                  console
+                </li>
+            </ul>
+            tests go here
+          </section>
+          <footer className="task-footer right-footer">
+            <button
+              onClick={this.handleSubmit.bind(this)}
+              className="code-submit-btn">
+              submit
+            </button>
+          </footer>
         </section>
       </section>
 

@@ -19,7 +19,6 @@ class Bot < ApplicationRecord
       user_id: user.id,
       time: time
     )
-    puts a
     case (time <=> self.time)
     when 1
       loss

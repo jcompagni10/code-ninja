@@ -17,7 +17,7 @@ tasks1 = Task.create!([
     description: "Write a function that returns the sum of two numbers.",
     example: "For param1 = 1 and param2 = 2, the output should be add(param1, param2) = 3.",
     time_limit: 4000,
-    output_type: "integer",
+    output_type: "Integer",
     output_description: "The sum of the two inputs.",
   },
   {
@@ -28,7 +28,7 @@ tasks1 = Task.create!([
     description: "Write a function that returns the difference of two numbers.",
     example: "For param1 = 8 and param2 = 7, the output should be subtract(param1, param2) = 1.",
     time_limit: 4000,
-    output_type: "integer",
+    output_type: "Integer",
     output_description: "The difference of the two inputs.",
   },
   {
@@ -39,7 +39,7 @@ tasks1 = Task.create!([
     description: "Write a function that returns the product of two numbers.",
     example: "For param1 = 8 and param2 = 7, the output should be multiply(param1, param2) = 56.",
     time_limit: 4000,
-    output_type: "integer",
+    output_type: "Integer",
     output_description: "The product of the two inputs."
   }
 ])
@@ -52,7 +52,7 @@ tasks2 = Task.create([
     description: "Write a function that returns the sum of two numbers.",
     example: "For param1 = 1 and param2 = 2, the output should be add(param1, param2) = 3.",
     time_limit: 4000,
-    output_type: "integer",
+    output_type: "Integer",
     output_description: "The sum of the two inputs.",
   },
   {
@@ -63,7 +63,7 @@ tasks2 = Task.create([
     description: "Write a function that returns the difference of two numbers.",
     example: "For param1 = 8 and param2 = 7, the output should be subtract(param1, param2) = 1.",
     time_limit: 4000,
-    output_type: "integer",
+    output_type: "Integer",
     output_description: "The difference of the two inputs.",
   },
   {
@@ -74,7 +74,7 @@ tasks2 = Task.create([
     description: "Write a function that returns the product of two numbers.",
     example: "For param1 = 8 and param2 = 7, the output should be multiply(param1, param2) = 56.",
     time_limit: 4000,
-    output_type: "integer",
+    output_type: "Integer",
     output_description: "The product of the two inputs."
   }
 ])
@@ -133,27 +133,61 @@ t1inputs = tasks1[0].inputs.create!([
     task_id: tasks1[0].id,
     order: 1,
     input_name: "param1",
-    input_type: "integer",
+    input_type: "Integer",
     constraints: "-100 ≤ param1 ≥ 1000"
   },
   {
     task_id: tasks1[0].id,
     order: 2,
     input_name: "param2",
-    input_type: "integer",
+    input_type: "Integer",
     constraints: "-100 ≤ param2 ≥ 1000"
   }
 ])
 
-# t1inputs.each do |i|
-#   i.task = tasks[0]
-#   i.save!
-# end
-
 bots[0..4].each do |bot|
+
   bot.match_result(user1, 1000)
 end
 
 bots[0..4].each_with_index do |bot, idx|
   bot.match_result(user2, idx * 60000 + 300000)
 end
+
+test1 = Test.create!([
+  {
+    task_id: 1,
+    order: 1,
+    output: 2
+  },
+  {
+    task_id: 1,
+    order: 2,
+    output: 7
+  }
+])
+
+task1TestInputs = TestInput.create!([
+  # test1
+  {
+    test_id: test1[0].id,
+    order: 1,
+    value: 1,
+  },
+  {
+    test_id: test1[0].id,
+    order: 2,
+    value: 1,
+  },
+  # test2
+  {
+    test_id: test1[1].id,
+    order: 1,
+    value: 5,
+  },
+  {
+    test_id: test1[1].id,
+    order: 2,
+    value: 2,
+  }
+])

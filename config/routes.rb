@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     resources :bots, only: [:index]
     resources :tasks, only: [:show]
     resources :user_solutions, only: [:show]
-    POST "/submit", to: 'user_solutions#submit'
+    post "/submit", to: 'user_solutions#submit'
   end
 end

@@ -45,9 +45,6 @@
   font-weight: 700;
 }
 
-.header-right{
-  border-color: $cobalt;
-}
 
 .task-description{
   height: calc(100% - 83px);
@@ -79,4 +76,50 @@
 .header-left .reset{
   color: $dark-grey;
   cursor: pointer;
+}
+
+.tests{
+  height: calc(100% - 383px);
+  border-top: 1px solid $cobalt;
+}
+.tests-nav-bar{
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  height: 33px;
+  line-height: 33px;
+  padding: 0 15px;
+  display: flex;
+}
+
+.tests-nav-bar li{
+  margin-right: 20px;
+  height: 33px;
+  padding: 0 5px;
+}
+.tests-nav-bar li.selected{
+  border-bottom: 2px solid $electric-green;
+}
+
+.bottom-bar{
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.right-footer{
+  background-color: rgb(44, 56, 70);
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.code-submit-btn{
+  background-color: $electric-green;
+  padding: 3px 10px;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
 }

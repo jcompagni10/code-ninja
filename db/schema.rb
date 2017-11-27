@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171126212334) do
+ActiveRecord::Schema.define(version: 20171127000422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,25 @@ ActiveRecord::Schema.define(version: 20171126212334) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["level_set_id"], name: "index_tasks_on_level_set_id"
+  end
+
+  create_table "test_inputs", force: :cascade do |t|
+    t.integer "test_id", null: false
+    t.integer "order", null: false
+    t.string "value", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["test_id"], name: "index_test_inputs_on_test_id"
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.integer "task_id", null: false
+    t.integer "order", null: false
+    t.string "output", null: false
+    t.boolean "hidden", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_tests_on_task_id"
   end
 
   create_table "user_bot_completions", force: :cascade do |t|

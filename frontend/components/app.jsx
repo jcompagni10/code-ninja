@@ -13,7 +13,7 @@ export default ()=>(
 
   <ProtectedRoute path = "/" component = {navbarContainer} />
   <Switch>
-    <ProtectedRoute path = "/arcade/repl/:taskId" component = {REPLContainer} />
+    <ProtectedRoute path = "/:mode/repl/:taskId" component = {REPLContainer} />
     <ProtectedRoute exact path = "/arcade" component = {arcadeContainer} />
     <ProtectedRoute exact path = "/bots" component = {botContainer} />
     <ProtectedRoute path = "/dashboard" component = {navContainer} />
