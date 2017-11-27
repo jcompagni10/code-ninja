@@ -1,6 +1,6 @@
 import React from 'react';
 import TestIndexItem from './test_index_item';
-
+import {Glyphicon} from 'react-bootstrap';
 export default class TestIndex extends React.Component {
   constructor(props){
     super(props);
@@ -12,7 +12,19 @@ export default class TestIndex extends React.Component {
   expanded(idx){
     return (this.state.expandedTest === idx) ? "expanded" : '';
   }
-
+  errors(){
+    const errors = this.props.errors;
+    if (errors.error){
+      return (
+        <div className="error-message">
+          <Glyphicon glyph ="alert"/>
+          <span className="bold">
+            Error: </span>
+          {" "+errors.error_message}
+        </div>
+      );
+    }
+  }
   toggleTestExpansion(idx){
     if (this.state.expandedTest === idx){
       this.setState({expandedTest: -1});
@@ -24,6 +36,7 @@ export default class TestIndex extends React.Component {
   render(){
     return (
       <section className= "tests-container">
+        {this.errors()}
         {this.props.tests.map((test, idx)=>(
           <TestIndexItem
             key = {test.id}

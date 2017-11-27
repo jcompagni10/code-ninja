@@ -5,6 +5,7 @@ const mapStateToProps = (state, ownProps) => (
   {
     tests: Object.values(state.entities.currentTests),
     task_inputs: state.entities.currentTask.inputs,
+    errors: state.entities.currentTestErrors,
   }
 
 );

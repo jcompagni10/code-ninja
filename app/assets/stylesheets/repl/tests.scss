@@ -56,3 +56,12 @@
 .expected-output{
   color: $sunset-orange
 }
+
+.error-message{
+  color: $fire-orange;
+  padding: 5px 10px;
+}
+
+.error-message .glyphicon{
+  margin-right: 5px;
+}
