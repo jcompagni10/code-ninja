@@ -31,7 +31,7 @@ export default class TestIndex extends React.Component {
             testNum = {idx}
             taskInputs = {this.props.task_inputs}
             expanded = {this.expanded(idx)}
-            toggle= {()=>(this.toggleTestExpansion(idx)).bind(this)}
+            toggle= {()=>(this.toggleTestExpansion(idx))}
           />
         ))}
       </section>

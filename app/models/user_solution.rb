@@ -21,7 +21,7 @@ class UserSolution < ApplicationRecord
       test_result = {
         passed: passed,
         expected: test.parsed_output,
-        received: result
+        received: result.to_s
       }
       test_results[test.order] = test_result
     end
