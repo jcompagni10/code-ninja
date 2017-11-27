@@ -1,6 +1,6 @@
 import {getTask, postSolution} from '../util/task_api_util';
 export const RECEIVE_TASK = "RECEIVE_TASK";
-export const RECEIEVE_TEST_RESULTS = "RECEIEVE_TEST_RESULTS";
+export const RECEIVE_TEST_RESULTS = "RECEIVE_TEST_RESULTS";
 
 const receiveTask = task => ({
   type: RECEIVE_TASK,
@@ -8,7 +8,7 @@ const receiveTask = task => ({
 });
 
 const receiveTestResults = testResults => ({
-  type: RECEIEVE_TEST_RESULTS,
+  type: RECEIVE_TEST_RESULTS,
   testResults
 });
 

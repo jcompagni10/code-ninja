@@ -13,8 +13,8 @@ class UserSolution < ApplicationRecord
   def run_tests
     test_suite = self.task.tests.order(:order)
     create_function
-    test_results = {};
-    test_suite.each_with_index do |test, idx|
+    test_results = {}
+    test_suite.each_with_index do |test|
       inputs = test.parsed_inputs
       result = send(self.task.fxn_name, *inputs)
       passed = result == test.parsed_output
@@ -23,7 +23,7 @@ class UserSolution < ApplicationRecord
         expected: test.parsed_output,
         received: result
       }
-      test_results[idx] = test_result
+      test_results[test.order] = test_result
     end
     test_results
   end

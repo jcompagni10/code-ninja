@@ -1,6 +1,7 @@
 import React from 'react';
 import {Glyphicon} from 'react-bootstrap';
 import CodeMirror from 'react-codemirror';
+import TestIndexContainer from './tests/test_index_container';
 require('codemirror/mode/ruby/ruby');
 
 export default class REPL extends React.Component{
@@ -115,7 +116,7 @@ export default class REPL extends React.Component{
                   console
                 </li>
             </ul>
-            tests go here
+          <TestIndexContainer />
           </section>
           <footer className="task-footer right-footer">
             <button

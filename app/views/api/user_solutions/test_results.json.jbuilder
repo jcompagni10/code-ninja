@@ -1,5 +1,5 @@
-@test_results.each do |k, v|
-  json.set! k do
-    json.extract! v, :passed, :expected, :received
+@test_results.each do |order, results|
+  json.set! order do
+    json.extract! results, :passed, :expected, :received
   end
 end

@@ -18,7 +18,9 @@ class Task < ApplicationRecord
   has_many :user_solutions
   has_many :tests
 
-    def completed(user, mode)
-      !userTaskCompletions.where(user: user, mode: mode).empty?
-    end
+  def completed(user, mode)
+    !userTaskCompletions.where(user: user, mode: mode).empty?
+  end
+
+
 end
