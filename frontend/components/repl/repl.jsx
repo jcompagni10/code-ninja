@@ -74,10 +74,11 @@ export default class REPL extends React.Component{
   }
 
   handleSubmit(){
-    const solution = {
+      const solution = {
       task_id: this.props.task.id,
       mode: this.props.mode,
-      solution: this.state.userCode
+      // TODO: sketchy? trying to solve error on submit before anything typed
+      solution: this.state.userCode || this.props.task.function_skeleton
     };
     this.props.submitSolution(solution);
   }
@@ -93,14 +94,13 @@ export default class REPL extends React.Component{
           </header>
           <section className="task-description">
             <p className="task-example">
-              {task.description}
+               {task.description}
             </p>
             <h4>
               Example
             </h4>
-            <p className= "exmaple">
-              {task.example}
-            </p>
+            <p className= "example" dangerouslySetInnerHTML=
+              {{__html: task.example}} />
             <h4>Input/Output</h4>
             <ul className="io-list">
               <li>

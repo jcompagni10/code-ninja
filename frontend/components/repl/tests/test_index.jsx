@@ -9,6 +9,10 @@ export default class TestIndex extends React.Component {
     };
   }
 
+  componentWillReceiveProps(){
+    this.setState({expandedTest: -1});
+  }
+
   expandedContainer(idx){
     return (this.state.expandedTest === idx) ? "expanded" : '';
   }
@@ -33,6 +37,8 @@ export default class TestIndex extends React.Component {
         </div>
       );
     }
+
+
     const passingTests = this.passingTests();
     if (passingTests[0] === passingTests[1]){
       return (
@@ -44,7 +50,7 @@ export default class TestIndex extends React.Component {
            All tests passed
         </div>
       );
-    } if (this.props.tests[0].received){
+    } if (this.props.tests[0].passed === false){
       return (
         <div className="failing-message">
           <Glyphicon glyph="alert"/>

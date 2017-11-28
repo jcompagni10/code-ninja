@@ -1,5 +1,7 @@
 class Test < ApplicationRecord
-  validates :order, :output, presence: true
+  validates :order, presence: true
+  # TODO: allow false as output value
+  # validates :output, presence: true
   validates :hidden, inclusion: { in: [true, false] }
   serialize :output
   belongs_to :task
