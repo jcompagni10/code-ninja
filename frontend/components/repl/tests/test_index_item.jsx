@@ -26,7 +26,7 @@ export default ({test, taskInputs, testNum, expanded, toggle}) =>(
               <span className="bold">
                 {taskInputs[0].input_name}:
               </span>
-             {test.inputs[0]}
+             {" "+test.inputs[0]}
             </td>
           </tr>
           {taskInputs.slice(1).map((taskInput, idx)=>(
@@ -36,7 +36,7 @@ export default ({test, taskInputs, testNum, expanded, toggle}) =>(
                 <span className="bold">
                   {taskInput.input_name}:
                 </span>
-                {test.inputs[idx+1]}
+                {" "+test.inputs[idx+1]}
               </td>
             </tr>
           ))}

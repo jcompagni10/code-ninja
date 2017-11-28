@@ -2,6 +2,7 @@ import React from 'react';
 import {Glyphicon} from 'react-bootstrap';
 import CodeMirror from 'react-codemirror';
 import TestIndexContainer from './tests/test_index_container';
+import {Link} from 'react-router-dom';
 require('codemirror/mode/ruby/ruby');
 
 export default class REPL extends React.Component{
@@ -11,6 +12,7 @@ export default class REPL extends React.Component{
       userCode: "",
       currentTestWindow: "tests"
     };
+
     this.codeMirrorOptions = {
 			lineNumbers: true,
       mode: 'ruby',
@@ -18,23 +20,51 @@ export default class REPL extends React.Component{
 		};
   }
 
-  // TODO: this is not right maybe
+  // TODO: this is not right maybe?
   setCodeMirror(ref){
     if (!this.codeMirror) this.codeMirror = ref.getCodeMirror();
   }
 
+  componentWillReceiveProps(newProps){
+    if (newProps.match.params.taskId !== this.props.match.params.taskId){
+      this.props.fetchTask(newProps.match.params.taskId);
+      this.props.fetchLevelSets(newProps.match.params.taskId);
+    }
+    if (this.props.task.id && newProps.task.id !== this.props.task.id){
+      this.reset(newProps.task.function_skeleton);
+    }
+  }
+  nextLevel(){
+    if (this.props.levelSets.by_id){
+      let url = "/arcade";
+      let text ="Arcade";
+      let curTask = this.props.task;
+      let curleveLSet = this.props.levelSets.by_id[curTask.level_set_id];
+      let nextTask = curleveLSet.tasks[curTask.order];
+      if (nextTask){
+        url = "/arcade/repl/" + nextTask.id;
+        text = "Next Level";
+      }
+      return (
+        <Link to={url}>
+          {text}
+        </Link>
+      );
+    }
+  }
   updateCode(newCode) {
     this.setState({
       userCode: newCode,
     });
   }
 
-  reset(){
-    this.codeMirror.setValue(this.props.task.function_skeleton);
+  reset(val = this.props.task.function_skeleton){
+    this.codeMirror.setValue(val);
   }
 
   componentDidMount(){
-    this.props.fetchTask();
+    this.props.fetchTask(this.props.match.params.taskId);
+    this.props.fetchLevelSets();
   }
 
   testPaneSelected(pane){
@@ -85,9 +115,9 @@ export default class REPL extends React.Component{
                   </h4>
                   <span className="input-constraints-label">
                     Guaranteed constraints: <br/>
-                    <span className="code">
-                      {input.constraints}
-                    </span>
+                    <span className="code"
+                      dangerouslySetInnerHTML=
+                      {{__html: input.constraints}} />
                   </span>
               </li>
               ))}
@@ -139,6 +169,7 @@ export default class REPL extends React.Component{
               className="code-submit-btn">
               submit
             </button>
+            {this.nextLevel()}
           </footer>
         </section>
       </section>

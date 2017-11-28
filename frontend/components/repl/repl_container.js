@@ -1,18 +1,22 @@
 import {connect} from 'react-redux';
 import {fetchTask, submitSolution} from '../../actions/task';
+import {fetchLevelSets} from '../../actions/arcade';
 import REPL from './repl';
-
+import {withRouter} from 'react-router';
 const mapStateToProps = (state, ownProps) => (
   {
     currentUser: state.session.currentUser,
     task:state.entities.currentTask,
+    levelSets: state.entities.levelSets,
     mode: ownProps.match.params.mode,
   }
 
 );
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  fetchTask: ()=>dispatch(fetchTask(ownProps.match.params.taskId)),
-  submitSolution: (solution)=>dispatch(submitSolution(solution))
+  fetchTask: (id)=>dispatch(fetchTask(id)),
+  submitSolution: (solution)=>dispatch(submitSolution(solution)),
+  fetchLevelSets: ()=>dispatch(fetchLevelSets())
+
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(REPL);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(REPL));

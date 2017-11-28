@@ -1,7 +1,7 @@
 class Test < ApplicationRecord
   validates :order, :output, presence: true
   validates :hidden, inclusion: { in: [true, false] }
-
+  serialize :output
   belongs_to :task
 
   has_many :task_inputs,
@@ -16,11 +16,11 @@ class Test < ApplicationRecord
     inputs = self.inputs.order(:order).pluck(:value)
     task_input_types = self.task_inputs.order(:order).pluck(:input_type)
     inputs.map.with_index do |input, idx|
-      send(task_input_types[idx], input)
+      parse_by_type(input, task_input_types[idx])
     end
   end
 
   def parsed_output
-    send(self.task.output_type, self.output)
+    parse_by_type(self.output, self.task.output_type)
   end
 end
