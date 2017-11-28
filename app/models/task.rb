@@ -22,5 +22,9 @@ class Task < ApplicationRecord
     !userTaskCompletions.where(user: user, mode: mode).empty?
   end
 
+  def function_skeleton
+    inputs = self.inputs.pluck(:input_name).join(", ")
+    "def #{fxn_name}(#{inputs})\n\nend"
+  end
 
 end

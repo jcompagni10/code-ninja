@@ -57,11 +57,46 @@
   color: $sunset-orange
 }
 
-.error-message{
-  color: $fire-orange;
-  padding: 5px 10px;
+.test-message{
+  padding: 10px 10px;
 }
 
-.error-message .glyphicon{
-  margin-right: 5px;
+.error-message{
+  color: $fire-orange;
+}
+
+.passing-message{
+  color: $electric-green;
+}
+
+.passing-message .test-passed{
+  margin-right: 10px;
+  top: -2px;
+}
+
+.failing-message{
+  color: $fire-orange;
+}
+
+.test-message .glyphicon-alert{
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.test-passed{
+  color: rgb(46, 45,64);
+  background-color: $electric-green;
+  margin-top: 4px;
+  height: 25px;
+  width: 25px;
+  border-radius: 100%;
+  padding: 5px;
+}
+
+.test-title .test-passed{
+  float: right;
+  display: none;
+}
+.passed .test-passed{
+  display: block;
 }

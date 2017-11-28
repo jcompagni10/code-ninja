@@ -15,8 +15,8 @@ class UserSolution < ApplicationRecord
   # TODO: catch all types of errors
   # TODO: return error type
   def run_tests
-    test_suite = self.task.tests.order(:order)
     begin
+    test_suite = self.task.tests.order(:order)
       errors = create_function
       # if errors
       #   return errors
@@ -41,13 +41,14 @@ class UserSolution < ApplicationRecord
       # TODO: support multiple langues with file name
       message = e.message.sub(/#<UserSolution:[a-z0-9]*>/, "CODE.RB")
       return {error: true, error_message: message}
+    ensure
     end
     test_results
   end
 
 
   def create_function
-    timeout(1) do
+    timeout(2) do
       instance_eval(self.solution)
     end
   end

@@ -9,10 +9,19 @@ export default class TestIndex extends React.Component {
     };
   }
 
-  expanded(idx){
+  expandedContainer(idx){
     return (this.state.expandedTest === idx) ? "expanded" : '';
   }
-  errors(){
+
+  passingTests(){
+    let passing = 0;
+    this.props.tests.forEach(test=>{
+      if (test.passed) passing += 1;
+    });
+    return [passing, this.props.tests.length];
+  }
+
+  topText(){
     const errors = this.props.errors;
     if (errors.error){
       return (
@@ -24,7 +33,30 @@ export default class TestIndex extends React.Component {
         </div>
       );
     }
+    const passingTests = this.passingTests();
+    if (passingTests[0] === passingTests[1]){
+      return (
+        <div className="passing-message">
+          <Glyphicon glyph="ok" className="test-passed"/>
+            <span className="bold">
+              {passingTests[0]+"/"+passingTests[1] + " "}
+            </span>
+           All tests passed
+        </div>
+      );
+    } if (this.props.tests[0].received){
+      return (
+        <div className="failing-message">
+          <Glyphicon glyph="alert"/>
+          <span className="bold">
+            {passingTests[0]+"/" + passingTests[1] + " "}
+          </span>
+             Answer to one or more tests is incorrect
+        </div>
+      );
+    }
   }
+
   toggleTestExpansion(idx){
     if (this.state.expandedTest === idx){
       this.setState({expandedTest: -1});
@@ -33,17 +65,20 @@ export default class TestIndex extends React.Component {
     }
   }
 
+
   render(){
     return (
-      <section className= "tests-container">
-        {this.errors()}
+      <section className= "tests-container ">
+        <div className ="test-message">
+          {this.topText()}
+        </div>
         {this.props.tests.map((test, idx)=>(
           <TestIndexItem
             key = {test.id}
             test= {test}
             testNum = {idx}
             taskInputs = {this.props.task_inputs}
-            expanded = {this.expanded(idx)}
+            expanded = {this.expandedContainer(idx)}
             toggle= {()=>(this.toggleTestExpansion(idx))}
           />
         ))}

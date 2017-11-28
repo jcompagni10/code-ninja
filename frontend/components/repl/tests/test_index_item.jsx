@@ -1,11 +1,19 @@
 import React from 'react';
 import {Glyphicon} from 'react-bootstrap';
 
+function resultClass(test){
+  if (test.received || test.received === ""){
+    return test.passed ? " passed" : " failed";
+  }
+  return "";
+}
 export default ({test, taskInputs, testNum, expanded, toggle}) =>(
-  <div className={"test-container " + expanded} >
+  <div className={"test-container " + expanded + resultClass(test)} >
     <div className ="test-title" onClick={toggle}>
       <Glyphicon glyph="play" className="toggle-test"/>
       Test {testNum + 1}
+      <Glyphicon glyph="ok" className="test-passed"/>
+      <Glyphicon glyph ="alert" className="test-failed"/>
     </div>
     <div className ="test-results">
       <table>

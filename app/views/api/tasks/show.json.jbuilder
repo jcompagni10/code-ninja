@@ -2,9 +2,9 @@ json.task do
   json.extract! @task,
                 :id,
                 :title,
-                :fxn_name,
                 :description,
                 :example,
+                :function_skeleton,
                 :time_limit,
                 :output_type,
                 :output_description

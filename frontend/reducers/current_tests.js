@@ -4,14 +4,19 @@ import merge from 'lodash/merge';
 
 export default (state = {}, action) => {
   Object.freeze(state);
+  let tests;
   switch (action.type) {
     case RECEIVE_TASK:
-      return Object.assign({}, action.task.tests);
-    case RECEIVE_TEST_RESULTS:
-      let tests = Object.keys(action.testResults);
+      tests = Object.keys(action.task.tests);
       return tests.map(key => (
-        merge({}, state[key], action.testResults[key] )
+        merge({}, state[key], action.task.tests[key] )
       ));
+    case RECEIVE_TEST_RESULTS:
+      tests = Object.keys(action.testResults);
+      tests = tests.map(key => (
+        action.testResults[key] )
+      );
+      return merge({}, state, tests);
     default:
       return state;
   }

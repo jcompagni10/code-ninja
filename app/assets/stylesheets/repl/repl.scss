@@ -76,9 +76,12 @@
   color: #fff;
 }
 
-.header-left .reset{
+.header-right .reset{
   color: $dark-grey;
   cursor: pointer;
+}
+.header-right .reset:hover{
+  color: $grey;
 }
 
 .tests{
@@ -125,4 +128,16 @@
   text-transform: uppercase;
   font-weight: 700;
   font-size: 12px;
+}
+
+.test-failed{
+  color: $fire-orange;
+  float: right;
+  font-size: 20px;
+  padding-top: 5px;
+  display:none;
+}
+
+.failed .test-failed{
+  display: block;
 }

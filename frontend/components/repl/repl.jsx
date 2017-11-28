@@ -8,7 +8,7 @@ export default class REPL extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      userCode: "def fxn",
+      userCode: "",
       currentTestWindow: "tests"
     };
     this.codeMirrorOptions = {
@@ -18,10 +18,19 @@ export default class REPL extends React.Component{
 		};
   }
 
+  // TODO: this is not right maybe
+  setCodeMirror(ref){
+    if (!this.codeMirror) this.codeMirror = ref.getCodeMirror();
+  }
+
   updateCode(newCode) {
     this.setState({
       userCode: newCode,
     });
+  }
+
+  reset(){
+    this.codeMirror.setValue(this.props.task.function_skeleton);
   }
 
   componentDidMount(){
@@ -33,6 +42,7 @@ export default class REPL extends React.Component{
       return "selected";
     }
   }
+
   handleSubmit(){
     const solution = {
       task_id: this.props.task.id,
@@ -96,12 +106,17 @@ export default class REPL extends React.Component{
             <div className="file-name pull-left">
               code.rb
             </div>
-            <div className="reset pull-right">
+            <div
+              className="reset pull-right"
+              onClick={()=>this.reset()}
+            >
               <Glyphicon glyph="repeat"/>
             </div>
           </header>
           <section className="repl">
           <CodeMirror
+            ref ={this.setCodeMirror.bind(this)}
+            defaultValue={task.function_skeleton}
             value={this.state.userCode}
             onChange={this.updateCode.bind(this)}
             options={this.codeMirrorOptions} />
