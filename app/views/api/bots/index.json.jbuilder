@@ -1,6 +1,7 @@
 json.by_id do
   @bots.each do |bot|
     json.set! bot.id do
+      json.id bot.id
       json.name bot.name
       json.description bot.description
       json.task_id bot.task_id

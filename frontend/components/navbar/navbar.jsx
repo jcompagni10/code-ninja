@@ -21,7 +21,6 @@ export default class Navbar extends React.Component{
    }
 
    inREPL(){
-     console.log(this.props.location.pathname.includes("repl"));
      return this.props.location.pathname.includes("repl");
    }
 

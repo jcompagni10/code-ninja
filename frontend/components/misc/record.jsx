@@ -6,7 +6,6 @@ const dataTitle={
 };
 
 export default ({data, type})=>{
-  console.log(dataTitle[type]);
   return (
 
     <div className ="nav-item-data nav-item-record">

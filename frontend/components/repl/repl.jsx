@@ -3,6 +3,8 @@ import {Glyphicon} from 'react-bootstrap';
 import CodeMirror from 'react-codemirror';
 import TestIndexContainer from './tests/test_index_container';
 import {Link} from 'react-router-dom';
+import FightModal from './fight_modal';
+import {Route} from 'react-router-dom';
 require('codemirror/mode/ruby/ruby');
 
 export default class REPL extends React.Component{
@@ -19,6 +21,10 @@ export default class REPL extends React.Component{
       mode: 'ruby',
       theme: "monokai"
 		};
+  }
+
+  bot(){
+    this.props.match.params
   }
 
   setTestState(state){
@@ -189,6 +195,12 @@ export default class REPL extends React.Component{
             {this.nextLevel()}
           </footer>
         </section>
+        {(this.props.bot)?
+          (<Route path="/bots/repl/:botId" component = {FightModal}
+            props = {this.props.currentUser}
+            bot = {this.props.bot}/>) :
+          null
+        }
       </section>
 
     );

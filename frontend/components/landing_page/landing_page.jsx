@@ -1,7 +1,6 @@
 import React from 'react';
 import SessionFormContainer from '../session/session_form_container';
 import {Link} from 'react-router-dom';
-import {Modal} from 'react-bootstrap';
 import merge from 'lodash/merge';
 
 class LandingPage extends React.Component{
