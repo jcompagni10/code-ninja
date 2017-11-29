@@ -1,6 +1,6 @@
 class UserBotCompletion < ApplicationRecord
-  validates :time, presence: true
-  
+  validates :status, presence: true
+
   belongs_to :bot
   belongs_to :user
 end

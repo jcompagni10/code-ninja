@@ -36,15 +36,20 @@ export default class REPL extends React.Component{
     if (!this.codeMirror) this.codeMirror = ref.getCodeMirror();
   }
 
+  resetTask(props){
+    this.props.fetchTask(props.match.params.taskId);
+    this.props.fetchLevelSets(props.match.params.taskId);
+    this.reset(props.task.function_skeleton);
+    this.setState({testState: ""});
+  }
 
   // TODO: clean this shit up
   componentWillReceiveProps(newProps){
     if (newProps.match.params.taskId !== this.props.match.params.taskId){
-      this.props.fetchTask(newProps.match.params.taskId);
-      this.props.fetchLevelSets(newProps.match.params.taskId);
+      this.resetTask(newProps);
     }
     if (this.props.task.id && newProps.task.id !== this.props.task.id){
-      this.reset(newProps.task.function_skeleton);
+      this.resetTask(newProps);
     }
     if(newProps.passedTests === true){
       this.setTestState("passed");

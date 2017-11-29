@@ -11,6 +11,6 @@ else
   end
   json.passed (@test_results.all? { |_, test| test[:passed] })
 end
-json.user_score current_user.score
+json.user_score current_user(false).score
 # TODO: use this
 # json.passed_percent [@test_results.count{:passed}, @test_results.count]

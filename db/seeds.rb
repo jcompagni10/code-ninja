@@ -23,7 +23,7 @@ task = Task.create!(
     output_description: "The product of the two inputs.",
 )
 task.bulk_input_builder([["param1",Integer, "-100 ≤ param1 ≥ 1000"],[]]);
-task.bulk_test_builder([[0, 0, 0], [10, 5, 2], [-10, -5, 2], [100, -10, -10]])
+task.bulk_test_builder([[0, 0, 0], [10, 5, 2], [-10, -5, 2], [100, -10, -10], [117504, 256, 459]])
 
 task = Task.create!(
     title: "Palindrome?",

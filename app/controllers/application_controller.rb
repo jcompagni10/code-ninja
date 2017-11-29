@@ -13,8 +13,12 @@ class ApplicationController < ActionController::Base
     true
   end
 
-  def current_user
+  def current_user(lazy_load = false)
+    unless lazy_load
+       return User.find_by(session_token: session[:session_token])
+    end
     @current_user ||= User.find_by(session_token: session[:session_token])
+
   end
 
 

@@ -13,11 +13,12 @@ class Bot < ApplicationRecord
   has_many :user_bot_completions
 
 
-  def match_result(user, time)
-    a = UserBotCompletion.create(
+  def match_result(user, time, status = :win)
+    UserBotCompletion.create(
       bot_id: self.id,
       user_id: user.id,
-      time: time
+      time: time,
+      status: status
     )
     case (time <=> self.time)
     when 1
