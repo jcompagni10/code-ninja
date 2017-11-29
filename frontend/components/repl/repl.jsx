@@ -10,7 +10,8 @@ export default class REPL extends React.Component{
     super(props);
     this.state = {
       userCode: "",
-      currentTestWindow: "tests"
+      currentTestWindow: "tests",
+      testState: "",
     };
 
     this.codeMirrorOptions = {
@@ -20,11 +21,17 @@ export default class REPL extends React.Component{
 		};
   }
 
+  setTestState(state){
+    this.setState({testState: state});
+    setTimeout(()=>this.setState({testState: ""}) ,2000);
+  }
   // TODO: this is not right maybe?
   setCodeMirror(ref){
     if (!this.codeMirror) this.codeMirror = ref.getCodeMirror();
   }
 
+
+  // TODO: clean this shit up
   componentWillReceiveProps(newProps){
     if (newProps.match.params.taskId !== this.props.match.params.taskId){
       this.props.fetchTask(newProps.match.params.taskId);
@@ -32,6 +39,12 @@ export default class REPL extends React.Component{
     }
     if (this.props.task.id && newProps.task.id !== this.props.task.id){
       this.reset(newProps.task.function_skeleton);
+    }
+    if(newProps.passedTests === true){
+      this.setTestState("passed");
+    }
+    if(newProps.passedTests === false){
+      this.setTestState("failed");
     }
   }
   nextLevel(){
@@ -46,12 +59,14 @@ export default class REPL extends React.Component{
         text = "Next Level";
       }
       return (
-        <Link to={url}>
+        <Link to={url} className="next-task-btn">
           {text}
+          <Glyphicon glyph="chevron-right"/>
         </Link>
       );
     }
   }
+
   updateCode(newCode) {
     this.setState({
       userCode: newCode,
@@ -138,12 +153,14 @@ export default class REPL extends React.Component{
             </div>
             <div
               className="reset pull-right"
-              onClick={()=>this.reset()}
-            >
+              onClick={()=>this.reset()} >
               <Glyphicon glyph="repeat"/>
             </div>
           </header>
           <section className="repl">
+          <div className={"code-mirror-cover " + this.state.testState}>
+            {this.state.testState}
+          </div>
           <CodeMirror
             ref ={this.setCodeMirror.bind(this)}
             defaultValue={task.function_skeleton}

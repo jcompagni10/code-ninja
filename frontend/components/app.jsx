@@ -11,7 +11,7 @@ import REPLContainer from './repl/repl_container';
 export default ()=>(
   <div>
 
-  <ProtectedRoute path = "/" component = {navbarContainer} />
+  <ProtectedRoute path = "/:mode?/:repl?/:taskId?" component = {navbarContainer} />
   <Switch>
     <ProtectedRoute path = "/:mode/repl/:taskId" component = {REPLContainer} />
     <ProtectedRoute exact path = "/arcade" component = {arcadeContainer} />

@@ -3,7 +3,7 @@ import TestIndex from './test_index';
 
 const mapStateToProps = (state, ownProps) => (
   {
-    tests: Object.values(state.entities.currentTests),
+    tests: Object.values(state.entities.currentTests.tests),
     task_inputs: state.entities.currentTask.inputs,
     errors: state.entities.currentTestErrors,
   }

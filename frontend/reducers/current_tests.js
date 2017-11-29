@@ -9,16 +9,23 @@ export default (state = {}, action) => {
     case RECEIVE_TASK:
       if (!isEmpty(action.task.tests)){
         // TODO: maybe won't be inorder
-        return Object.values(action.task.tests);
+        return {
+          tests: Object.values(action.task.tests),
+          passed: ""
+        };
+
       } else {
         return {};
       }
     case RECEIVE_TEST_RESULTS:
-      tests = Object.keys(action.testResults);
+      tests = Object.keys(action.testResults.tests);
       tests = tests.map(key => (
-        action.testResults[key] )
+        action.testResults.tests[key] )
       );
-      return merge({}, state, tests);
+      return {
+        tests: merge({}, state.tests, tests),
+        passed: action.testResults.passed
+      };
     default:
       return state;
   }

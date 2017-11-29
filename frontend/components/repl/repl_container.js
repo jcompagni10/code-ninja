@@ -7,6 +7,8 @@ const mapStateToProps = (state, ownProps) => (
   {
     currentUser: state.session.currentUser,
     task:state.entities.currentTask,
+    passedTests: state.entities.currentTests.passed,
+    tests: state.entities.currentTests.tests,
     levelSets: state.entities.levelSets,
     mode: ownProps.match.params.mode,
   }

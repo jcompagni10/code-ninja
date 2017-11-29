@@ -177,3 +177,13 @@
 .user-dropdown li a{
   padding: 15px 25px;
 }
+
+.back-btn a{
+  color: #fff;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
+.back-btn a:hover{
+  color: $light-grey;
+}

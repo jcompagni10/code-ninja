@@ -1,7 +1,6 @@
 import React from 'react';
 import {Dropdown, Glyphicon, MenuItem} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
-
+import {Route, Link} from 'react-router-dom';
 
 export default class Navbar extends React.Component{
   constructor(props){
@@ -21,47 +20,65 @@ export default class Navbar extends React.Component{
      this.setState({userDropdownOpen: state});
    }
 
+   inREPL(){
+     console.log(this.props.location.pathname.includes("repl"));
+     return this.props.location.pathname.includes("repl");
+   }
 
+   backButton(){
+     const mode = this.props.match.params.mode;
+     return (
+     <Link to={"/"+mode}>
+       <Glyphicon glyph="chevron-left"/>
+       {mode.split("_").join(" ")}
+     </Link> );
+   }
 
    render(){
     return(
 
       <header className="navbar-fixed-top navbar row">
         <div className="col-sm-6">
-          <ul className="navbar-items navbar-left">
-            <li className= "navbar-item">
-              <Dropdown id="nav-dropdown" open={this.state.navDropdownOpen} onToggle={this.toggleNavDropdown.bind(this)}>
-                <Glyphicon bsRole= "toggle" glyph =""/>
-                <Link to ="/">
-                  <div className="logo-wrapper" onMouseEnter={()=>(this.toggleNavDropdown())}>
-                    <Glyphicon className= "nav-logo" glyph="equalizer" bsSize="lg" />
-                  </div>
-                </Link>
-                <Dropdown.Menu className="nav-dropdown" onMouseLeave={()=>(this.toggleNavDropdown(false))}>
-                <MenuItem href="/#/arcade">
-                  <Glyphicon glyph="king" bsSize="lg" />
-                  Arcade
-                </MenuItem>
-                <MenuItem href="/#/bots">
-                  <Glyphicon glyph="hourglass" bsSize="lg" />
-                  Bots
-                </MenuItem>
-                <MenuItem>
-                  <Glyphicon glyph="fire" bsSize="lg" />
-                  Challenge
-                </MenuItem>
-                <MenuItem>
-                  <Glyphicon glyph="user" bsSize="lg" />
-                  Head to Head
-                </MenuItem>
-              </Dropdown.Menu>
-            </Dropdown>
-          </li>
-          <li className="navbar-item">
-            <Glyphicon glyph="star" className= "leaders-icon" bsSize="lg" />
-            leaders
-          </li>
-        </ul>
+          {(this.inREPL()) ?
+            (<ul className="navbar-items navbar-left">
+              <li className="nav-bar-item back-btn">{this.backButton()}</li>
+            </ul> ) :
+              (
+              <ul className="navbar-items navbar-left">
+              <li className= "navbar-item">
+                <Dropdown id="nav-dropdown" open={this.state.navDropdownOpen} onToggle={this.toggleNavDropdown.bind(this)}>
+                  <Glyphicon bsRole= "toggle" glyph =""/>
+                  <Link to ="/">
+                    <div className="logo-wrapper" onMouseEnter={()=>(this.toggleNavDropdown())}>
+                      <Glyphicon className= "nav-logo" glyph="equalizer" bsSize="lg" />
+                    </div>
+                  </Link>
+                  <Dropdown.Menu className="nav-dropdown" onMouseLeave={()=>(this.toggleNavDropdown(false))}>
+                  <MenuItem href="/#/arcade">
+                    <Glyphicon glyph="king" bsSize="lg" />
+                    Arcade
+                  </MenuItem>
+                  <MenuItem href="/#/bots">
+                    <Glyphicon glyph="hourglass" bsSize="lg" />
+                    Bots
+                  </MenuItem>
+                  <MenuItem>
+                    <Glyphicon glyph="fire" bsSize="lg" />
+                    Challenge
+                  </MenuItem>
+                  <MenuItem>
+                    <Glyphicon glyph="user" bsSize="lg" />
+                    Head to Head
+                  </MenuItem>
+                </Dropdown.Menu>
+              </Dropdown>
+            </li>
+            <li className="navbar-item">
+              <Glyphicon glyph="star" className= "leaders-icon" bsSize="lg" />
+              leaders
+            </li>
+          </ul>)
+          }
       </div>
       <div className="col-sm-6">
         <ul className="navbar-items navbar-right ">

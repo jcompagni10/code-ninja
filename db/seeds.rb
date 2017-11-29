@@ -41,7 +41,7 @@ task = Task.create!(
     output_description: "true if inputString is a palindrome, false otherwise.",
 )
 task.bulk_input_builder([["inputString", "String", "1 ≤ inputString.length ≤ 105."]])
-task.bulk_test_builder([[true, "racecar"], [false, "tests"], [true, "lionoil"], [true, "a"], [false, "ab"], [false, "abba"], [true, "a"*20+"b"*10 +"a"*20]])
+task.bulk_test_builder([[true, "racecar"], [false, "tests"], [true, "lionoil"], [true, "a"], [false, "ab"], [true, "abba"], [true, "a"*20+"b"*10 +"a"*20]])
 
 task = Task.create!(
   title: "All Longest Strings",
