@@ -3,7 +3,7 @@ import {Glyphicon} from 'react-bootstrap';
 import CodeMirror from 'react-codemirror';
 import TestIndexContainer from './tests/test_index_container';
 import {Link} from 'react-router-dom';
-// import FightModal from './fight_modal';
+import FightModalContainer from './fight_modal_container';
 import {Route} from 'react-router-dom';
 require('codemirror/mode/ruby/ruby');
 
@@ -57,6 +57,14 @@ export default class REPL extends React.Component{
     if(newProps.passedTests === false){
       this.setTestState("failed");
     }
+    if (newProps.fights.timerVisible){
+      this.timer = setTimeout(
+        ()=>{
+          this.handleSubmit.apply(this);
+          clearInterval(this.timer);
+        },
+        newProps.fights.timeLimit);
+    }
   }
   nextLevel(){
     if (this.props.levelSets.by_id){
@@ -91,9 +99,6 @@ export default class REPL extends React.Component{
   componentDidMount(){
     this.props.fetchTask(this.props.match.params.taskId);
     this.props.fetchLevelSets();
-    // if (this.props.match.mode.params == "bots"){
-    //   //fetch bot
-    // }
   }
 
   testPaneSelected(pane){
@@ -106,6 +111,7 @@ export default class REPL extends React.Component{
       const solution = {
       task_id: this.props.task.id,
       mode: this.props.mode,
+      fightId: this.props.fights.fight_id,
       // TODO: sketchy? trying to solve error on submit before anything typed
       solution: this.state.userCode || this.props.task.function_skeleton
     };
@@ -203,7 +209,7 @@ export default class REPL extends React.Component{
             {this.nextLevel()}
           </footer>
         </section>
-
+        <FightModalContainer />
       </section>
 
     );

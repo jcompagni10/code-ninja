@@ -1,6 +1,7 @@
 import React from 'react';
 import {Dropdown, Glyphicon, MenuItem} from 'react-bootstrap';
 import {Route, Link} from 'react-router-dom';
+import TimerContainer from '../misc/timer_container';
 
 export default class Navbar extends React.Component{
   constructor(props){
@@ -137,6 +138,7 @@ export default class Navbar extends React.Component{
         </li>
         </ul>
       </div>
+      <TimerContainer />
     </header>
     );
   }

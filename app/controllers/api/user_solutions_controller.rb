@@ -26,7 +26,6 @@ class Api::UserSolutionsController < ApplicationController
       @test_results = @solution.run_tests
       render :test_results
     else
-      debugger
       render JSON: @solution.errors.full_messages, status: 422
     end
   end
