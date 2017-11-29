@@ -54,7 +54,7 @@ class UserSolution < ApplicationRecord
     ensure
     end
     handle_completion(test_results)
-    test_results[user_score]
+    test_results
   end
 
 
