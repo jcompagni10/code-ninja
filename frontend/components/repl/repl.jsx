@@ -3,7 +3,7 @@ import {Glyphicon} from 'react-bootstrap';
 import CodeMirror from 'react-codemirror';
 import TestIndexContainer from './tests/test_index_container';
 import {Link} from 'react-router-dom';
-import FightModal from './fight_modal';
+// import FightModal from './fight_modal';
 import {Route} from 'react-router-dom';
 require('codemirror/mode/ruby/ruby');
 
@@ -24,7 +24,7 @@ export default class REPL extends React.Component{
   }
 
   bot(){
-    this.props.match.params
+    return this.props.match.params;
   }
 
   setTestState(state){
@@ -86,6 +86,9 @@ export default class REPL extends React.Component{
   componentDidMount(){
     this.props.fetchTask(this.props.match.params.taskId);
     this.props.fetchLevelSets();
+    // if (this.props.match.mode.params == "bots"){
+    //   //fetch bot
+    // }
   }
 
   testPaneSelected(pane){
@@ -195,12 +198,7 @@ export default class REPL extends React.Component{
             {this.nextLevel()}
           </footer>
         </section>
-        {(this.props.bot)?
-          (<Route path="/bots/repl/:botId" component = {FightModal}
-            props = {this.props.currentUser}
-            bot = {this.props.bot}/>) :
-          null
-        }
+
       </section>
 
     );

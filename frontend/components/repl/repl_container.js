@@ -28,7 +28,6 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   submitSolution: (solution)=>dispatch(submitSolution(solution)),
   fetchLevelSets: ()=>dispatch(fetchLevelSets())
 
-
 });
 // TODO: do I need with router?
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(REPL));
