@@ -8,7 +8,7 @@ export default (state = {}, action) => {
       return {
         timerVisible: true,
         timeLimit: action.payload.time_limit,
-        fight_id: action.payload.fight_id,
+        fightId: action.payload.fight_id,
         opponent: action.opponent};
     // case END_FIGHT:
     //   return {};

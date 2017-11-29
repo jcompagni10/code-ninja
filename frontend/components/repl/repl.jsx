@@ -14,6 +14,7 @@ export default class REPL extends React.Component{
       userCode: "",
       currentTestWindow: "tests",
       testState: "",
+      submitDisabled: false
     };
 
     this.codeMirrorOptions = {
@@ -21,10 +22,7 @@ export default class REPL extends React.Component{
       mode: 'ruby',
       theme: "monokai"
 		};
-  }
-
-  bot(){
-    return this.props.match.params;
+    this.timer = null;
   }
 
   setTestState(state){
@@ -57,15 +55,21 @@ export default class REPL extends React.Component{
     if(newProps.passedTests === false){
       this.setTestState("failed");
     }
-    if (newProps.fights.timerVisible){
-      this.timer = setTimeout(
-        ()=>{
-          this.handleSubmit.apply(this);
-          clearInterval(this.timer);
-        },
-        newProps.fights.timeLimit);
+    if (newProps.fights.timerVisible && this.timer === null ){
+      this.setFightTimer(newProps);
     }
   }
+
+  setFightTimer(props){
+    this.timer = setTimeout(
+      ()=>{
+        this.handleSubmit.apply(this);
+        clearInterval(this.timer);
+        this.setState({submitDisabled: true});
+      },
+      props.fights.timeLimit);
+  }
+
   nextLevel(){
     if (this.props.levelSets.by_id){
       let url = "/arcade";
@@ -110,8 +114,8 @@ export default class REPL extends React.Component{
   handleSubmit(){
       const solution = {
       task_id: this.props.task.id,
-      mode: this.props.mode,
-      fightId: this.props.fights.fight_id,
+      mode: this.props.match.params.mode,
+      fight_id: this.props.fights.fightId,
       // TODO: sketchy? trying to solve error on submit before anything typed
       solution: this.state.userCode || this.props.task.function_skeleton
     };
@@ -203,13 +207,15 @@ export default class REPL extends React.Component{
           <footer className="task-footer right-footer">
             <button
               onClick={this.handleSubmit.bind(this)}
-              className="code-submit-btn">
+              className="code-submit-btn"
+              disabled = {this.state.submitDisabled}
+            >
               submit
             </button>
             {this.nextLevel()}
           </footer>
         </section>
-        <FightModalContainer />
+        <FightModalContainer modalVisible = {this.state.modalVisible}/>
       </section>
 
     );

@@ -137,6 +137,10 @@
   font-size: 12px;
 }
 
+.code-submit-btn:disabled{
+  background-color: $grey;
+}
+
 .test-failed{
   color: $fire-orange;
   float: right;
