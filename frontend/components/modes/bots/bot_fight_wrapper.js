@@ -1,20 +1,28 @@
 import React from 'react';
-import REPLContainer from '../repl/repl_container';
+import REPLContainer from '../../repl/repl_container';
 import FightModal from './fight_modal';
+import {updateBotFight} from '../../../util/fight_api_util';
 
 export default class BotFightController extends React.Component{
 
-  componentWillReceiveProps(newProps){
-    if (newProps.fights.status === "timeUp") this.handleTimeUp();
-    if (newProps.tests.passed) this.handleWin();
+  componentWillReceiveProps(nextProps){
+    if (nextProps.fights.status === "timeUp") this.handleTimeUp();
+    if (nextProps.tests.passed && nextProps.fights.status === "inProgress"){
+      this.handleWin();
+    }
   }
 
   handleTimeUp(){
     this.props.setFightStatus("loss");
+    this.handleLoss();
   }
 
   handleWin(){
     this.props.setFightStatus("win");
+  }
+
+  handleLoss(){
+    updateBotFight(this.props.fights.fightId, "loss");
   }
 
   componentDidMount(){
@@ -23,6 +31,13 @@ export default class BotFightController extends React.Component{
     if (!this.ready()){
       this.props.fetchBot(botId);
     }
+  }
+
+  componentWillUnmount(){
+    if (this.props.fights.status === "inProgress"){
+      this.handleLoss();
+    }
+    this.props.setFightStatus("over");
   }
 
   bot(){
@@ -49,7 +64,6 @@ export default class BotFightController extends React.Component{
     const solution = {
       task_id: this.props.match.params.taskId,
       mode: "bots",
-      fight_id: this.props.fights.fightId,
       solution: code
     };
     this.props.submitSolution(solution);

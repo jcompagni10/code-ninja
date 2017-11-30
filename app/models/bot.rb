@@ -13,22 +13,22 @@ class Bot < ApplicationRecord
   has_many :user_bot_completions
 
 
-  def match_result(user, time, status = :win)
-    UserBotCompletion.create(
-      bot_id: self.id,
-      user_id: user.id,
-      time: time,
-      status: status
-    )
-    case (time <=> self.time)
-    when 1
-      loss
-    when 0
-      tie
-    when -1
-      win
-    end
-  end
+  # def match_result(user, time, status = :win)
+  #   UserBotCompletion.create(
+  #     bot_id: self.id,
+  #     user_id: user.id,
+  #     time: time,
+  #     status: status
+  #   )
+  #   case (time <=> self.time)
+  #   when 1
+  #     loss
+  #   when 0
+  #     tie
+  #   when -1
+  #     win
+  #   end
+  # end
 
   def user_beaten(user)
     !user_bot_completions.where(user_id: user.id)
@@ -44,7 +44,6 @@ class Bot < ApplicationRecord
     Bot.all.sort_by(&:order)
     .map(&:id)
   end
-  private
 
   def win
     self.wins += 1
@@ -60,6 +59,5 @@ class Bot < ApplicationRecord
     self.ties += 1
     save
   end
-
 
 end

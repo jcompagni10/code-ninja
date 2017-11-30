@@ -15,9 +15,9 @@ class UserSolution < ApplicationRecord
     if test_results.values.all? { |t| t[:passed] } && self.score == 0
       case mode
       when "bots"
-        UserBotCompletion.handle_completion(self)
+        UserBotCompletion.handle_completion(self, nil, "win")
       when "arcade"
-        UserTaskCompletion(self, "arcade")
+        UserTaskCompletion.handle_completion(self, "arcade")
       end
     end
   end

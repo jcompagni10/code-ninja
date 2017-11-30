@@ -6,7 +6,7 @@ export const postBotFight = (botId)=>(
   })
 );
 
-export const updateBotFight = (fightId, status="loss")=>(
+export const updateBotFight = (fightId, status)=>(
   $.ajax({
     method: "PATCH",
     url: "api/user_bot_completions/"+fightId,

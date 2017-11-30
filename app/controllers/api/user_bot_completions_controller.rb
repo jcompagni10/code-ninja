@@ -15,15 +15,17 @@ class Api::UserBotCompletionsController < ApplicationController
   end
 
   def update
-    @match = UserBotCompletion.find_by(id: params[:id])
-    if @match
-      if @match.status = "pending"
-        @match.update(status: params[:status])
-        # TODO: allow tie
-        botResult = params[:status] == "win" ? "loss": "win"
-        @match.bot.send(botResult)
-      end
-    end
+    # @match = UserBotCompletion.find_by(id: params[:id])
+    # if @match
+    #   if @match.status = "pending"
+    #     @match.update(status: params[:status])
+    #     # TODO: allow tie
+    #     botResult = params[:status] == "win" ? "loss": "win"
+    #     @match.bot.send(botResult)
+    #   end
+    # end
+    UserBotCompletion.handle_completion(nil, params[:id], params[:status])
+    render json: {}, status: 200
   end
 
 end

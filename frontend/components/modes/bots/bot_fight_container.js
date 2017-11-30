@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
-import {setFightStatus, loadBotFight} from '../../actions/fights';
-import {submitSolution} from '../../actions/task';
+import {setFightStatus, loadBotFight} from '../../../actions/fights';
+import {submitSolution} from '../../../actions/task';
 import BotFightWrapper from './bot_fight_wrapper';
-import {fetchBot} from '../../actions/bots';
+import {fetchBot} from '../../../actions/bots';
 const mapStateToProps = (state, ownProps) => (
   {
     fights: state.fights,

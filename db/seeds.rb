@@ -160,23 +160,23 @@ LevelSet.create(name: "You think you're smart?", order: 2)
 
 bots = Bot.create([
   {
-    task_id: 1,
+    task_id: 2,
     name: "Ada Lovelace",
     description: "Programmed computers before computers",
     order: 1,
-    time: 300000,
+    time: 240000,
     image_url: 'bots.svg'
   },
   {
-    task_id: 2,
+    task_id: 4,
     name: "Alan Turing",
-    description: "An Enigma of man.",
+    description: "A True enigma...",
     order: 2,
     time: 500000,
     image_url: 'bots.svg'
   },
   {
-    task_id: 3,
+    task_id: 5,
     name: "Yukihiro Matsumoto",
     description: "A Gem of a man.",
     order: 3,
@@ -184,7 +184,7 @@ bots = Bot.create([
     image_url: 'bots.svg'
   },
   {
-    task_id: 4,
+    task_id: 6,
     name: "Bill Gates",
     description: "Wrote his first code at age 13",
     order: 4,
@@ -192,9 +192,9 @@ bots = Bot.create([
     image_url: 'bots.svg'
   },
   {
-    task_id: 5,
+    task_id: 8,
     name: "Linus Torvalds",
-    description: "This boss bot will rm -rf your condfidence",
+    description: "This boss bot will rm -rf your confidence",
     order: 5,
     time: 6000000,
     image_url: 'bots.svg'

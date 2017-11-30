@@ -32,10 +32,16 @@ export default class Timer extends React.Component{
     return ["ready", "inProgress", "win", "loss"]
       .includes(this.props.status);
   }
+
+  stopTimer(){
+    clearInterval(this.timer);
+    this.timer = null;
+  }
+
   _tick(){
     let timeLeft = this.state.timeLeft - 1;
     if (timeLeft <= 0){
-      clearInterval(this.timer);
+      this.stopTimer();
       this.props.setFightStatus("timeUp");
     }
 
@@ -43,9 +49,14 @@ export default class Timer extends React.Component{
   }
 
   componentWillReceiveProps(nextProps){
-    if (nextProps.status === "inProgress") this.startTimer(nextProps.timeLimit);
-    // TODO: should I be preventing this from being called multiple times
+    if (nextProps.status === "inProgress" && !this.timer){
+      this.startTimer(nextProps.timeLimit);
+    }
     if (nextProps.status === "ready") this.setTimer(nextProps.timeLimit);
+    if (["win", "loss"].includes(nextProps.status)){
+      this.stopTimer();
+    }
+    if(nextProps.status === "done") this.stopTimer();
   }
 
   render(){

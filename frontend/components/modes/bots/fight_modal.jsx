@@ -6,32 +6,6 @@ export default class FightModal extends React.Component{
     super(props);
   }
 
-
-
-
-  //
-  // bot(){
-  //   const botId = this.props.match.params.botId;
-  //   return this.props.bots.by_id[botId];
-  // }
-
-  // componentDidMount(){
-  //   if (!this.botLoaded())
-  //     // TODO: update to fetch single bot
-  //     this.props.fetchBots();
-  // }
-
-
-
-  // componentWillUnmount(){
-  //   this.props.setFightStatus("Over");
-  // }
-
-
-  // fightStatus(){
-  //   return this.props.fights.status;
-  // }
-
   dynamicContent(){
     let content;
     if (this.props.status === "ready") {
@@ -44,7 +18,7 @@ export default class FightModal extends React.Component{
         </div>
      );
    } else if (["win", "loss"].includes(this.props.status)) {
-     const result = (this.props.fightStatus === "win") ? "win" : "lose";
+     const result = (this.props.status === "win") ? "win" : "lose";
      return (
         <div className="end-content">
           <div className="fight-result">
