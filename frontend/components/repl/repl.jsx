@@ -14,7 +14,10 @@ export default class REPL extends React.Component{
       userCode: "",
       currentTestWindow: "tests",
       testState: "",
-      submitDisabled: false
+      submitDisabled: false,
+      //ONLY FOR FIGHT MODE
+      modalVisible: false,
+      modalType: "start"
     };
 
     this.codeMirrorOptions = {
@@ -27,7 +30,7 @@ export default class REPL extends React.Component{
 
   setTestState(state){
     this.setState({testState: state});
-    setTimeout(()=>this.setState({testState: ""}) ,2000);
+    setTimeout(()=>this.setState({testState: ""}), 2000);
   }
   // TODO: this is not right maybe?
   setCodeMirror(ref){
@@ -51,6 +54,9 @@ export default class REPL extends React.Component{
     }
     if(newProps.passedTests === true){
       this.setTestState("passed");
+      if (this.props.match.params.mode === "bots"){
+        this.fightOver(true);
+      }
     }
     if(newProps.passedTests === false){
       this.setTestState("failed");
@@ -58,18 +64,30 @@ export default class REPL extends React.Component{
     if (newProps.fights.timerVisible && this.timer === null ){
       this.setFightTimer(newProps);
     }
+    if(newProps.match.params.mode === "bots" && !newProps.fightInProgresss){
+      this.setState({modalVisible: true});
+    }
   }
+
 
   setFightTimer(props){
     this.timer = setTimeout(
       ()=>{
         this.handleSubmit.apply(this);
-        clearInterval(this.timer);
         this.setState({submitDisabled: true});
+        this.setState({modalVisible: true});
+        this.fightOver(false);
       },
       props.fights.timeLimit);
   }
 
+  fightOver(win){
+    clearInterval(this.timer);
+    this.setState({
+      modalType: win ? "win" :"lose",
+      modalVisible: true
+    });
+  }
   nextLevel(){
     if (this.props.levelSets.by_id){
       let url = "/arcade";
@@ -88,6 +106,10 @@ export default class REPL extends React.Component{
         </Link>
       );
     }
+  }
+
+  closeModal(){
+    this.setState({modalVisible: false});
   }
 
   updateCode(newCode) {
@@ -208,14 +230,16 @@ export default class REPL extends React.Component{
             <button
               onClick={this.handleSubmit.bind(this)}
               className="code-submit-btn"
-              disabled = {this.state.submitDisabled}
-            >
+              disabled = {this.state.submitDisabled} >
               submit
             </button>
             {this.nextLevel()}
           </footer>
         </section>
-        <FightModalContainer modalVisible = {this.state.modalVisible}/>
+        <FightModalContainer
+          modalVisible = {this.state.modalVisible}
+          type={this.state.modalType}
+          closeModal ={this.closeModal.bind(this)}/>
       </section>
 
     );

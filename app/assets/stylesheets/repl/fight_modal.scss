@@ -77,13 +77,11 @@
 }
 
 .fight-modal .challenge-button{
-  position: absolute;
   margin-left: -93px;
-  left: 50%;
-  margin-top: -80px;
   background-color: $sky-blue;
   color: #fff;
   text-align: center;
+  bottom: 20px;
 }
 
 .fight-modal  .challenge-button:hover{
@@ -94,4 +92,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.end-content{
+  left: 50%;
+  position: absolute;
+  bottom: 20px;
+}
+
+.fight-result{
+  font-size: 47px;
+  color: #cc0000;
+  width: 200px;
+  margin-left: -100px;
+  text-align: center;
+  text-transform: capitalize;
+  font-weight: bold;
+  margin-bottom: 234px;
+}
+
+.fight-result .win{
+  color: $electric-green;
 }

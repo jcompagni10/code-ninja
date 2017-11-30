@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import FightModal from './fight_modal';
 import {fetchBots} from '../../actions/bots';
 import {withRouter} from 'react-router';
-import {startBotFight} from '../../actions/fights';
+import {startBotFight, endFight} from '../../actions/fights';
 const mapStateToProps = (state, ownProps) => (
   {
     bots: state.entities.bots,
@@ -11,7 +11,8 @@ const mapStateToProps = (state, ownProps) => (
 );
 const mapDispatchToProps = dispatch => ({
   fetchBots: ()=>dispatch(fetchBots()),
-  startBotFight: (botId)=>dispatch(startBotFight(botId))
+  startBotFight: (botId)=>dispatch(startBotFight(botId)),
+  endFight: ()=>dispatch(endFight())
 });
 
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(FightModal));

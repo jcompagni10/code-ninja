@@ -1,6 +1,7 @@
 .timer_container{
   position: absolute;
   width: 100%;
+  pointer-events: none;
 }
 .timer{
   margin: 0 auto;
