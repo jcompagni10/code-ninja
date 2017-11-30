@@ -4,7 +4,7 @@ class Api::UserSolutionsController < ApplicationController
     if @solution
       render :show
     else
-      render JSON: {}, status: 404
+      render json: {}, status: 404
     end
   end
 
@@ -26,7 +26,7 @@ class Api::UserSolutionsController < ApplicationController
       @test_results = @solution.run_tests
       render :test_results
     else
-      render JSON: @solution.errors.full_messages, status: 422
+      render json: @solution.errors.full_messages, status: 422
     end
   end
 

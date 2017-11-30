@@ -5,3 +5,11 @@ export const postBotFight = (botId)=>(
     data: {botId}
   })
 );
+
+export const updateBotFight = (fightId, status="loss")=>(
+  $.ajax({
+    method: "PATCH",
+    url: "api/user_bot_completions/"+fightId,
+    data: {status}
+  })
+);

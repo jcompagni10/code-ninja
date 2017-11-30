@@ -4,3 +4,10 @@ export const getBots = ()=>(
     url: 'api/bots'
   })
 );
+
+export const getBot = (id)=>(
+  $.ajax({
+    method: "GET",
+    url: 'api/bots/' +id
+  })
+);

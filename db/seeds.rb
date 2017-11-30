@@ -30,7 +30,7 @@ task = Task.create!(
     level_set_id: 1,
     order: 2,
     fxn_name: "isPalindrome",
-    description: "Write a function that returns the product of two numbers.",
+    description: "Check if a given stirng is a palindrome.",
     example: "<ul><li>For inputString = 'aabaa', the output should be checkPalindrome(inputString) = true;</li>
               <li>For inputString = 'abac', the output should be</li>
               <li>checkPalindrome(inputString) = false;</li>
@@ -47,7 +47,7 @@ task = Task.create!(
   title: "All Longest Strings",
   level_set_id: 1,
   order: 3,
-  fxn_name: "LongestStrings",
+  fxn_name: "longestStrings",
   description: "Given an array of strings, return another array containing all of its longest strings.",
   example: "For inputArray = ['aba', 'aa', 'ad', 'vcd', 'aba'], the output should be longestStrings(inputArray) = ['aba', 'vcd', 'aba'].",
   time_limit: 4000,
@@ -157,10 +157,6 @@ task.bulk_test_builder([[false, ["aba", "bbb", "bab"]], [true, ["aaa", "aac", "b
 
 LevelSet.create(name: "Welcome To Codelandia", order: 1)
 LevelSet.create(name: "You think you're smart?", order: 2)
-# tasks1.each do |task|
-#   UserTaskCompletion.complete_task(task, :arcade, 180, user1)
-# end
-# UserTaskCompletion.complete_task(tasks2[0], :arcade, 180, user1)
 
 bots = Bot.create([
   {
@@ -206,12 +202,12 @@ bots = Bot.create([
   ])
 
 
-
-bots[0..4].each do |bot|
-
-  bot.match_result(user1, 1000)
-end
-
-bots[0..4].each_with_index do |bot, idx|
-  bot.match_result(user2, idx * 60000 + 300000)
-end
+#
+# bots[0..4].each do |bot|
+#
+#   bot.match_result(user1, 1000)
+# end
+#
+# bots[0..4].each_with_index do |bot, idx|
+#   bot.match_result(user2, idx * 60000 + 300000)
+# end

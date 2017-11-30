@@ -8,8 +8,11 @@ export default class Timer extends React.Component{
     this.timer = null;
   }
 
+  setTimer(timeLimit){
+    this.setState({timeLeft: timeLimit/1000});
+  }
+
   startTimer(time){
-    this.setState({timeLeft: time/1000});
     this.timer = setInterval(this._tick.bind(this), 1000);
   }
 
@@ -25,18 +28,28 @@ export default class Timer extends React.Component{
     return minutes+":"+seconds;
   }
 
+  timerVisible(){
+    return ["ready", "inProgress", "win", "loss"]
+      .includes(this.props.status);
+  }
   _tick(){
     let timeLeft = this.state.timeLeft - 1;
-    if (timeLeft <= 0) clearInterval(this.timer);
+    if (timeLeft <= 0){
+      clearInterval(this.timer);
+      this.props.setFightStatus("timeUp");
+    }
+
     this.setState({timeLeft: timeLeft});
   }
 
-  componentWillReceiveProps(newProps){
-    if (newProps.timerVisible) this.startTimer(newProps.timeLimit);
+  componentWillReceiveProps(nextProps){
+    if (nextProps.status === "inProgress") this.startTimer(nextProps.timeLimit);
+    // TODO: should I be preventing this from being called multiple times
+    if (nextProps.status === "ready") this.setTimer(nextProps.timeLimit);
   }
 
   render(){
-    if (this.props.timerVisible){
+    if (this.timerVisible()){
       return (
         <div className="timer_container">
           <div className="timer">
@@ -44,8 +57,7 @@ export default class Timer extends React.Component{
           </div>
         </div>
       );
-    } else{
-      return null;
     }
+    return null;
   }
 }

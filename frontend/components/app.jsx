@@ -7,13 +7,14 @@ import navbarContainer from './navbar/navbar_container';
 import arcadeContainer from './arcade/arcade_container';
 import botContainer from './bots/bot_container';
 import REPLContainer from './repl/repl_container';
-
+import BotFightContainer from './modes/bot_fight_container';
 export default ()=>(
   <div>
 
   <ProtectedRoute path = "/:mode?/:repl?/:taskId?" component = {navbarContainer} />
   <Switch>
-    <ProtectedRoute path = "/:mode/repl/:taskId/:botId?" component = {REPLContainer} />
+    <ProtectedRoute path = "/bots/repl/:taskId/:botId" component = {BotFightContainer} />
+    <ProtectedRoute path = "/:mode/repl/:taskId" component = {REPLContainer} />
     <ProtectedRoute exact path = "/arcade" component = {arcadeContainer} />
     <ProtectedRoute exact path = "/bots" component = {botContainer} />
     <ProtectedRoute path = "/dashboard" component = {navContainer} />

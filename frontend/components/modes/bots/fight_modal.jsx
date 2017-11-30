@@ -4,48 +4,47 @@ import {Link} from 'react-router-dom';
 export default class FightModal extends React.Component{
   constructor(props){
     super(props);
-    // this.state ={
-    //   modalOpen: this.props.modalVisible
-    // };
   }
 
-  botLoaded(){
-    const botId = this.props.match.params.botId;
-    return this.props.bots.by_id && this.props.bots.by_id[botId];
-  }
 
-  handleStart(){
-    this.props.startBotFight(this.props.match.params.botId);
-    this.props.closeModal();
-  }
 
-  bot(){
-    const botId = this.props.match.params.botId;
-    return this.props.bots.by_id[botId];
-  }
-  componentDidMount(){
-    if (!this.botLoaded())
-      // TODO: update to fetch single bot
-      this.props.fetchBots();
-  }
 
-  componentWillUnmount(){
-    this.props.endFight();
-  }
+  //
+  // bot(){
+  //   const botId = this.props.match.params.botId;
+  //   return this.props.bots.by_id[botId];
+  // }
+
+  // componentDidMount(){
+  //   if (!this.botLoaded())
+  //     // TODO: update to fetch single bot
+  //     this.props.fetchBots();
+  // }
+
+
+
+  // componentWillUnmount(){
+  //   this.props.setFightStatus("Over");
+  // }
+
+
+  // fightStatus(){
+  //   return this.props.fights.status;
+  // }
 
   dynamicContent(){
     let content;
-    if (this.props.type === "start") {
+    if (this.props.status === "ready") {
       return (
         <div className="end-content">
           <div className="challenge-button"
-            onClick={this.handleStart.bind(this)}>
+            onClick={this.props.handleStart}>
             Let's Go!
           </div>
         </div>
      );
-   } else if (this.props.type == "win" || this.props.type == "lose") {
-     const result = (this.props.type === "win") ? "win" : "lose";
+   } else if (["win", "loss"].includes(this.props.status)) {
+     const result = (this.props.fightStatus === "win") ? "win" : "lose";
      return (
         <div className="end-content">
           <div className="fight-result">
@@ -63,11 +62,9 @@ export default class FightModal extends React.Component{
 
 
   render(){
-    console.log("rerender");
-    if (this.botLoaded()){
+    if (this.props.show){
       return(
-        <div className= {"fight-modal " +
-          ((this.props.modalVisible )? "open": "")}>
+        <div className= {"fight-modal"}>
           <div className="modal-cover">
             <div className="modal-container">
               <div className="half left-half">
@@ -83,10 +80,10 @@ export default class FightModal extends React.Component{
               <div className="half right-half">
                 <div className= "profile-container">
                   <div className="fighter-name">
-                    {this.bot().name}
+                    {this.props.opponentName}
                   </div>
                   <div className="profile-thumb-round">
-                    <img src={"/assets/"+this.bot().image_url} />
+                    <img src={"/assets/"+this.props.opponentImage} />
                   </div>
                 </div>
               </div>
@@ -96,8 +93,7 @@ export default class FightModal extends React.Component{
           </div>
         </div>
       );
-    } else {
-      return null;
     }
+    return null;
   }
 }

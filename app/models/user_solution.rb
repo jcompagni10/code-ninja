@@ -13,18 +13,15 @@ class UserSolution < ApplicationRecord
 
   def handle_completion(test_results)
     if test_results.values.all? { |t| t[:passed] } && self.score == 0
-      self.update({score: 300})
-      self.user.score += self.score
-      self.user.save
-      UserTaskCompletion.create(
-        task_id: self.task.id,
-        user_id: self.user.id,
-        # TODO: remove whitespace
-        chars: self.solution.length,
-        mode: :arcade
-      )
+      case mode
+      when "bots"
+        UserBotCompletion.handle_completion(self)
+      when "arcade"
+        UserTaskCompletion(self, "arcade")
+      end
     end
   end
+
   # TODO: catch all types of errors
   # TODO: return error type
   def run_tests
@@ -33,26 +30,25 @@ class UserSolution < ApplicationRecord
       self.create_function
       test_results = {}
       test_suite.each do |test|
-      timeout(self.task.time_limit / 1000) do
-        inputs = test.parsed_inputs
-        result = send(self.task.fxn_name, *inputs)
-        passed = result == test.output
-        test_result = {
-          passed: passed,
-          expected: test.output.to_s,
-          received: result.to_s
-        }
-        test_results[test.order] = test_result
+        timeout(self.task.time_limit / 1000) do
+          inputs = test.parsed_inputs
+          result = send(self.task.fxn_name, *inputs)
+          passed = result == test.output
+          test_result = {
+            passed: passed,
+            expected: test.output.to_s,
+            received: result.to_s
+          }
+          test_results[test.order] = test_result
+        end
       end
-    end
-    rescue Timeout::Error
-      return {error: true, error_message: "Execution exceeded time limit."}
-    rescue Exception => e
-      # TODO: support multiple langues with file name
-      message = e.message.sub(/#<UserSolution:[a-z0-9]*>/, "CODE.RB")
-      return {error: true, error_message: message}
-    ensure
-    end
+      rescue Timeout::Error
+        return { error: true, error_message: "Execution exceeded time limit." }
+      rescue Exception => e
+        # TODO: support multiple langues with file name
+        message = e.message.sub(/#<UserSolution:[a-z0-9]*>/, "CODE.RB")
+        return { error: true, error_message: message }
+      end
     handle_completion(test_results)
     test_results
   end

@@ -32,7 +32,7 @@ class Bot < ApplicationRecord
 
   def user_beaten(user)
     !user_bot_completions.where(user_id: user.id)
-      .where("time < ? ", self.time).empty?
+      .where(status: "win").empty?
   end
 
   def self.user_beaten_bots(user)
