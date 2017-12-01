@@ -1,4 +1,5 @@
 class UserSolution < ApplicationRecord
+  require 'net/http'
   include Timeout
   validates :mode,
             :solution,
