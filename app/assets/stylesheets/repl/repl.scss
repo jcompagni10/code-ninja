@@ -107,13 +107,31 @@
 }
 
 .tests-nav-bar li{
-  margin-right: 20px;
+  padding-right: 25px;
+  margin: 0;
   height: 33px;
-  padding: 0 5px;
 }
-.tests-nav-bar li.selected{
-  border-bottom: 2px solid $electric-green;
+
+.tests-nav-bar li:after{
+  content: ' ';
+  display: block;
+  margin-top: -2px;
+  border-bottom: 2px solid #44BFA3;
+  margin-left: 100%;
+  transition: margin .5s
 }
+
+.tests-nav-bar li:last-of-type:after{
+  margin-left: 0;
+  margin-right: 100%;
+}
+
+.tests-nav-bar li.selected:after{
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+
 
 .bottom-bar{
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);

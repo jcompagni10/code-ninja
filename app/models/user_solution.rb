@@ -28,7 +28,7 @@ class UserSolution < ApplicationRecord
       test_suite = self.task.tests.order(:order)
       testsStrings = test_suite.map do |test|
         test_string = task.fxn_name + "("
-        test_string + "..."+JSON(test.parsed_inputs) + ")"
+        test_string + "..."+test.parsed_inputs.to_s + ")"
       end
       formated_user_code = self.solution.gsub("\n", " ")
       data = JSON.dump({user_code: formated_user_code, tests: testsStrings})
@@ -48,7 +48,7 @@ class UserSolution < ApplicationRecord
         return {error: true, error_message: message }
       end
       user_results = response["results"]
-      test_results = {}
+      test_results = {log: response["log"].gsub("\n", "<br/>"), results: {} }
       test_suite.each_with_index do |test, idx|
         result = user_results[idx]
         passed = result == test.output
@@ -57,9 +57,9 @@ class UserSolution < ApplicationRecord
           expected: test.output.to_s,
           received: result.to_s
         }
-        test_results[test.order] = test_result
+        test_results[:results][test.order] = test_result
       end
-    handle_completion(test_results)
+    handle_completion(test_results[:results])
     test_results
   end
 end

@@ -1,5 +1,11 @@
 exports.handler = function(event, context, callback) {
-  let result;
+  let LOGFILE = "";
+  console.log = function(...inputs){
+    inputs.forEach(input=>(
+      LOGFILE += " " + input
+    ));
+    LOGFILE += "\n";
+  };
   try{
     eval(event["user_code"]);
     let tests = event['tests'];
@@ -7,10 +13,10 @@ exports.handler = function(event, context, callback) {
          return eval(test)
     }
     );
-    callback(null, JSON.stringif(results));
+    callback(null, {results: results});
   }
   catch(err){
-    callback({error: err.message});
+    callback(null, {errorMessage: err.message});
   }
 
 };

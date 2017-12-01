@@ -11,7 +11,8 @@ export default (state = {}, action) => {
         // TODO: maybe won't be inorder
         return {
           tests: Object.values(action.task.tests),
-          passed: ""
+          passed: "",
+          log: ""
         };
 
       } else {
@@ -24,7 +25,8 @@ export default (state = {}, action) => {
       );
       return {
         tests: merge({}, state.tests, tests),
-        passed: action.testResults.passed
+        passed: action.testResults.passed,
+        log: action.testResults.log
       };
     default:
       return state;

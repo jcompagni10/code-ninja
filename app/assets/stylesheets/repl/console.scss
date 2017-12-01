@@ -1,0 +1,13 @@
+.console-container{
+  overflow: scroll;
+  height: 100%;
+  padding: 20px;
+  color: #fff;
+  font-family: "Consolas", "Monaco", "Lucida Console";
+  word-break: break-all;
+}
+
+.console-container .glyphicon-alert{
+  font-size: 18px;
+  margin-right: 10px;
+}

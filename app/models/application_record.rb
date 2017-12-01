@@ -12,7 +12,7 @@ class ApplicationRecord < ActiveRecord::Base
     # when "IntegerArray"
     #   [JSON(value)]
     when "StringArray"
-      JSON(value)
+      value
     else
       value
     end

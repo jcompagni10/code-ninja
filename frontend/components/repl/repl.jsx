@@ -2,6 +2,7 @@ import React from 'react';
 import {Glyphicon} from 'react-bootstrap';
 import CodeMirror from 'react-codemirror';
 import TestIndexContainer from './tests/test_index_container';
+import ConsoleContainer from './console_container';
 import NextLevel from './next_level';
 require('codemirror/mode/javascript/javascript');
 require('codemirror/addon/edit/matchbrackets.js');
@@ -65,7 +66,6 @@ export default class REPL extends React.Component{
   }
 
 
-
   updateCode(newCode) {
     this.setState({
       userCode: newCode,
@@ -85,7 +85,9 @@ export default class REPL extends React.Component{
       return "selected";
     }
   }
-
+  setPane(pane){
+      this.setState({currentTestWindow: pane });
+  }
   ready(){
     return this.props.task.title !== undefined;
   }
@@ -168,14 +170,20 @@ export default class REPL extends React.Component{
             <section className ="tests">
               <ul className="tests-nav-bar bottom-bar">
                   <li
-                    className= {`${this.testPaneSelected("tests")}`}>
-                    tests
+                    className= {`${this.testPaneSelected("tests")}`}
+                    onClick = {()=>this.setPane("tests")}>
+                      tests
                   </li>
-                  <li>
-                    console
+                  <li
+                    className ={`${this.testPaneSelected("console")}`}
+                    onClick = {()=>this.setPane("console")} >
+                      console
                   </li>
               </ul>
-            <TestIndexContainer />
+            {(this.state.currentTestWindow === "tests")?
+              (<TestIndexContainer />) :
+              (<ConsoleContainer />)
+            }
             </section>
             <footer className="task-footer right-footer">
               <button
