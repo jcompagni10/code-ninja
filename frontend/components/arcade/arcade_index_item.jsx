@@ -17,7 +17,7 @@ export default ({indexItem})=>(
         {indexItem.tasks.map((task,idx)=>(
           <Link key ={task.id} to ={`/arcade/repl/${task.id}`}>
             <div className={`task-circle ${task.completed? 'completed':""}`}>
-              <span>{idx}</span>
+              <span>{idx + 1 }</span>
             </div>
           </Link>
         ))}

@@ -5,7 +5,8 @@ export default class TestIndex extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      expandedTest: -1
+      expandedTest: -1,
+      loading: true
     };
   }
 
@@ -73,6 +74,11 @@ export default class TestIndex extends React.Component {
 
 
   render(){
+    if (this.props.loading){
+      return(
+        <div class="loader">Loading...</div>
+      );
+    } else
     return (
       <section className= "tests-container ">
         <div className ="test-message">

@@ -25,41 +25,41 @@ class UserSolution < ApplicationRecord
   # TODO: catch all types of errors
   # TODO: return error type
   def run_tests
-    begin
       test_suite = self.task.tests.order(:order)
-      self.create_function
-      test_results = {}
-      test_suite.each do |test|
-        timeout(self.task.time_limit / 1000) do
-          inputs = test.parsed_inputs
-          result = send(self.task.fxn_name, *inputs)
-          passed = result == test.output
-          test_result = {
-            passed: passed,
-            expected: test.output.to_s,
-            received: result.to_s
-          }
-          test_results[test.order] = test_result
-        end
+      testsStrings = test_suite.map do |test|
+        test_string = task.fxn_name + "("
+        test_string + "..."+JSON(test.parsed_inputs) + ")"
       end
-      rescue Timeout::Error
-        return { error: true, error_message: "Execution exceeded time limit." }
-      rescue Exception => e
-        # TODO: support multiple langues with file name
-        message = e.message.sub(/#<UserSolution:[a-z0-9]*>/, "CODE.RB")
-        return { error: true, error_message: message }
+      formated_user_code = self.solution.gsub("\n", " ")
+      data = JSON.dump({user_code: formated_user_code, tests: testsStrings})
+      uri = URI.parse("https://wci7v1nq8j.execute-api.us-west-2.amazonaws.com/v1")
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      request = Net::HTTP::Post.new(uri.request_uri)
+      request.body = data
+      response = http.request(request)
+      response = JSON.parse(response.body)
+      if response["errorMessage"]
+        message = response["errorMessage"]
+        if message.include?("timed out")
+          message = "Task timed out after 4.00 seconds"
+        end
+        return {error: true, error_message: message }
+      end
+      user_results = response["results"]
+      test_results = {}
+      test_suite.each_with_index do |test, idx|
+        result = user_results[idx]
+        passed = result == test.output
+        test_result = {
+          passed: passed,
+          expected: test.output.to_s,
+          received: result.to_s
+        }
+        test_results[test.order] = test_result
       end
     handle_completion(test_results)
     test_results
   end
-
-
-  def create_function
-    timeout(2) do
-      instance_eval(self.solution)
-    end
-  end
-
-
-
 end

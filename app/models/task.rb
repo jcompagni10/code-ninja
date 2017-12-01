@@ -23,7 +23,7 @@ class Task < ApplicationRecord
 
   def function_skeleton
     inputs = self.inputs.pluck(:input_name).join(", ")
-    "def #{fxn_name}(#{inputs})\n\nend"
+    "function #{fxn_name}(#{inputs}){\n\n}"
   end
 
   # seed convenience method

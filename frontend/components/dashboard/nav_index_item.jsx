@@ -13,8 +13,7 @@ export default (props)=>(
           </div>
         </div>
         <div className="nav-item-data-container">
-
-            {props.dataDisplay}
+          {props.dataDisplay}
         </div>
       </div>
     </Link>

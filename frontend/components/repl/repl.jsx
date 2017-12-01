@@ -3,7 +3,9 @@ import {Glyphicon} from 'react-bootstrap';
 import CodeMirror from 'react-codemirror';
 import TestIndexContainer from './tests/test_index_container';
 import NextLevel from './next_level';
-require('codemirror/mode/ruby/ruby');
+require('codemirror/mode/javascript/javascript');
+require('codemirror/addon/edit/matchbrackets.js');
+require('codemirror/addon/edit/closebrackets.js');
 
 export default class REPL extends React.Component{
   constructor(props){
@@ -16,8 +18,16 @@ export default class REPL extends React.Component{
 
     this.codeMirrorOptions = {
 			lineNumbers: true,
-      mode: 'ruby',
-      theme: "monokai"
+      mode: 'javascript',
+      theme: "monokai",
+      extraKeys: {
+        Tab: function(cm) {
+          var spaces = Array(cm.getOption("indentUnit") + 1).join(" ");
+          cm.replaceSelection(spaces);
+        }
+      },
+      matchBrackets: true,
+      autoCloseBrackets: true
 		};
   }
 

@@ -76,10 +76,10 @@ task = Task.create!(
   output_description: "The largest product of adjacent elements.",
 )
 task.bulk_input_builder([["inputArray", "IntegerArray", "2 ≤ inputArray.length ≤ 10,<br/> -1000 ≤ inputArray[i] ≤ 1000."]]);
-task.bulk_test_builder([[21, 1, 3, 7], [25, 5, 2, 1, 1, 5], [-10, -2, -5], [100, -10, 5, 6, 3,-10, -2], [1, 1, 1, 1, 1, -1]])
+task.bulk_test_builder([[21, [1, 3, 7]], [25, [5, 2, 1, 1, 5]], [10, [-2, -5, 2, 3]], [100, [-10, 5, 6, 3,-10, -2]], [1, [1, 1, 1, 1, -1]]])
 
 #############
-# LEVEL SET 1
+# LEVEL SET 2
 ############
 
 task = Task.create!(

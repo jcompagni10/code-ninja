@@ -1,12 +1,14 @@
-// import {START_FIGHT, END_FIGHT} from '../actions/fights';
+import {START_LOADING_TEST_RESULTS, RECEIVE_TEST_RESULTS, RECEIVE_TEST_ERRORS} from '../actions/task';
 
-export default (state = {}, action) => {
+export default (state = {testsLoading: false}, action) => {
   Object.freeze(state);
   switch (action.type) {
-    // case START_FIGHT:
-    //   return Object.assign({}, state, {fightInProgresss: true});
-    // case END_FIGHT:
-    //   return Object.assign({}, state, {fightInProgresss: false});
+    case START_LOADING_TEST_RESULTS:
+      return {testsLoading: true};
+    case RECEIVE_TEST_RESULTS:
+      return {testsLoading: false};
+    case RECEIVE_TEST_ERRORS:
+      return {testsLoading: false};
     default:
       return state;
   }

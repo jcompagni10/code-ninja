@@ -4,16 +4,18 @@ class ApplicationRecord < ActiveRecord::Base
 
 # TODO: safely eliminate this
   def parse_by_type(value, type)
-  #   case type
-  #   when "Integer"
-  #     Integer(value)
-  #   when "String"
-  #     value
-  #   when "IntegerArray"
-  #     value[1...-1].split(",").map(&:to_i)
-  #   when "StringArray"
-  #     value[1...-1].split(",").map(&:to_s)
-  #   end
+    case type
+    when "Integer"
+      Integer(value)
+    when "String"
+      value.inspect
+    # when "IntegerArray"
+    #   [JSON(value)]
+    when "StringArray"
+      JSON(value)
+    else
+      value
+    end
   value
   end
 
