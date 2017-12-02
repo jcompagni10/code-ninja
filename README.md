@@ -56,3 +56,4 @@ Rails serves as the perfect backend for this project. Providing a powerful frame
 
  + AI
  + Support for NP-hard problems
+ + Blockchain integration
