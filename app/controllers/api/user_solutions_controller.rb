@@ -9,11 +9,7 @@ class Api::UserSolutionsController < ApplicationController
   end
 
 
-  # find or creat
-  # run tests
-  # update solution data accordingly
-  #update user score
-  #render test results
+
 
   def submit
     @solution = UserSolution.find_or_create_by(
@@ -35,5 +31,6 @@ class Api::UserSolutionsController < ApplicationController
   def user_solution_params
     params.require(:user_solution).permit(:task_id, :mode, :solution, :fight_id)
   end
+
 
 end

@@ -37,6 +37,7 @@
 }
 .sq-button{
   color: white;
+  margin-left: 35px;
   text-decoration: none;
 }
 
@@ -44,12 +45,13 @@
   color: #fff;
 }
 
-.header-links li{
+.header-links li a{
+  color: #fff;
   margin-left: 35px;
   transition: color .5s;
 }
 
-.header-links li:hover{
+.header-links li a:hover{
   color: #FFE345;
 }
 .main-landing-content{

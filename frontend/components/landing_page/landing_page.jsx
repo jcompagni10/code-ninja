@@ -53,8 +53,16 @@ class LandingPage extends React.Component{
             </div>
             <div className="col-xs-6">
               <ul className="header-links pull-right hidden-xs">
-                <li>blog</li>
-                <li>companies</li>
+                <li>
+                  <a href="http://juliancompagniportis.com" target="_blank">
+                    blog
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/in/julian-compagni-portis-b52005b0" target="_blank">
+                    companies
+                  </a>
+                </li>
                 <li className="sq-button pointer" onClick = {this.openModal}>
                   Log in
                 </li>
