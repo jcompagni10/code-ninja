@@ -95,6 +95,7 @@
   height: calc(100% - 383px);
   border-top: 1px solid $cobalt;
 }
+
 .tests-nav-bar{
   text-transform: uppercase;
   color: #fff;
@@ -119,7 +120,7 @@
   border-bottom: 2px solid #44BFA3;
   margin-left: 100%;
   transition: margin .5s;
-  width: 100%;
+  overflow: hidden;
 }
 
 .tests-nav-bar li:last-of-type:after{
