@@ -8,6 +8,7 @@ import arcadeNavContainer from './arcade/arcade_container';
 import botContainer from './bots/bot_container';
 import botFightContainer from './modes/bots/bot_fight_container';
 import arcadeContainer from './modes/arcade/arcade_container';
+import challengeNavContainer from './modes/challenges/challenge_nav_container';
 
 export default ()=>(
   <div>
@@ -17,6 +18,7 @@ export default ()=>(
     <ProtectedRoute path = "/bots/repl/:taskId/:botId" component = {botFightContainer} />
     <ProtectedRoute path = "/arcade/repl/:taskId" component = {arcadeContainer} />
     <ProtectedRoute exact path = "/arcade" component = {arcadeNavContainer} />
+    <ProtectedRoute exact path = "/challenges" component = {challengeNavContainer} />
     <ProtectedRoute exact path = "/bots" component = {botContainer} />
     <ProtectedRoute path = "/dashboard" component = {navContainer} />
     <AuthRoute exact path="/:signup?" component = {landingPage} />

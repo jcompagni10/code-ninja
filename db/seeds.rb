@@ -106,7 +106,7 @@ task = Task.create!(
   example: "For a = [-1, 150, 190, 170, -1, -1, 160, 180], the output should be sortByHeight(a) = [-1, 150, 160, 170, -1, -1, 180, 190].",
   time_limit: 3000,
   output_type: "IntegerArray",
-  output_description: "Sorted array a with all the trees untouched.",
+  output_description: "Sorted array with all the \"trees\" untouched.",
 )
 task.bulk_input_builder([["arr", "IntegerArray", "5 ≤ a.length ≤ 15,<br/>-1 ≤ a[i] ≤ 200."]]);
 task.bulk_test_builder([
@@ -202,12 +202,27 @@ bots = Bot.create([
   ])
 
 
-#
-# bots[0..4].each do |bot|
-#
-#   bot.match_result(user1, 1000)
-# end
-#
-# bots[0..4].each_with_index do |bot, idx|
-#   bot.match_result(user2, idx * 60000 + 300000)
-# end
+  #CHALLENGES
+
+  Challenge.create!([
+    {
+      task_id: 2,
+      title: "racecar?"
+    },
+    {
+      task_id: 3,
+      title: "Strung Along"
+    },
+    {
+      task_id: 5,
+      title: "((Its) just (a) symbol)"
+    },
+    {
+      task_id: 6,
+      title: "Something has come between us..."
+    },
+    {
+      task_id: 8,
+      title: "Ladder to nowhere"
+    },
+  ])
