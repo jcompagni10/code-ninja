@@ -3,9 +3,9 @@ import console from './console';
 
 const mapStateToProps = (state, ownProps) => (
   {
-    log: state.entities.currentTests.log,
-    errors: state.entities.currentTestErrors,
-    loading: state.ui.testsLoading
+  log: state.entities.currentTests.log,
+  errors: state.entities.currentTestErrors,
+  loading: state.ui.testsLoading
   }
 
 );

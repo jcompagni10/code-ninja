@@ -4,8 +4,8 @@ import {setFightStatus} from '../../actions/fights';
 
 const mapStateToProps = state => (
   {
-    status: state.fights.status,
-    timeLimit: state.fights.timeLimit
+  status: state.fights.status,
+  timeLimit: state.fights.timeLimit
   }
 );
 

@@ -3,11 +3,11 @@ if @test_results[:error]
   json.passed false
 else
   json.tests do
-    @test_results[:results].each do |order, results|
-      json.set! order do
-        json.extract! results, :passed, :expected, :received
-      end
+  @test_results[:results].each do |order, results|
+    json.set! order do
+    json.extract! results, :passed, :expected, :received
     end
+  end
   end
   json.passed (@test_results[:results].all? { |_, test| test[:passed] })
 end

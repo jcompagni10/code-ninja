@@ -11,7 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 export default (preloadedState)=>(
   createStore(rootReducer,
-    preloadedState,
-    applyMiddleware(...middlewares)
+  preloadedState,
+  applyMiddleware(...middlewares)
   )
 );

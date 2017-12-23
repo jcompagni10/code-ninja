@@ -8,8 +8,8 @@ const receiveLevelSets = levelSets => ({
 
 export const fetchLevelSets = () => dispatch => {
   return getLevelSets()
-    .then(levelSets =>(
-      dispatch(receiveLevelSets(levelSets)),
-      errors => console.log("FAIL", errors)
-    ));
+  .then(levelSets =>(
+    dispatch(receiveLevelSets(levelSets)),
+    errors => console.log("FAIL", errors)
+  ));
 };

@@ -14,16 +14,16 @@ const receiveBot = bot => ({
 
 export const fetchBots = () => dispatch => {
   return getBots()
-    .then(bots =>(
-      dispatch(receiveBots(bots)),
-      errors => console.log("FAIL", errors)
-    ));
+  .then(bots =>(
+    dispatch(receiveBots(bots)),
+    errors => console.log("FAIL", errors)
+  ));
 };
 
 export const fetchBot = (id) => dispatch => {
   return getBot(id)
-    .then(bot =>(
-      dispatch(receiveBot(bot)),
-      errors => console.log("FAIL", errors)
-    ));
+  .then(bot =>(
+    dispatch(receiveBot(bot)),
+    errors => console.log("FAIL", errors)
+  ));
 };

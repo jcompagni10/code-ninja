@@ -18,12 +18,12 @@ export const setFightStatus = (status)=>({
 
 export const loadBotFight = botId => dispatch =>{
   return postBotFight(botId)
-    .then(payload=>dispatch(receiveFight(payload, "bot")),
-      errors => console.log("FAIL", errors)
-    );
+  .then(payload=>dispatch(receiveFight(payload, "bot")),
+    errors => console.log("FAIL", errors)
+  );
 };
 
 export const endFight = fightId => dispatch => (
   updateBotFight(fightId)
-    .then(setFightStatus("over"), errors=>console.log(errors))
+  .then(setFightStatus("over"), errors=>console.log(errors))
 );

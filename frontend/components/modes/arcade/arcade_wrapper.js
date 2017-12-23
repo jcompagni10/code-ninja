@@ -4,19 +4,19 @@ import REPLContainer from '../../repl/repl_container';
 export default class BotFightController extends React.Component{
 
   submit(code){
-    const solution = {
-      task_id: this.props.match.params.taskId,
-      mode: "arcade",
-      solution: code
-    };
-    this.props.submitSolution(solution);
+  const solution = {
+    task_id: this.props.match.params.taskId,
+    mode: "arcade",
+    solution: code
+  };
+  this.props.submitSolution(solution);
   }
 
   render(){
-    return (
-        <REPLContainer
-          submit = {this.submit.bind(this)}
-        />
-    );
+  return (
+    <REPLContainer
+      submit = {this.submit.bind(this)}
+    />
+  );
   }
 }

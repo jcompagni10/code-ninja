@@ -20,28 +20,28 @@ class SessionForm extends React.Component{
 
 
   render(){
-    return(
-      <Modal show={this.props.modalOpen} onHide={this.props.closeModal}>
-        <Switch>
-          <Route
-            path="/signup"
-            render={()=><SignupForm
-              errors = {this.props.errors}
-              action = {this.props.signup}
-              user = {this.props.user}
-            /> }
-          />
-          <Route
-            path="/"
-            render={()=><LoginForm
-              errors = {this.props.errors}
-              action ={this.props.login}
-              user = {this.props.user}
-            />}
-          />
-        </Switch>
-      </Modal>
-    );
+  return(
+    <Modal show={this.props.modalOpen} onHide={this.props.closeModal}>
+    <Switch>
+      <Route
+      path="/signup"
+      render={()=><SignupForm
+        errors = {this.props.errors}
+        action = {this.props.signup}
+        user = {this.props.user}
+      /> }
+      />
+      <Route
+      path="/"
+      render={()=><LoginForm
+        errors = {this.props.errors}
+        action ={this.props.login}
+        user = {this.props.user}
+      />}
+      />
+    </Switch>
+    </Modal>
+  );
   }
 }
 

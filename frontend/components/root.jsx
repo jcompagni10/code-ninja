@@ -5,8 +5,8 @@ import App from './app';
 
 export default (props)=>(
   <Provider store={props.store}>
-    <HashRouter>
-      <App />
-    </HashRouter>
+  <HashRouter>
+    <App />
+  </HashRouter>
   </Provider>
 );

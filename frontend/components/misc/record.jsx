@@ -8,18 +8,18 @@ const dataTitle={
 export default ({data, type})=>{
   return (
 
-    <div className ="nav-item-data nav-item-record">
-      {data.map((record, idx)=>(
-        <div key = {idx} className="record-item">
-          <span className="record">
-            {record}
-          </span>
-          <br/>
-          <span className="record-title">
-            {dataTitle[type][idx]}
-          </span>
-        </div>
-      ))}
+  <div className ="nav-item-data nav-item-record">
+    {data.map((record, idx)=>(
+    <div key = {idx} className="record-item">
+      <span className="record">
+      {record}
+      </span>
+      <br/>
+      <span className="record-title">
+      {dataTitle[type][idx]}
+      </span>
     </div>
+    ))}
+  </div>
   );
 };

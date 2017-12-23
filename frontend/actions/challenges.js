@@ -8,8 +8,8 @@ const receiveChallenges = challenges => ({
 
 export const fetchChallenges = () => dispatch => {
   return getChallenges()
-    .then(challenges =>(
-      dispatch(receiveChallenges(challenges)),
-      errors => console.log("FAIL", errors)
-    ));
+  .then(challenges =>(
+    dispatch(receiveChallenges(challenges)),
+    errors => console.log("FAIL", errors)
+  ));
 };

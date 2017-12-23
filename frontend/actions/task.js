@@ -25,23 +25,23 @@ const startLoadingTestResults = () => ({
 
 export const fetchTask = (id) => dispatch => {
   return getTask(id)
-    .then(task =>(
-      dispatch(receiveTask(task)),
-      errors => console.log("FAIL", errors)
-    ));
+  .then(task =>(
+    dispatch(receiveTask(task)),
+    errors => console.log("FAIL", errors)
+  ));
 };
 
 function handleTestResults(testResults, dispatch){
   if (testResults.errors){
-    dispatch(receiveTestErrors(testResults.errors));
+  dispatch(receiveTestErrors(testResults.errors));
   } else {
-    dispatch(receiveTestResults(testResults));
+  dispatch(receiveTestResults(testResults));
   }
 }
 export const submitSolution = (solution) => dispatch => {
   dispatch(startLoadingTestResults());
   return postSolution(solution)
-    .then(testResults => handleTestResults(testResults,dispatch),
-      errors => console.log("FAIL", errors)
-    );
+  .then(testResults => handleTestResults(testResults,dispatch),
+    errors => console.log("FAIL", errors)
+  );
 };

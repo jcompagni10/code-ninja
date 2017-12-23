@@ -21,25 +21,25 @@ export const clearErrors = () => ({
 
 export const login = formUser => dispatch => {
   return APIUtil.loginUser(formUser)
-    .then(user => {
-      dispatch(receiveCurrentUser(user));
-      dispatch(clearErrors());
-    },
-      errors => dispatch(receiveErrors(errors.responseJSON))
+  .then(user => {
+    dispatch(receiveCurrentUser(user));
+    dispatch(clearErrors());
+  },
+    errors => dispatch(receiveErrors(errors.responseJSON))
   );
 };
 
 export const logout = () => dispatch => (
   APIUtil.logoutUser()
   .then(() => dispatch(receiveCurrentUser(null)),
-    errors => dispatch(receiveErrors(errors.responseJSON)))
+  errors => dispatch(receiveErrors(errors.responseJSON)))
 );
 
 export const signupUser = formUser => dispatch => (
    APIUtil.postUser(formUser)
-    .then(user => {
-      dispatch(receiveCurrentUser(user));
-      dispatch(clearErrors());
-    },
-    errors => dispatch(receiveErrors(errors.responseJSON)))
+  .then(user => {
+    dispatch(receiveCurrentUser(user));
+    dispatch(clearErrors());
+  },
+  errors => dispatch(receiveErrors(errors.responseJSON)))
 );

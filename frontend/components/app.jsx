@@ -15,13 +15,13 @@ export default ()=>(
 
   <ProtectedRoute path = "/:mode?/:repl?/:taskId?" component = {navbarContainer} />
   <Switch>
-    <ProtectedRoute exact path = "/arcade" component = {arcadeNavContainer} />
-    <ProtectedRoute exact path = "/challenges" component = {challengesNavContainer} />
-    <ProtectedRoute exact path = "/bots" component = {botNavContainer} />
-    <ProtectedRoute path = "/bots/repl/:taskId/:botId" component = {botFightContainer} />
-    <ProtectedRoute path = "/arcade/repl/:taskId" component = {arcadeContainer} />
-    <ProtectedRoute path = "/dashboard" component = {navContainer} />
-    <AuthRoute exact path="/:signup?" component = {landingPage} />
+  <ProtectedRoute exact path = "/arcade" component = {arcadeNavContainer} />
+  <ProtectedRoute exact path = "/challenges" component = {challengesNavContainer} />
+  <ProtectedRoute exact path = "/bots" component = {botNavContainer} />
+  <ProtectedRoute path = "/bots/repl/:taskId/:botId" component = {botFightContainer} />
+  <ProtectedRoute path = "/arcade/repl/:taskId" component = {arcadeContainer} />
+  <ProtectedRoute path = "/dashboard" component = {navContainer} />
+  <AuthRoute exact path="/:signup?" component = {landingPage} />
   </Switch>
 </div>
 );

@@ -12,33 +12,33 @@ user2= User.create({username: "demo_user", password: "pass123", email: "user@gma
 # LEVEL SET 1
 ############
 task = Task.create!(
-    title: "Multiply",
-    level_set_id: 1,
-    order: 1,
-    fxn_name: "multiply",
-    description: "Write a function that returns the product of two numbers.",
-    example: "For param1 = 1 and param2 = 2, the output should be multiply(param1, param2) = 2.",
-    time_limit: 4000,
-    output_type: "Integer",
-    output_description: "The product of the two inputs.",
+  title: "Multiply",
+  level_set_id: 1,
+  order: 1,
+  fxn_name: "multiply",
+  description: "Write a function that returns the product of two numbers.",
+  example: "For param1 = 1 and param2 = 2, the output should be multiply(param1, param2) = 2.",
+  time_limit: 4000,
+  output_type: "Integer",
+  output_description: "The product of the two inputs.",
 )
 task.bulk_input_builder([["param1",Integer, "-100 ≤ param1 ≥ 1000"],[]]);
 task.bulk_test_builder([[0, 0, 0], [10, 5, 2], [-10, -5, 2], [100, -10, -10], [117504, 256, 459]])
 
 task = Task.create!(
-    title: "Palindrome?",
-    level_set_id: 1,
-    order: 2,
-    fxn_name: "isPalindrome",
-    description: "Check if a given stirng is a palindrome.",
-    example: "<ul><li>For inputString = 'aabaa', the output should be checkPalindrome(inputString) = true;</li>
-              <li>For inputString = 'abac', the output should be</li>
-              <li>checkPalindrome(inputString) = false;</li>
-              <li>For inputString = 'a', the output should be</li>
-              <li>checkPalindrome(inputString) = true.</li></ul>",
-    time_limit: 4000,
-    output_type: "Boolean",
-    output_description: "true if inputString is a palindrome, false otherwise.",
+  title: "Palindrome?",
+  level_set_id: 1,
+  order: 2,
+  fxn_name: "isPalindrome",
+  description: "Check if a given stirng is a palindrome.",
+  example: "<ul><li>For inputString = 'aabaa', the output should be checkPalindrome(inputString) = true;</li>
+        <li>For inputString = 'abac', the output should be</li>
+        <li>checkPalindrome(inputString) = false;</li>
+        <li>For inputString = 'a', the output should be</li>
+        <li>checkPalindrome(inputString) = true.</li></ul>",
+  time_limit: 4000,
+  output_type: "Boolean",
+  output_description: "true if inputString is a palindrome, false otherwise.",
 )
 task.bulk_input_builder([["inputString", "String", "1 ≤ inputString.length ≤ 105."]])
 task.bulk_test_builder([[true, "racecar"], [false, "tests"], [true, "lionoil"], [true, "a"], [false, "ab"], [true, "abba"], [true, "a"*20+"b"*10 +"a"*20]])
@@ -146,58 +146,58 @@ task = Task.create!(
   fxn_name: "ladderBuilder",
   description: "Given an array of equal-length strings, check if it is possible to rearrange the strings in such a way that after the rearrangement the strings at consecutive positions would differ by exactly one character.",
   example: "<ul><li>For inputArray = ['aba', 'bbb', 'bab'], the output should be stringsRearrangement(inputArray) = false;</li>
-                <li>For inputArray = ['ab', 'bb', 'aa'], the output should be stringsRearrangement(inputArray) = true. </li></ul>",
+        <li>For inputArray = ['ab', 'bb', 'aa'], the output should be stringsRearrangement(inputArray) = true. </li></ul>",
   time_limit: 4000,
   output_type: "Boolean",
   output_description: "A boolean representing whether a word laddder is possible"
 )
 task.bulk_input_builder([["inputArray", "StringArray", "2 ≤ inputArray.length ≤ 10,<br/> 1 ≤ inputArray[i].length ≤ 15."]])
 task.bulk_test_builder([[false, ["aba", "bbb", "bab"]], [true, ["aaa", "aac", "bac"]], [true, ["z", "z"]],
-                        [true, ["zzzzab", "zzzzbb", "zzzzaa"]], [false, ["ab", "ad", "ef", "eg"]], [true, ["abc", "bef", "bcc", "bec", "bbc", "bdc"]], [false, ["abc", "abx", "axx", "abc"]]] )
+            [true, ["zzzzab", "zzzzbb", "zzzzaa"]], [false, ["ab", "ad", "ef", "eg"]], [true, ["abc", "bef", "bcc", "bec", "bbc", "bdc"]], [false, ["abc", "abx", "axx", "abc"]]] )
 
 LevelSet.create(name: "Welcome To Codelandia", order: 1)
 LevelSet.create(name: "You think you're smart?", order: 2)
 
 bots = Bot.create([
   {
-    task_id: 2,
-    name: "Ada Lovelace",
-    description: "Programmed computers before computers",
-    order: 1,
-    time: 240000,
-    image_url: 'bots.svg'
+  task_id: 2,
+  name: "Ada Lovelace",
+  description: "Programmed computers before computers",
+  order: 1,
+  time: 240000,
+  image_url: 'bots.svg'
   },
   {
-    task_id: 4,
-    name: "Alan Turing",
-    description: "A True enigma...",
-    order: 2,
-    time: 500000,
-    image_url: 'bots.svg'
+  task_id: 4,
+  name: "Alan Turing",
+  description: "A True enigma...",
+  order: 2,
+  time: 500000,
+  image_url: 'bots.svg'
   },
   {
-    task_id: 5,
-    name: "Yukihiro Matsumoto",
-    description: "A Gem of a man.",
-    order: 3,
-    time: 300000,
-    image_url: 'bots.svg'
+  task_id: 5,
+  name: "Yukihiro Matsumoto",
+  description: "A Gem of a man.",
+  order: 3,
+  time: 300000,
+  image_url: 'bots.svg'
   },
   {
-    task_id: 6,
-    name: "Bill Gates",
-    description: "Wrote his first code at age 13",
-    order: 4,
-    time: 550000,
-    image_url: 'bots.svg'
+  task_id: 6,
+  name: "Bill Gates",
+  description: "Wrote his first code at age 13",
+  order: 4,
+  time: 550000,
+  image_url: 'bots.svg'
   },
   {
-    task_id: 8,
-    name: "Linus Torvalds",
-    description: "This boss bot will rm -rf your confidence",
-    order: 5,
-    time: 6000000,
-    image_url: 'bots.svg'
+  task_id: 8,
+  name: "Linus Torvalds",
+  description: "This boss bot will rm -rf your confidence",
+  order: 5,
+  time: 6000000,
+  image_url: 'bots.svg'
   },
   ])
 
@@ -205,24 +205,24 @@ bots = Bot.create([
   #CHALLENGES
 
   Challenge.create!([
-    {
-      task_id: 2,
-      title: "racecar?"
-    },
-    {
-      task_id: 3,
-      title: "Strung Along"
-    },
-    {
-      task_id: 5,
-      title: "((Its) just (a) symbol)"
-    },
-    {
-      task_id: 6,
-      title: "Something has come between us..."
-    },
-    {
-      task_id: 8,
-      title: "Ladder to nowhere"
-    },
+  {
+    task_id: 2,
+    title: "racecar?"
+  },
+  {
+    task_id: 3,
+    title: "Strung Along"
+  },
+  {
+    task_id: 5,
+    title: "((Its) just (a) symbol)"
+  },
+  {
+    task_id: 6,
+    title: "Something has come between us..."
+  },
+  {
+    task_id: 8,
+    title: "Ladder to nowhere"
+  },
   ])

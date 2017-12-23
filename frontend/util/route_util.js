@@ -4,16 +4,16 @@ import {withRouter, Route, Redirect} from 'react-router';
 
 const Auth = ({component: Component, path, loggedIn}) => (
   <Route path= {path} render={(props) => (
-      !loggedIn ? (<Component {...props} /> ):
-      (<Redirect to ="/dashboard"/>)
-    )} />
+    !loggedIn ? (<Component {...props} /> ):
+    (<Redirect to ="/dashboard"/>)
+  )} />
 );
 
 const Protected = ({component: Component, path, loggedIn}) => (
   <Route path= {path} render={(props) => (
-      loggedIn ? (<Component {...props} /> ):
-      (<Redirect to ="/" />)
-    )} />
+    loggedIn ? (<Component {...props} /> ):
+    (<Redirect to ="/" />)
+  )} />
 );
 
 const mapStateToProps = state =>({

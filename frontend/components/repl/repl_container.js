@@ -7,10 +7,10 @@ import {loadBotFight} from '../../actions/fights';
 
 const mapStateToProps = state => {
   return {
-    task:state.entities.currentTask,
-    passedTests: state.entities.currentTests.passed,
-    tests: state.entities.currentTests.tests,
-    levelSets: state.entities.levelSets,
+  task:state.entities.currentTask,
+  passedTests: state.entities.currentTests.passed,
+  tests: state.entities.currentTests.tests,
+  levelSets: state.entities.levelSets,
   };
 
 };
