@@ -1,7 +1,7 @@
-json.set! :by_id do
+json.by_id do
     @challenges.each do |challenge|
         json.set! challenge.id do  
-            json.set! :title, challenge.title
+          json.extract! challenge, :title, :img_url, :completed
         end
     end
 end

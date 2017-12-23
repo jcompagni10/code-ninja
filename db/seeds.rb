@@ -207,22 +207,27 @@ bots = Bot.create([
   Challenge.create!([
     {
       task_id: 2,
-      title: "racecar?"
+        title: "racecar?",
+        img_url: "default_level_set.png"
     },
     {
       task_id: 3,
-      title: "Strung Along"
+        title: "Strung Along",
+        img_url: "default_level_set.png"
     },
     {
       task_id: 5,
-      title: "((Its) just (a) symbol)"
+        title: "((Its) just (a) symbol)",
+        img_url: "default_level_set.png"
     },
     {
       task_id: 6,
-      title: "Something has come between us..."
+        title: "Something has come between us...",
+        img_url: "default_level_set.png"
     },
     {
       task_id: 8,
-      title: "Ladder to nowhere"
+        title: "Ladder to nowhere",
+        img_url: "default_level_set.png"
     },
   ])
