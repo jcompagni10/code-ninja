@@ -6,7 +6,7 @@ const receiveChallenges = challenges => ({
   challenges
 });
 
-export const fetchLevelSets = () => dispatch => {
+export const fetchChallenges = () => dispatch => {
   return getChallenges()
     .then(challenges =>(
       dispatch(receiveChallenges(challenges)),

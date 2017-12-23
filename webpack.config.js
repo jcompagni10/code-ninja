@@ -5,7 +5,7 @@ var plugins = [];
 var prodPlugins = [
   new webpack.DefinePlugin({
     'process.env': {
-      'NODE_ENV': JSON.stringify('production')
+      'NODE_ENV': JSON.stringify('development')
     }
   }),
   new webpack.optimize.UglifyJsPlugin({
@@ -15,7 +15,7 @@ var prodPlugins = [
   })
 ];
 
-plugins = plugins.concat( prodPlugins );
+// plugins = plugins.concat( prodPlugins );
 
 module.exports = {
   context: __dirname,
