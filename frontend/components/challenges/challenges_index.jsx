@@ -1,5 +1,10 @@
 import React from 'react';
 import ChallengeIndexItem from './challenge_index_item';
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 8610651
 
 export default class ChallengeIndex extends React.Component {
   constructor(){
