@@ -3,7 +3,7 @@ import React from 'react';
 const dataTitle={
   head_to_head: ["wins", "losses", "ties"],
   bots: ["wins", "losses", "ties"],
-  challenges: ["attempts", "shortest"]
+  challenges: ["attempts", "completions", "shortest"]
 };
 
 export default ({data, type})=>{

@@ -1,6 +1,5 @@
 import React from 'react';
 import ChallengeIndexItem from './challenge_index_item';
-// 
 export default class ChallengeIndex extends React.Component {
   constructor(){
     super();
@@ -17,9 +16,12 @@ export default class ChallengeIndex extends React.Component {
         <div className="challenge-content row">
           <div className="challenge-container">
             <h1>Challenges</h1>
-              {challenges.all_ids.map(id => (
-                <ChallengeIndexItem challenge = {challenges.by_id[id]} key = {id} />
-              ))}
+            <div className ="challenges-sub-heading">
+              Compete against other user to come up with the shortest solution to a given challenge...
+            </div>
+            {challenges.all_ids.map(id => (
+              <ChallengeIndexItem challenge = {challenges.by_id[id]} key = {id} />
+            ))}
           </div>
         </div>
       );

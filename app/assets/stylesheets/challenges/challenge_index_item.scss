@@ -11,11 +11,43 @@
   justify-content: space-between;
   border-radius: 7px 7px 0px 0px;
   align-items: center; 
+  padding: 0 30px
+}
+
+.challenge-top-content .top-nav-item-image{
+  margin-left: -30px;
 }
 
 .challenge-top-content .challenge-button{
   position: relative;
   z-index:2;
-  margin-right: 20px;
   text-align: center;
+
+}
+
+.challenge-content .sub-nav-item-top{
+  height: 200px;
+}
+
+.challenge-crest{
+  position: relative;
+  z-index:2;
+  height: 160px;
+  width: auto;
+  margin-top: 85px;
+}
+
+.challenge-content .sub-nav-item-bottom{
+  height: 90px;
+}
+
+.challenge-container .record {
+  font-size: 20px;
+}
+.challenge-container .record-title {
+  font-size: 18px;
+}
+
+.challenge-container .nav-item-data{
+  margin-left: 0px;
 }
