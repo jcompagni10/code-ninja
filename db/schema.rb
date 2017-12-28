@@ -30,18 +30,11 @@ ActiveRecord::Schema.define(version: 20171223010453) do
   end
 
   create_table "challenges", force: :cascade do |t|
-<<<<<<< HEAD
   t.integer "task_id", null: false
   t.string "title", null: false
   t.datetime "created_at", null: false
   t.datetime "updated_at", null: false
-=======
-    t.integer "task_id", null: false
-    t.string "title", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "img_url"
->>>>>>> 8610651
+  t.string "img_url"
   end
 
   create_table "inputs", force: :cascade do |t|

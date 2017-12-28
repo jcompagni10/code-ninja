@@ -205,28 +205,6 @@ bots = Bot.create([
   #CHALLENGES
 
   Challenge.create!([
-<<<<<<< HEAD
-  {
-    task_id: 2,
-    title: "racecar?"
-  },
-  {
-    task_id: 3,
-    title: "Strung Along"
-  },
-  {
-    task_id: 5,
-    title: "((Its) just (a) symbol)"
-  },
-  {
-    task_id: 6,
-    title: "Something has come between us..."
-  },
-  {
-    task_id: 8,
-    title: "Ladder to nowhere"
-  },
-=======
     {
       task_id: 2,
         title: "racecar?",
@@ -252,5 +230,4 @@ bots = Bot.create([
         title: "Ladder to nowhere",
         img_url: "default_level_set.png"
     },
->>>>>>> 8610651
   ])

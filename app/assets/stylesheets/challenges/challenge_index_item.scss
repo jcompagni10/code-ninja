@@ -1,0 +1,21 @@
+.challenge-description{
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  padding: 0 35px;
+}
+
+.challenge-top-content{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-radius: 7px 7px 0px 0px;
+  align-items: center; 
+}
+
+.challenge-top-content .challenge-button{
+  position: relative;
+  z-index:2;
+  margin-right: 20px;
+  text-align: center;
+}
