@@ -66,7 +66,7 @@ export default class Navbar extends React.Component{
           <Glyphicon glyph="fire" bsSize="lg" />
           Challenges
           </MenuItem>
-          <MenuItem>
+          <MenuItem href="/#/head_to_head">
           <Glyphicon glyph="user" bsSize="lg" />
           Head to Head
           </MenuItem>

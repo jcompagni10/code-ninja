@@ -17,3 +17,62 @@
   font-weight: 300;
   font-size: 36px;
 }
+
+.search-container{
+  background-color: #fff;
+  width: 800px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+
+.user-searchbar{
+  box-shadow: none !important;
+  border-color: #E5E5E5 !important;
+}
+
+
+.search-group{
+  box-shadow: 2px 2px 2px 2px #ccc;
+}
+
+.search-results{
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.user-index-item{
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: capitalize;
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+.user-index-item:last-child{
+  border: none;
+}
+
+.search-group .challenge-button{
+  width: 145px;
+}
+
+.random-op-button{
+  height: 100%;
+  line-height: 100%;
+  text-align: center;
+  margin-top: 14px;
+}
+.random-op-button {
+    .challenge-button{
+    background-color: $bright-blue;
+    color: #fff;
+    width: 280px;
+    display: inline-block;
+  }
+  svg{
+    fill: #fff;
+  }
+}

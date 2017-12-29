@@ -10,7 +10,6 @@ class Challenge < ApplicationRecord
   through: :task,
   source: :user_solutions
 
-  # todo: better way to check for presence
   def completed(user_id)
     task.completed(user_id, :challenges)
   end

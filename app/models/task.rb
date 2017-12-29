@@ -26,7 +26,7 @@ class Task < ApplicationRecord
     "function #{fxn_name}(#{inputs}){\n\n}"
   end
 
-  # seed convenience method
+  # seed convenience methods
   def bulk_test_builder(tests)
     self.tests.destroy_all
     tests.each_with_index do |test, idx|

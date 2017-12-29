@@ -10,7 +10,7 @@ import botFightContainer from './modes/bots/bot_fight_container';
 import arcadeContainer from './modes/arcade/arcade_container';
 import challengesNavContainer from './challenges/challenges_container';
 import challengesContainer from './modes/challenges/challenges_container';
-import HeadToHeadNav from './head_to_head/header_to_head_container';
+import HeadToHeadNav from './head_to_head/head_to_head_container';
 export default ()=>(
   <div>
 
