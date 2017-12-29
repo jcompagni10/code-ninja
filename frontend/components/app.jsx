@@ -10,20 +10,21 @@ import botFightContainer from './modes/bots/bot_fight_container';
 import arcadeContainer from './modes/arcade/arcade_container';
 import challengesNavContainer from './challenges/challenges_container';
 import challengesContainer from './modes/challenges/challenges_container';
+import HeadToHeadNav from './head_to_head/header_to_head_container';
 export default ()=>(
   <div>
 
   <ProtectedRoute path = "/:mode?/:repl?/:taskId?" component = {navbarContainer} />
   <Switch>
-  <ProtectedRoute exact path = "/arcade" component = {arcadeNavContainer} />
-  <ProtectedRoute exact path = "/challenges" component = {challengesNavContainer} />
-  <ProtectedRoute exact path = "/bots" component = {botNavContainer} />
-  <ProtectedRoute exact path = "/head_to_head" component = {botNavContainer} />
-  <ProtectedRoute path = "/bots/repl/:taskId/:botId" component = {botFightContainer} />
-  <ProtectedRoute path = "/arcade/repl/:taskId" component = {arcadeContainer} />
-  <ProtectedRoute path = "/challenges/repl/:taskId" component = {arcadeContainer} />
-  <ProtectedRoute path = "/dashboard" component = {navContainer} />
-  <AuthRoute exact path="/:signup?" component = {landingPage} />
+    <ProtectedRoute exact path = "/arcade" component = {arcadeNavContainer} />
+    <ProtectedRoute exact path = "/challenges" component = {challengesNavContainer} />
+    <ProtectedRoute exact path = "/bots" component = {botNavContainer} />
+    <ProtectedRoute exact path = "/head_to_head" component = {HeadToHeadNav} />
+    <ProtectedRoute path = "/bots/repl/:taskId/:botId" component = {botFightContainer} />
+    <ProtectedRoute path = "/arcade/repl/:taskId" component = {arcadeContainer} />
+    <ProtectedRoute path = "/challenges/repl/:taskId" component = {arcadeContainer} />
+    <ProtectedRoute path = "/dashboard" component = {navContainer} />
+    <AuthRoute exact path="/:signup?" component = {landingPage} />
   </Switch>
 </div>
 );

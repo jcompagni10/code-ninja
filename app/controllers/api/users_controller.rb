@@ -18,8 +18,18 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  private
-  def user_params
-    params.require(:user).permit(:username, :password, :email)
+  def index
+    query = params[:search]
+    if query.empty? 
+      render json: {results: []}
+      return 
+    end
+    @users = User.where("LOWER(username) like LOWER(\'%#{query}%\')")
+    render :index
   end
+
+  private
+    def user_params
+      params.require(:user).permit(:username, :password, :email)
+    end
 end

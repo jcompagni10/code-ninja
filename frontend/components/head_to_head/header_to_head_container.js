@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
-import HeadToHeadIndex from './bot_index';
+import HeadToHeadIndex from './head_to_head_index';
 import {fetchUsers} from '../../actions/head_to_head';
 
 const mapStateToProps = state => (
-  {bots: state.entities.bots}
+  {users: state.ui.users}
 );
 const mapDispatchToProps = dispatch => ({
   fetchUsers: (query)=>dispatch(fetchUsers(query))
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(BotIndex);
+export default connect(mapStateToProps,mapDispatchToProps)(HeadToHeadIndex);

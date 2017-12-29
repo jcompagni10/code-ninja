@@ -1,33 +1,40 @@
 import React from 'react';
-import ChallengeIndexItem from './challenge_index_item';
+import UserIndexItem from './user_index_item';
+
 export default class ChallengeIndex extends React.Component {
   constructor(){
     super();
+    this.state = {
+      search: ""
+    };
   }
 
-  componentDidMount(){
-    this.props.fetchChallenges()
+
+  handleInput(e){
+    let query = e.currentTarget.value;
+    this.setState({search: query});
+    this.props.fetchUsers(query);
   }
   
   render(){
-    let challenges = this.props.challenges;
-    if (challenges.all_ids){
-      return (
-        <div className="challenge-content row">
-          <div className="challenge-container">
-            <h1>Challenges</h1>
-            <div className ="challenges-sub-heading">
-              Compete against other user to come up with the shortest solution to a given challenge...
-            </div>
-            {challenges.all_ids.map(id => (
-              <ChallengeIndexItem challenge = {challenges.by_id[id]} key = {id} />
-            ))}
+    return (
+      <div className="h2h-content row">
+        <div className="h2h-container">
+          <h1>Head To Head</h1>
+          <div className ="search-container">
+            <input 
+              value = {this.state.search}
+              onChange = {(e)=>this.handleInput(e)}
+              type="text" 
+              className= "user-searchbar"/>
           </div>
+          <ul className ="search-results">
+            {this.props.users.map(user =>(
+              <UserIndexItem user = {user} />
+            ))}
+          </ul>  
         </div>
-      );
-    } else {
-      return null;
-    }
-   
+      </div>
+    ); 
   }
 }

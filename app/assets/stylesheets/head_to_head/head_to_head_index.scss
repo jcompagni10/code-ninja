@@ -1,0 +1,19 @@
+.h2h-content{
+  background-color: $dark-blue;
+  padding-top: 65px;
+  min-height: 100vh;
+}
+
+.h2h-container{
+  max-width: 1200px;
+  width: 90%;
+  // TODO: vertical center
+  margin: 7vh auto;
+}
+
+.h2h-container h1{
+  text-align: center;
+  color: #fff;
+  font-weight: 300;
+  font-size: 36px;
+}

@@ -29,7 +29,7 @@ class Api::UserSolutionsController < ApplicationController
   private
 
   def user_solution_params
-  params.require(:user_solution).permit(:task_id, :mode, :solution, :fight_id)
+    params.require(:user_solution).permit(:task_id, :mode, :solution, :fight_id)
   end
 
 
