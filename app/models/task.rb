@@ -1,20 +1,22 @@
 class Task < ApplicationRecord
   validates :fxn_name,
-      :description,
-      :example,
-      :time_limit,
-      :output_type,
-      :output_description,
-      presence: true
+            :description,
+            :example,
+            :time_limit,
+            :output_type,
+            :output_description,
+            presence: true
   validates :title, presence: true, uniqueness: true
+
   belongs_to :levelSet,
-       optional: true
+             optional: true
 
   has_many :user_task_completions
 
   has_many :inputs
 
   has_many :user_solutions
+
   has_many :tests
 
   def completed(user, mode)
@@ -56,8 +58,9 @@ class Task < ApplicationRecord
 
   def input_builder(order, name, type, constraints)
     self.inputs.create!(order: order,
-              input_name: name,
-              input_type: type,
-              constraints: constraints)
+                        input_name: name,
+                        input_type: type,
+                        constraints: constraints
+                        )
   end
 end

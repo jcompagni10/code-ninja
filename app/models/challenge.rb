@@ -3,12 +3,12 @@ class Challenge < ApplicationRecord
   belongs_to :task
 
   has_many :user_completions,
-  through: :task,
-  source: :user_task_completions
+           through: :task,
+           source: :user_task_completions
 
   has_many :user_solutions,
-  through: :task,
-  source: :user_solutions
+           through: :task,
+           source: :user_solutions
 
   def completed(user_id)
     task.completed(user_id, :challenges)

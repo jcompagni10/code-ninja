@@ -1,17 +1,17 @@
-.arcade-content{
+.arcade-content {
   background-color: $dark-blue;
   padding-top: 65px;
   min-height: 100vh;
 }
 
-.arcade-container{
+.arcade-container {
   max-width: 1200px;
   width: 90%;
   // TODO: vertical center
   margin: 10vh auto;
 }
 
-.arcade-container h1{
+.arcade-container h1 {
   text-align: center;
   color: #fff;
   font-weight: 300;

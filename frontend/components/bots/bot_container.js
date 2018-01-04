@@ -1,12 +1,10 @@
-import {connect} from 'react-redux';
-import BotIndex from './bot_index';
-import {fetchBots} from '../../actions/bots';
+import { connect } from "react-redux";
+import BotIndex from "./bot_index";
+import { fetchBots } from "../../actions/bots";
 
-const mapStateToProps = state => (
-  {bots: state.entities.bots}
-);
+const mapStateToProps = state => ({ bots: state.entities.bots });
 const mapDispatchToProps = dispatch => ({
-  fetchBots: ()=>dispatch(fetchBots())
+  fetchBots: () => dispatch(fetchBots())
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(BotIndex);
+export default connect(mapStateToProps, mapDispatchToProps)(BotIndex);

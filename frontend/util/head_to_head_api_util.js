@@ -1,6 +1,5 @@
-export const getUsers = (query)=>(
+export const getUsers = query =>
   $.ajax({
-  method: "GET",
-  url: "api/users?search="+query
-  })
-);
+    method: "GET",
+    url: "api/users?search=" + query
+  });

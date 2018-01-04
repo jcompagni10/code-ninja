@@ -1,7 +1,5 @@
-export const getChallenges = ()=>(
+export const getChallenges = () =>
   $.ajax({
     method: "GET",
-    url: 'api/challenges'
-  })
-  );
-  
+    url: "api/challenges"
+  });

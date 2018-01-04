@@ -1,6 +1,5 @@
-export const getLevelSets = ()=>(
+export const getLevelSets = () =>
   $.ajax({
-  method: "GET",
-  url: 'api/level_sets'
-  })
-);
+    method: "GET",
+    url: "api/level_sets"
+  });

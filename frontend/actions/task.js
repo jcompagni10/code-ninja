@@ -1,4 +1,4 @@
-import {getTask, postSolution} from '../util/task_api_util';
+import { getTask, postSolution } from "../util/task_api_util";
 export const RECEIVE_TASK = "RECEIVE_TASK";
 export const RECEIVE_TEST_RESULTS = "RECEIVE_TEST_RESULTS";
 export const RECEIVE_TEST_ERRORS = "RECEIVE_TEST_ERRORS";
@@ -20,28 +20,26 @@ const receiveTestErrors = errors => ({
 });
 
 const startLoadingTestResults = () => ({
-  type: START_LOADING_TEST_RESULTS,
+  type: START_LOADING_TEST_RESULTS
 });
 
-export const fetchTask = (id) => dispatch => {
-  return getTask(id)
-  .then(task =>(
-    dispatch(receiveTask(task)),
-    errors => console.log("FAIL", errors)
-  ));
+export const fetchTask = id => dispatch => {
+  return getTask(id).then(
+    task => (dispatch(receiveTask(task)), errors => console.log("FAIL", errors))
+  );
 };
 
-function handleTestResults(testResults, dispatch){
-  if (testResults.errors){
-  dispatch(receiveTestErrors(testResults.errors));
+function handleTestResults(testResults, dispatch) {
+  if (testResults.errors) {
+    dispatch(receiveTestErrors(testResults.errors));
   } else {
-  dispatch(receiveTestResults(testResults));
+    dispatch(receiveTestResults(testResults));
   }
 }
-export const submitSolution = (solution) => dispatch => {
+export const submitSolution = solution => dispatch => {
   dispatch(startLoadingTestResults());
-  return postSolution(solution)
-  .then(testResults => handleTestResults(testResults,dispatch),
+  return postSolution(solution).then(
+    testResults => handleTestResults(testResults, dispatch),
     errors => console.log("FAIL", errors)
   );
 };

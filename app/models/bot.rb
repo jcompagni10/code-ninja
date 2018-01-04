@@ -1,13 +1,14 @@
 class Bot < ApplicationRecord
   validates :task_id,
-  :name,
-  :description,
-  :order,
-  :time,
-  :wins,
-  :losses,
-  :ties,
-  :image_url, presence: true
+            :name,
+            :description,
+            :order,
+            :time,
+            :wins,
+            :losses,
+            :ties,
+            :image_url, 
+            presence: true
   validates :name, uniqueness: true
 
   has_many :user_bot_completions
@@ -24,7 +25,7 @@ class Bot < ApplicationRecord
 
   def self.ordered_ids
     Bot.all.sort_by(&:order)
-    .map(&:id)
+      .map(&:id)
   end
 
   def win

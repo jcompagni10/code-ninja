@@ -5,5 +5,5 @@ class Input < ApplicationRecord
 
 
   belongs_to :task,
-  dependent: :destroy
+             dependent: :destroy
 end
