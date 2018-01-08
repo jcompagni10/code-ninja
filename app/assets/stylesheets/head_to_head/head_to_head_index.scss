@@ -1,14 +1,14 @@
 .h2h-content{
-  background-color: $dark-blue;
   padding-top: 65px;
   min-height: 100vh;
+  background-color: $lightest-grey;
 }
 
 .h2h-container{
   max-width: 1200px;
   width: 90%;
   // TODO: vertical center
-  margin: 7vh auto;
+  margin: 25px auto;
 }
 
 .h2h-container h1{
@@ -18,6 +18,73 @@
   font-size: 36px;
 }
 
+.h2h-container .sub-nav-item{
+  height: 250px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.sub-nav-item-top{
+  background-color: $electric-green;
+  height: 170px;
+  padding: 0 30px;
+  align-items: center;
+}
+
+.sub-nav-item-bottom{
+  height: 80px;
+}
+
+.h2h-icon {
+  height: 160px;
+  width: 160px;
+  min-width: 160px;
+  width: auto;
+  position: relative;
+  top: 45px;
+}
+
+.h2h-description{
+  color: #fff;
+  padding: 0 30px;
+}
+
+.h2h-description h2{
+  font-weight: 300;
+  font-size: 28px;
+}
+
+.h2h-description p{
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.challenge-button.random-fight{
+  width: 280px;
+  background-color: $sky-blue;
+  color: #fff;
+  text-align: center;
+}
+
+.challenge-button.random-fight:hover{
+  background-color: lighten($sky-blue, 10%)
+}
+
+.h2h-container .record-item{
+  margin-right: 40px;
+}
+.h2h-container .nav-item-data{
+  margin-left: -100px;
+}
+
+.h2h-container .record{
+  color: $fire-orange
+}
+.h2h-container .record-title{
+  text-transform: uppercase;
+  color: $dark-grey;
+}
 .search-container{
   background-color: #fff;
   width: 800px;
@@ -27,6 +94,8 @@
   display: flex;
   align-items: center;
 }
+
+
 
 .user-searchbar{
   box-shadow: none !important;
@@ -77,21 +146,7 @@
 .search-container .challenge-button:hover{
   background-color: darken($sky-blue, 5%);
 }
-.random-op-button{
-  text-align: center;
-  margin-top: 14px;
-}
-.random-op-button {
-    .challenge-button{
-    background-color: $sky-blue;
-    color: #fff;
-    width: 280px;
-    display: inline-block;
-  }
-  svg{
-    fill: #fff;
-  }
-}
+
 .user-index-item{
   display: flex;
   flex-direction: row;

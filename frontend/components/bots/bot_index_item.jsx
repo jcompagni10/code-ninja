@@ -35,7 +35,7 @@ export default ({ indexItem }) => (
       <div className="sub-nav-item-bottom">
         <Record
           data={[indexItem.wins, indexItem.losses, indexItem.ties]}
-          type="bots"
+          type="fight"
         />
       </div>
     </div>

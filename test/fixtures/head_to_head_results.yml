@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task_id: 1
+  challenger_id: 1
+  recipient_id: 1
+  chalanger_time: 1
+  recipient_time: 1
+  status: MyString
+
+two:
+  task_id: 1
+  challenger_id: 1
+  recipient_id: 1
+  chalanger_time: 1
+  recipient_time: 1
+  status: MyString

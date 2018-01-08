@@ -1,0 +1,2 @@
+class HeadToHeadResult < ApplicationRecord
+end

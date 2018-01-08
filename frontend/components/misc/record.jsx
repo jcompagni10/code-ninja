@@ -2,7 +2,7 @@ import React from "react";
 
 const dataTitle = {
   head_to_head: ["wins", "losses", "ties"],
-  bots: ["wins", "losses", "ties"],
+  fight: ["wins", "losses", "ties"],
   challenges: ["attempts", "completions", "shortest"]
 };
 

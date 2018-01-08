@@ -1,5 +1,6 @@
 import React from "react";
 import UserIndexItem from "./user_index_item";
+import Record from "../misc/record";
 
 export default class ChallengeIndex extends React.Component {
   constructor() {
@@ -20,7 +21,25 @@ export default class ChallengeIndex extends React.Component {
     return (
       <div className="h2h-content row">
         <div className="h2h-container">
-          <h1>Head To Head</h1>
+          <div className="sub-nav-item">
+            <div className="sub-nav-item-top">
+              <img className="h2h-icon" src="assets/head_to_head.svg" />
+              <div className="h2h-description">
+                <h2>Random Fight</h2>
+                <p>
+                  Fight a random codefighter of your level and improve your
+                  skills! Click the button on the right to find an opponent.
+                </p>
+              </div>
+              <div className="challenge-button random-fight">Random Fight</div>
+            </div>
+            <div className="sub-nav-item-bottom">
+              <div className="sub-nav-item-bottom">
+                <Record data={[2, 2, 2]} type="fight" />
+              </div>
+            </div>
+          </div>
+          {/* <h1>Head To Head</h1>
           <div className="search-container row">
             <div className="col-md-6">
               <label for="user-search"> Search For An Opponent </label>
@@ -50,7 +69,7 @@ export default class ChallengeIndex extends React.Component {
                 Random Opponent
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     );
