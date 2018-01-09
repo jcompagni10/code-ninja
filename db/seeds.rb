@@ -1,12 +1,20 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-user1= User.create({username: "user123", password: "pass123", email: "user@gmail.com" })
-user2= User.create({username: "demo_user", password: "pass123", email: "user@gmail.com" })
+
+
+###########
+# USERS #
+#########
+User.create(username: "user123", password: "pass123", email: "user@gmail.com")
+User.create(username: "demo_user", password: "pass123", email: "user@gmail.com")
+20.times do 
+  User.create(
+                username: Faker::Internet.unique.user_name,
+                password: "pass123",
+                email: Faker::Internet.unique.email
+  )
+end
 
 #############
 # LEVEL SET 1
@@ -22,7 +30,7 @@ task = Task.create!(
   output_type: "Integer",
   output_description: "The product of the two inputs.",
 )
-task.bulk_input_builder([["param1",Integer, "-100 ≤ param1 ≥ 1000"],[]]);
+task.bulk_input_builder([["param1", Integer, "-100 ≤ param1 ≥ 1000"], []])
 task.bulk_test_builder([[0, 0, 0], [10, 5, 2], [-10, -5, 2], [100, -10, -10], [117504, 256, 459]])
 
 task = Task.create!(
@@ -41,7 +49,7 @@ task = Task.create!(
   output_description: "true if inputString is a palindrome, false otherwise.",
 )
 task.bulk_input_builder([["inputString", "String", "1 ≤ inputString.length ≤ 105."]])
-task.bulk_test_builder([[true, "racecar"], [false, "tests"], [true, "lionoil"], [true, "a"], [false, "ab"], [true, "abba"], [true, "a"*20+"b"*10 +"a"*20]])
+task.bulk_test_builder([[true, "racecar"], [false, "tests"], [true, "lionoil"], [true, "a"], [false, "ab"], [true, "abba"], [true, "a" * 20 + "b" * 10 + "a" * 20]])
 
 task = Task.create!(
   title: "All Longest Strings",
@@ -54,13 +62,13 @@ task = Task.create!(
   output_type: "StringArray",
   output_description: "Array of the longest strings, stored in the same order as in the inputArray."
 )
-task.bulk_input_builder( [["inputArray", "StringArray", "1 ≤ inputArray.length ≤ 10, <br/> 1 ≤ inputArray[i].length ≤ 10."]] )
+task.bulk_input_builder([["inputArray", "StringArray", "1 ≤ inputArray.length ≤ 10, <br/> 1 ≤ inputArray[i].length ≤ 10."]])
 task.bulk_test_builder([
   [%w[a b c], %w[a b c]],
   [%w[aaa], %w[aaa b c]],
   [%w[aaa ccc ddd], %w[aaa bb ccc ddd]],
   [%w[hello world], %w[hello world]],
-  [["abc"]*51, ['a'].concat((["abc"]*50).push('a'))],
+  [["abc"] * 51, ['a'].concat((["abc"] * 50).push('a'))],
  ])
 
 
@@ -75,8 +83,8 @@ task = Task.create!(
   output_type: "Integer",
   output_description: "The largest product of adjacent elements.",
 )
-task.bulk_input_builder([["inputArray", "IntegerArray", "2 ≤ inputArray.length ≤ 10,<br/> -1000 ≤ inputArray[i] ≤ 1000."]]);
-task.bulk_test_builder([[21, [1, 3, 7]], [25, [5, 2, 1, 1, 5]], [10, [-2, -5, 2, 3]], [100, [-10, 5, 6, 3,-10, -2]], [1, [1, 1, 1, 1, -1]]])
+task.bulk_input_builder([["inputArray", "IntegerArray", "2 ≤ inputArray.length ≤ 10,<br/> -1000 ≤ inputArray[i] ≤ 1000."]])
+task.bulk_test_builder([[21, [1, 3, 7]], [25, [5, 2, 1, 1, 5]], [10, [-2, -5, 2, 3]], [100, [-10, 5, 6, 3, -10, -2]], [1, [1, 1, 1, 1, -1]]])
 
 #############
 # LEVEL SET 2
@@ -93,7 +101,7 @@ task = Task.create!(
   output_type: "String",
   output_description: "The new string",
 )
-task.bulk_input_builder([["s", "String", "5 ≤ s.length ≤ 55."]]);
+task.bulk_input_builder([["s", "String", "5 ≤ s.length ≤ 55."]])
 task.bulk_test_builder([["acbde", "a(bc)de"], ["apmnolkjihgfedcbq", "a(bcdefghijkl(mno)p)q"], ["CodeegnlleahC", "Code(Cha(lle)nge)"], ["Look ma' no parantheses", "Look ma' no parantheses"], ["abcabcabcabc", "abc(cba)ab(bac)c"]])
 
 
@@ -108,7 +116,7 @@ task = Task.create!(
   output_type: "IntegerArray",
   output_description: "Sorted array with all the \"trees\" untouched.",
 )
-task.bulk_input_builder([["arr", "IntegerArray", "5 ≤ a.length ≤ 15,<br/>-1 ≤ a[i] ≤ 200."]]);
+task.bulk_input_builder([["arr", "IntegerArray", "5 ≤ a.length ≤ 15,<br/>-1 ≤ a[i] ≤ 200."]])
 task.bulk_test_builder([
   [[-1, 150, 160, 170, -1, -1, 180, 190], [-1, 150, 190, 170, -1, -1, 160, 180]],
   [[-1, -1, -1, -1, -1], [-1, -1, -1, -1, -1]],
@@ -153,81 +161,111 @@ task = Task.create!(
 )
 task.bulk_input_builder([["inputArray", "StringArray", "2 ≤ inputArray.length ≤ 10,<br/> 1 ≤ inputArray[i].length ≤ 15."]])
 task.bulk_test_builder([[false, ["aba", "bbb", "bab"]], [true, ["aaa", "aac", "bac"]], [true, ["z", "z"]],
-            [true, ["zzzzab", "zzzzbb", "zzzzaa"]], [false, ["ab", "ad", "ef", "eg"]], [true, ["abc", "bef", "bcc", "bec", "bbc", "bdc"]], [false, ["abc", "abx", "axx", "abc"]]] )
+                        [true, ["zzzzab", "zzzzbb", "zzzzaa"]], [false, ["ab", "ad", "ef", "eg"]], [true, ["abc", "bef", "bcc", "bec", "bbc", "bdc"]], [false, ["abc", "abx", "axx", "abc"]]])
 
 LevelSet.create(name: "Welcome To Codelandia", order: 1)
 LevelSet.create(name: "You think you're smart?", order: 2)
 
-bots = Bot.create([
+Bot.create([
   {
-  task_id: 2,
-  name: "Ada Lovelace",
-  description: "Programmed computers before computers",
-  order: 1,
-  time: 240000,
-  image_url: 'bots.svg'
+    task_id: 2,
+    name: "Ada Lovelace",
+    description: "Programmed computers before computers",
+    order: 1,
+    time: 240000,
+    image_url: 'bots.svg'
   },
   {
-  task_id: 4,
-  name: "Alan Turing",
-  description: "A True enigma...",
-  order: 2,
-  time: 500000,
-  image_url: 'bots.svg'
+    task_id: 4,
+    name: "Alan Turing",
+    description: "A True enigma...",
+    order: 2,
+    time: 500000,
+    image_url: 'bots.svg'
   },
   {
-  task_id: 5,
-  name: "Yukihiro Matsumoto",
-  description: "A Gem of a man.",
-  order: 3,
-  time: 300000,
-  image_url: 'bots.svg'
+    task_id: 5,
+    name: "Yukihiro Matsumoto",
+    description: "A Gem of a man.",
+    order: 3,
+    time: 300000,
+    image_url: 'bots.svg'
   },
   {
-  task_id: 6,
-  name: "Bill Gates",
-  description: "Wrote his first code at age 13",
-  order: 4,
-  time: 550000,
-  image_url: 'bots.svg'
+    task_id: 6,
+    name: "Bill Gates",
+    description: "Wrote his first code at age 13",
+    order: 4,
+    time: 550000,
+    image_url: 'bots.svg'
   },
   {
-  task_id: 8,
-  name: "Linus Torvalds",
-  description: "This boss bot will rm -rf your confidence",
-  order: 5,
-  time: 6000000,
-  image_url: 'bots.svg'
+    task_id: 8,
+    name: "Linus Torvalds",
+    description: "This boss bot will rm -rf your confidence",
+    order: 5,
+    time: 6000000,
+    image_url: 'bots.svg'
   },
   ])
 
 
-  #CHALLENGES
+#CHALLENGES
 
-  Challenge.create!([
-    {
-      task_id: 2,
-        title: "racecar?",
-        img_url: "default_level_set.png"
-    },
-    {
-      task_id: 3,
-        title: "Strung Along",
-        img_url: "default_level_set.png"
-    },
-    {
-      task_id: 5,
-        title: "((Its) just (a) symbol)",
-        img_url: "default_level_set.png"
-    },
-    {
-      task_id: 6,
-        title: "Something has come between us...",
-        img_url: "default_level_set.png"
-    },
-    {
-      task_id: 8,
-        title: "Ladder to nowhere",
-        img_url: "default_level_set.png"
-    },
-  ])
+Challenge.create!([
+  {
+    task_id: 2,
+    title: "racecar?",
+    img_url: "default_level_set.png"
+  },
+  {
+    task_id: 3,
+    title: "Strung Along",
+    img_url: "default_level_set.png"
+  },
+  {
+    task_id: 5,
+    title: "((Its) just (a) symbol)",
+    img_url: "default_level_set.png"
+  },
+  {
+    task_id: 6,
+    title: "Something has come between us...",
+    img_url: "default_level_set.png"
+  },
+  {
+    task_id: 8,
+    title: "Ladder to nowhere",
+    img_url: "default_level_set.png"
+  },
+])
+
+
+################
+# HEAD TO HEADS #
+################
+
+5.times do 
+  HeadToHeadResult.create(
+    challenger_id: 2,
+    recipient_id: rand(1..22),
+    challenger_time: rand(30..300),
+    recipient_time: rand(30..300),
+    status: :COMPLETE,
+    task_id: 2,
+    created_at: rand(1..60).days.ago
+  )
+end
+
+5.times do 
+  HeadToHeadResult.create(
+    recipient_id: 2,
+    challenger_id: rand(1..22),
+    challenger_time: rand(30..300),
+    recipient_time: rand(30..300),
+    status: :COMPLETE,
+    task_id: 3,
+    created_at: rand(1..60).days.ago
+  )
+end
+

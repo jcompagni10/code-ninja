@@ -1,7 +1,7 @@
 class Test < ApplicationRecord
   validates :order, presence: true
   # TODO: allow false as output value
-  validates :output, :hidden, inclusion: { in: [true, false] }
+  validates :hidden, inclusion: { in: [true, false] }
   
   serialize :output
 

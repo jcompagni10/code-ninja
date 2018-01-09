@@ -4,7 +4,7 @@ class CreateHeadToHeadResults < ActiveRecord::Migration[5.1]
       t.integer :task_id
       t.integer :challenger_id
       t.integer :recipient_id
-      t.integer :chalanger_time
+      t.integer :challenger_time
       t.integer :recipient_time
       t.string :status
 

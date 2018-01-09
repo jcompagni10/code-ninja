@@ -1,0 +1,2 @@
+class HeadToHeadResultsController < ApplicationController
+end

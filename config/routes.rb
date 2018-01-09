@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :bots, only: [:index, :show]
   resources :tasks, only: [:show]
   resources :challenges, only: [:index]
+  resources :head_to_head_results, only: [:index, :create]
   resources :user_solutions, only: [:show]
   resources :user_bot_completions, only: [:create, :update]
   post "/submit", to: 'user_solutions#submit'
