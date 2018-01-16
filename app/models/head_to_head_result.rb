@@ -17,13 +17,10 @@ class HeadToHeadResult < ApplicationRecord
     self.status ||= :NO_RESULTS
   end
 
-  def self.user_results(user)
-    ActiveRecord::Base.connection.execute(<<-SQL)
-      SELECT 
-        *
-      FROM
-       ( SELECT
-          head_to_head_results.id,
+  def self.user_results(user_id)
+    all_fights = ActiveRecord::Base.connection.execute(<<-SQL)
+       SELECT
+          head_to_head_results.id as id,
           recipients.username as opponent, 
           head_to_head_results.created_at as date,
           challenger_time < recipient_time  as win,
@@ -36,11 +33,17 @@ class HeadToHeadResult < ApplicationRecord
         ON
         head_to_head_results.recipient_id = recipients.id
         WHERE
-          challenger_id = #{user.id} ) challenger
-      LEFT OUTER JOIN
-        ( SELECT
-          id,
-          username
+          challenger_id = #{user_id}
+      SQL
+      .to_a
+      all_fights += ActiveRecord::Base.connection.execute(<<-SQL)
+        SELECT
+          head_to_head_results.id as id,
+          challengers.username as opponent, 
+          head_to_head_results.created_at as date,
+          challenger_time > recipient_time  as win,
+          recipient_time as user_time,
+          challenger_time as opponent_time
         FROM
           head_to_head_results    
         JOIN
@@ -48,21 +51,10 @@ class HeadToHeadResult < ApplicationRecord
         ON
           head_to_head_results.challenger_id = challengers.id
         WHERE
-          recipient_id = #{user.id} ) recipient
-      ON
-        challenger.id = recipient.id
-
+          recipient_id = #{user_id}
     SQL
-    # results = []
-    # challenger = HeadToHeadResult.where("status = 'COMPLETE'").joins(:challenger).joins(:recipient).where('users.id = ?' , user.id)
-    # challenger.each do |result|
-    #   data = {}
-    #   data[:opponent] = result.recipient.username
-    #   data[:date] = time_ago_in_words(result.created_at).remove("about ")
-    #   data[:score] = result.challanger_time < result.recipient_time ? 300 : 0 
-    #   data[:opponent_pic] = result.recipient.img_url
-    # end
-    # recipient = HeadToHeadResult.where("status = 'COMPLETE'").joins(:recipient).where('users.id = ?' , user.id)
+    .to_a
+    all_fights.sort_by {|fight| fight[:date]}
   end      
 
 end

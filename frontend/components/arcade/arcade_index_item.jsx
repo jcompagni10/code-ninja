@@ -3,7 +3,7 @@ import { Glyphicon } from "react-bootstrap";
 import { Link } from "react-router-dom";
 export default ({ indexItem }) => (
   <div className="col-xs-12 sub-nav-item-container">
-    <div className="sub-nav-item">
+      <div className="sub-nav-item">
       <div className="sub-nav-item-top">
         <img
           className="top-nav-item-image"
