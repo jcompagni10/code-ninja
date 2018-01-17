@@ -12,7 +12,7 @@ class HeadToHeadResult < ApplicationRecord
     
   after_initialize :set_status
 
-  # possible statuses :NO_RESULTS, :AWAIT_RECIPIENT :COMPLETE
+  # possible statuses :AWAIT_RECIPIENT :COMPLETE
   def set_status
     self.status ||= :NO_RESULTS
   end
@@ -33,7 +33,7 @@ class HeadToHeadResult < ApplicationRecord
         ON
         head_to_head_results.recipient_id = recipients.id
         WHERE
-          challenger_id = #{user_id}
+          challenger_id = #{user_id} AND head_to_head_results.status = 'COMPLETE'
       SQL
       .to_a
       all_fights += ActiveRecord::Base.connection.execute(<<-SQL)
@@ -51,11 +51,12 @@ class HeadToHeadResult < ApplicationRecord
         ON
           head_to_head_results.challenger_id = challengers.id
         WHERE
-          recipient_id = #{user_id}
+          recipient_id = #{user_id} AND head_to_head_results.status = 'COMPLETE'
     SQL
     .to_a
     all_fights.sort_by {|fight| fight[:date]}
-  end      
+  end    
+  
 
 end
 

@@ -11,6 +11,7 @@ import arcadeContainer from './modes/arcade/arcade_container';
 import challengesNavContainer from './challenges/challenges_container';
 import challengesContainer from './modes/challenges/challenges_container';
 import HeadToHeadNav from './head_to_head/head_to_head_container';
+import headToHeadFightContainer from './modes/head_to_head/head_to_head_fight_container';
 export default ()=>(
   <div>
 
@@ -21,6 +22,7 @@ export default ()=>(
     <ProtectedRoute exact path = "/bots" component = {botNavContainer} />
     <ProtectedRoute exact path = "/head_to_head" component = {HeadToHeadNav} />
     <ProtectedRoute path = "/bots/repl/:taskId/:botId" component = {botFightContainer} />
+    <ProtectedRoute path = "/head_to_head/repl/:taskId" component = {headToHeadFightContainer} />
     <ProtectedRoute path = "/arcade/repl/:taskId" component = {arcadeContainer} />
     <ProtectedRoute path = "/challenges/repl/:taskId" component = {arcadeContainer} />
     <ProtectedRoute path = "/dashboard" component = {navContainer} />

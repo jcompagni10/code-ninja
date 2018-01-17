@@ -61,11 +61,12 @@ class UserSolution < ApplicationRecord
     user_results = response["results"]
     test_results = { log: response["log"].gsub("\n", "<br/>"), results: {} }
     test_suite.each_with_index do |test, idx|
+      debugger
       result = user_results[idx]
-      passed = result == test.output
+      passed = result == test
       test_result = {
         passed: passed,
-        expected: test.output.to_s,
+        expected: test.to_s,
         received: result.to_s
       }
       test_results[:results][test.order] = test_result

@@ -1,8 +1,9 @@
 import React from "react";
 import UserIndexItem from "./user_index_item";
 import Record from "../misc/record";
+import FightHistory from "./fight_history";
 
-export default class ChallengeIndex extends React.Component {
+export default class HeadToHeadIndex extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -16,8 +17,24 @@ export default class ChallengeIndex extends React.Component {
     this.props.fetchUsers(query);
   }
 
+  componentDidMount() {
+    this.props.fetchFightResults();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.fight.status === 'ready' ){
+      const taskId = nextProps.fight.taskId;
+      this.props.history.push("/head_to_head/repl/" + taskId);
+    }
+  }
+
+  createFight(){
+    this.props.createFight();
+  }
+
   render() {
     let users = this.props.users;
+    let record = this.props.fight_history.record && Object.values(this.props.fight_history.record) || [];
     return (
       <div className="h2h-content row">
         <div className="h2h-container">
@@ -31,11 +48,14 @@ export default class ChallengeIndex extends React.Component {
                   skills! Click the button on the right to find an opponent.
                 </p>
               </div>
-              <div className="challenge-button random-fight">Random Fight</div>
+              <div className="challenge-button random-fight"
+                onClick = {this.createFight.bind(this)}
+              >
+              Fight</div>
             </div>
             <div className="sub-nav-item-bottom">
               <div className="sub-nav-item-bottom">
-                <Record data={[2, 2, 2]} type="fight" />
+                <Record data={record} type="fight" />
               </div>
             </div>
           </div>
@@ -70,6 +90,7 @@ export default class ChallengeIndex extends React.Component {
               </div>
             </div>
           </div> */}
+          <FightHistory history = {this.props.fight_history.history} />
         </div>
       </div>
     );

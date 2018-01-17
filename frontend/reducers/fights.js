@@ -9,6 +9,7 @@ export default (state = {}, action) => {
         timeLimit: action.payload.time_limit,
         fightId: action.payload.fight_id,
         opponent: action.opponent,
+        taskId: action.payload.task_id,
         status: "ready"
       };
     case SET_FIGHT_STATUS:

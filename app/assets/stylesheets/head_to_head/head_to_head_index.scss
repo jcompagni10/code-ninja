@@ -23,16 +23,17 @@
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
   overflow: hidden;
   border-radius: 2px;
+  margin-bottom: 10px;
 }
 
-.sub-nav-item-top{
+.h2h-container .sub-nav-item-top{
   background-color: $electric-green;
   height: 170px;
   padding: 0 30px;
   align-items: center;
 }
 
-.sub-nav-item-bottom{
+.h2h-container .sub-nav-item-bottom{
   height: 80px;
 }
 
@@ -65,6 +66,7 @@
   background-color: $sky-blue;
   color: #fff;
   text-align: center;
+  cursor: pointer;
 }
 
 .challenge-button.random-fight:hover{
@@ -152,4 +154,56 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.fight-history-title{
+  text-transform: uppercase;
+}
+
+
+.history-container{
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.fight-table{
+  margin-top: 10px;
+  width: 100%;
+  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.15);
+}
+
+.fight-table thead{
+  background-color: rgba(245, 246, 247, 0.5);
+  border-bottom: 1px solid darken($light-grey, 5%);
+  font-weight: 600;
+  font-size: 14px;
+  color: $grey;
+}
+
+.fight-table td{
+  padding: 10px;
+  text-align: center;
+}
+
+.fight-table tr td:first-of-type{
+  padding-left: 45px;
+  color: a(0, 0, 0, 0.4);
+  text-align: left;
+}
+
+.fight-table thead td:first-of-type{
+  padding-left: 45px;
+  text-align: left;
+}
+
+.fight-table .win{
+  color: $electric-green;
+}
+.fight-table .loss{
+  color: $fire-orange;
+}
+
+.fight-opponent{
+  font-weight: 400;
+  text-transform:capitalize
 }

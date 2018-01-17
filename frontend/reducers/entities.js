@@ -5,6 +5,7 @@ import currentTask from "./current_task";
 import currentTests from "./current_tests";
 import currentTestErrors from "./current_test_errors";
 import challenges from "./challenges";
+import fight_results from "./fight_results";
 
 export default combineReducers({
   levelSets,
@@ -12,5 +13,6 @@ export default combineReducers({
   challenges,
   currentTask,
   currentTests,
-  currentTestErrors
+  currentTestErrors,
+  fight_results
 });
