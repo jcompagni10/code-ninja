@@ -13,14 +13,16 @@ class UserSolution < ApplicationRecord
   belongs_to :task
 
   def handle_completion(test_results)
-  if test_results.values.all? { |t| t[:passed] } && self.score == 0
-    case mode
-    when "bots"
-    UserBotCompletion.handle_completion(self, nil, "win")
-    when "arcade"
-    UserTaskCompletion.handle_completion(self, "arcade")
+    if test_results.values.all? { |t| t[:passed] } && self.score == 0
+      case mode
+      when "bots"
+        UserBotCompletion.handle_completion(self, nil, "win")
+      when "arcade"
+        UserTaskCompletion.handle_completion(self, "arcade")
+      when "challenges"
+        UserTaskCompletion.handle_completion(self, "challenges")
+      end
     end
-  end
   end
 
   # TODO: catch all types of errors

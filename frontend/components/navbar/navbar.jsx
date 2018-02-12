@@ -87,10 +87,10 @@ export default class Navbar extends React.Component {
                   </Dropdown.Menu>
                 </Dropdown>
               </li>
-              <li className="navbar-item">
+              {/* <li className="navbar-item">
                 <Glyphicon glyph="star" className="leaders-icon" bsSize="lg" />
                 leaders
-              </li>
+              </li> */}
             </ul>
           )}
         </div>
